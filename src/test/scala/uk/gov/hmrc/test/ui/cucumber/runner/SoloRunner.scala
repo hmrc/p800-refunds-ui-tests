@@ -28,4 +28,3 @@ import org.junit.runner.RunWith
   tags = "@solo"
 )
 class SoloRunner {}
-

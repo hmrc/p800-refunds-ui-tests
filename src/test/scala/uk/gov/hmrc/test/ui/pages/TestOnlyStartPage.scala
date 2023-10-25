@@ -16,14 +16,11 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object CheckYourVATResult extends BasePage {
+object TestOnlyStartPage extends BasePage {
 
-  val resultOutcome        = "resultOutcome"
-  val useSetVATFlatRate    = "You can use the 16.5% VAT flat rate"
-  val useUniqueVATFlatRate = "You can use the VAT flat rate for your business type"
+  val h1  = "Test only page"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/test-only"
 
-  def result: String =
-    driver.findElement(By.id(resultOutcome)).getText
 }

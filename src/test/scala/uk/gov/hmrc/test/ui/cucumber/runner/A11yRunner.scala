@@ -28,4 +28,3 @@ import org.junit.runner.RunWith
   tags = "@a11y"
 )
 class A11yRunner {}
-
