@@ -16,16 +16,11 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object Turnover extends BasePage {
+object TestOnlyStartPage extends BasePage {
 
-  val turnoverInput = "turnover"
+  val h1  = "Test only page"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/test-only"
 
-  def provideTurnoverAmount(amount: String): CostOfGoods.type = {
-    driver.findElement(By.id(turnoverInput)).clear()
-    driver.findElement(By.id(turnoverInput)).sendKeys(amount)
-    submitPage()
-    CostOfGoods
-  }
 }

@@ -16,13 +16,22 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
 
-trait BasePage extends BrowserDriver with Matchers {
-  val continueButton = "continue-button"
+trait BasePage extends BaseStepDef {
 
-  def submitPage(): Unit =
-    driver.findElement(By.id(continueButton)).click()
+  val h1: String
+  val url: String
+  val serviceName: String = "Claim an income tax refund"
+
+  def currentUrl: String         = driver.getCurrentUrl()
+  def currentPageTitle: String   = driver.getTitle
+  def currentPageHeading: String = findTextByTagName("h1")
+
+  def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe s"$h1 - $serviceName - GOV.UK"
+  }
+
 }
