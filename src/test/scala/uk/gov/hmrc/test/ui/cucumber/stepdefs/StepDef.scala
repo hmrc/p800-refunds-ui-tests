@@ -35,13 +35,13 @@ class StepDef extends BaseStepDef {
 
   When("^I select (.*)$") { (page: String) =>
     page match {
-      case "yes to sign in" => clickById("radio-sign-in")
-      case "not signed in"  => clickById("radio-do-not-sign-in")
+      case "yes to sign in" => clickById("sign-in")
+      case "not signed in"  => clickById("sign-in-2")
     }
   }
 
   And("I click continue") { () =>
-    clickById("continue")
+    clickById("submit")
   }
 
 }
