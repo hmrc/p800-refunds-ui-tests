@@ -25,7 +25,7 @@ object AuthLoginPage extends BasePage {
   override def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe s"Authority Wizard"
+    currentPageTitle   shouldBe "Authority Wizard"
   }
 
 }

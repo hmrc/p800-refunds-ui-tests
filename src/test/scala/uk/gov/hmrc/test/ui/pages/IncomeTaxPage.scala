@@ -19,7 +19,8 @@ package uk.gov.hmrc.test.ui.pages
 object IncomeTaxPage extends BasePage {
 
   val h1  = "Income Tax: general enquiries"
-  val url = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees"
+  val url =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees"
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)
