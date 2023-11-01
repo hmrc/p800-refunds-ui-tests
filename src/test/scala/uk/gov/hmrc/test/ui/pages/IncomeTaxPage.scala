@@ -16,17 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
+object IncomeTaxPage extends BasePage {
 
-object TestOnlyStartPage extends BasePage {
-
-  val h1  = "Test Only Landing Page"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/test-only"
+  val h1  = "Income Tax: general enquiries"
+  val url =
+    "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees"
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe "Test Only - Claim an income tax refund - GOV.UK"
+    currentPageTitle   shouldBe "Income Tax: general enquiries - GOV.UK"
   }
 
 }

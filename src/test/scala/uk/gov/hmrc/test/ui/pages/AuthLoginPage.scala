@@ -16,17 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
+object AuthLoginPage extends BasePage {
 
-object TestOnlyStartPage extends BasePage {
-
-  val h1  = "Test Only Landing Page"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/test-only"
+  val h1  = "Authority Wizard"
+  val url =
+    "http://localhost:9949/auth-login-stub/gg-sign-in?continue=http%3A%2F%2Flocalhost%3A9416%2Ftax-you-paid%2Fchoose-year&accountType=individual"
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe "Test Only - Claim an income tax refund - GOV.UK"
+    currentPageTitle   shouldBe "Authority Wizard"
   }
 
 }

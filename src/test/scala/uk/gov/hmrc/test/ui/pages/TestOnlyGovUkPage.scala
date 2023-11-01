@@ -16,15 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object GovernmentGatewayPage extends BasePage {
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-  val h1  = "Sign in using Government Gateway"
-  val url = "https://www.access.service.gov.uk/login/signin/creds"
+object TestOnlyGovUkPage extends BasePage {
+
+  val h1  = "Tax overpayments and underpayments"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/test-only/gov-uk-route-in"
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe s"$h1 - GOV.UK"
+    currentPageTitle   shouldBe "Test Only - Claim an income tax refund - GOV.UK"
   }
 
 }

@@ -18,15 +18,9 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object TestOnlyStartPage extends BasePage {
+object WhatIsP800ReferencePage extends BasePage {
 
-  val h1  = "Test Only Landing Page"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/test-only"
-
-  override def assertPage(): Unit = {
-    currentUrl           should include(url)
-    currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe "Test Only - Claim an income tax refund - GOV.UK"
-  }
+  val h1  = "What is your P800 reference?"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/enter-P800-reference"
 
 }
