@@ -16,15 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object GovernmentGatewayPage extends BasePage {
+object IncomeTaxPage extends BasePage {
 
-  val h1  = "Sign in using Government Gateway"
-  val url = "https://www.access.service.gov.uk/login/signin/creds"
+  val h1  = "Income Tax: general enquiries"
+  val url = "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/income-tax-enquiries-for-individuals-pensioners-and-employees"
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe s"$h1 - GOV.UK"
+    currentPageTitle   shouldBe "Income Tax: general enquiries - GOV.UK"
   }
 
 }

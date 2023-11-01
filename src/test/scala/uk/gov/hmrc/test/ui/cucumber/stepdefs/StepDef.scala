@@ -16,6 +16,9 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import java.time.Duration
+
+import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import uk.gov.hmrc.test.ui.pages._
 
 class StepDef extends BaseStepDef {
@@ -23,20 +26,30 @@ class StepDef extends BaseStepDef {
   Given("I start a journey") { () =>
     driver.navigate.to(TestOnlyStartPage.url)
     TestOnlyStartPage.assertPage()
-    clickByLinkText("/get-an-income-tax-refund/start")
+    clickByLinkText("start journey via gov-uk")
+    TestOnlyGovUkPage.assertPage()
+    clickByLinkText("Claim Now >")
   }
 
   Then("^I am on the (.*) page$") { (page: String) =>
     page match {
       case "do you want to sign in" => eventually(DoYouWantToSignInPage.assertPage())
-      case "government gateway"     => eventually(GovernmentGatewayPage.assertPage())
+      case "auth login"             => eventually(AuthLoginPage.assertPage())
+      case "what is your reference" => eventually(WhatIsP800ReferencePage.assertPage())
+      case "income tax"             =>
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.numberOfWindowsToBe(2))
+        val windows = driver.getWindowHandles.toArray().toSeq
+        driver.switchTo().window(windows(1).toString)
+        eventually(IncomeTaxPage.assertPage())
     }
   }
 
   When("^I select (.*)$") { (page: String) =>
     page match {
-      case "yes to sign in" => clickById("sign-in")
-      case "not signed in"  => clickById("sign-in-2")
+      case "yes to sign in"                           => clickById("sign-in")
+      case "not signed in"                            => clickById("sign-in-2")
+      case "Sign in or create a personal tax account" => clickById("personal-tax-account-sign-in")
+      case "Call the income tax helpline"             => clickById("income-tax-general-enquiries")
     }
   }
 
