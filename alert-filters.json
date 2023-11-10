@@ -1,6 +1,5 @@
 {
-  "add": [],
-  "remove": [
+  "add": [
     {
       "reason": "GOV.UK is out of scope for our tests",
       "url": "https:\/\/www.gov.uk\/.*",
@@ -25,5 +24,6 @@
       "urlIsRegex": "true",
       "newLevel": -1
     }
-  ]
+  ],
+  "remove": []
 }
