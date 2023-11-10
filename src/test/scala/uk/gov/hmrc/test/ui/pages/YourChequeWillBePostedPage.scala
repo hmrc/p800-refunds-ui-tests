@@ -24,4 +24,3 @@ object YourChequeWillBePostedPage extends BasePage {
   val url = TestConfiguration.url("p800-refunds-frontend") + "/your-cheque-will-be-posted-to-you"
 
 }
-
