@@ -37,6 +37,8 @@ trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually wi
 
   def findTextByTagName(tagName: String): String = findElementByTagName(tagName).getText
 
+  def findTextByCssSelector(selector: String): String = findElementByCssSelector(selector).getText
+
   def findElementByCssSelector(locator: String): WebElement = driver.findElement(By.cssSelector(locator))
 
   def isPresent(text: String): Boolean = driver.findElements(By.xpath(s"//*[contains(text(),'$text')]")).size() > 0
@@ -44,6 +46,8 @@ trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually wi
   def clickById(text: String): Unit = findElementById(text).click()
 
   def clickByLinkText(text: String): Unit = driver.findElement(By.linkText(text)).click()
+
+  def clickByCssSelector(text: String): Unit = findElementByCssSelector(text).click()
 
   sys.addShutdownHook {
     Try(SingletonDriver.closeInstance)

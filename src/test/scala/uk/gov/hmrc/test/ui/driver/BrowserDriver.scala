@@ -16,14 +16,21 @@
 
 package uk.gov.hmrc.test.ui.driver
 
-import com.typesafe.scalalogging.LazyLogging
-import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chrome.ChromeOptions
+import org.openqa.selenium.{MutableCapabilities, WebDriver}
+import org.scalatest.concurrent.Eventually
+import org.scalatest.time.{Millis, Seconds, Span}
 import uk.gov.hmrc.webdriver.SingletonDriver
 
-trait BrowserDriver extends LazyLogging {
-  logger.info(
-    s"Instantiating Browser: ${sys.props.getOrElse("browser", "'browser' System property not set. This is required")}"
-  )
+trait BrowserDriver extends Eventually {
 
-  implicit lazy val driver: WebDriver = SingletonDriver.getInstance()
+  val options: Option[MutableCapabilities] = {
+    val chromeOptions: ChromeOptions = new ChromeOptions()
+    Some(chromeOptions)
+  }
+
+  implicit lazy val driver: WebDriver = SingletonDriver.getInstance(options)
+
+  implicit override val patienceConfig: PatienceConfig =
+    PatienceConfig(timeout = scaled(Span(10, Seconds)), interval = scaled(Span(50, Millis)))
 }
