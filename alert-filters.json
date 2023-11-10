@@ -1,0 +1,29 @@
+{
+  "add": [
+    {
+      "reason": "GOV.UK is out of scope for our tests",
+      "url": "https:\/\/www.gov.uk\/.*",
+      "contextId": 1,
+      "ruleId": 10202,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "reason": "GOV.UK is out of scope for our tests",
+      "url": "https:\/\/www.gov.uk\/.*",
+      "contextId": 1,
+      "ruleId": 10098,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "reason": "GOV.UK is out of scope for our tests",
+      "url": "https:\/\/www.gov.uk\/.*",
+      "contextId": 1,
+      "ruleId": 10021,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    }
+  ],
+  "remove": []
+}
