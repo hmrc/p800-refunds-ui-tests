@@ -64,6 +64,7 @@ class ActionSteps extends BaseStepDef {
       case "contact HMRC"                             =>
         clickByCssSelector("span.govuk-details__summary-text")
         clickById("contact-hmrc-link")
+      case "what did you think of this service"       => clickById("survey-link")
       case _                                          => throw new Exception(link + " not found")
     }
   }

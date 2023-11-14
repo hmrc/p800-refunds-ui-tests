@@ -34,6 +34,7 @@ class AssertionSteps extends BaseStepDef {
       case "cheque request received"          => eventually(ChequeRequestReceivedPage.assertPage())
       case "change your address"              => eventually(ChangeYourDetailsPage.assertPage())
       case "we cannot confirm your reference" => eventually(WeCannotConfirmYourReferencePage.assertPage())
+      case "feedback"                         => eventually(FeedbackPage.assertPage())
       case _                                  => throw new Exception(page + " not found")
     }
   }
@@ -47,6 +48,8 @@ class AssertionSteps extends BaseStepDef {
         eventually(IncomeTaxPage.assertPage())
       case _            => throw new Exception(page + " not found")
     }
+    driver.close()
+    driver.switchTo().window(windows(0).toString)
   }
 
   Then("^The (.*) page contains reference (.*)$") { (page: String, reference: String) =>

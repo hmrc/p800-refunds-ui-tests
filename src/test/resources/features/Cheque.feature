@@ -14,15 +14,20 @@ Feature: Cheque Journey
     When I select no I want a cheque and click continue
     Then I am on the your cheque will be posted page
 
-  Scenario Outline: User completes a request for a cheque
+  Scenario: User completes a request for a cheque and visits the income tax helpline
     When I click to submit refund request
     Then I am on the cheque request received page
     And The cheque request received page contains reference P800REFNO1
-    When I click the link <link>
-#    Then I am on the <page> page in a new tab --- waiting on a fix as part of OPS-11132
-    Examples:
-      | link                                     | page          |
-      | call or write to the Income Tax helpline | income tax    |
+    When I click the link call or write to the Income Tax helpline
+    Then I am on the income tax page in a new tab
+
+  Scenario: User completes a request for a cheque and decides to give feedback
+    When I click to submit refund request
+    Then I am on the cheque request received page
+    And The cheque request received page contains reference P800REFNO1
+    When I click the link what did you think of this service
+    Then I am on the feedback page
+    # test to be adjusted when feedback page created
 
   Scenario: User changes address for their cheque
     When I click the link contact HMRC
