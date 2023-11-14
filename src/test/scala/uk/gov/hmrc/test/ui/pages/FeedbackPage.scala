@@ -25,4 +25,3 @@ object FeedbackPage extends BasePage {
   val url = TestConfiguration.url("p800-refunds-frontend") + "/request-received#"
 
 }
-

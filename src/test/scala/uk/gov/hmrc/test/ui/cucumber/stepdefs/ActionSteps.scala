@@ -69,4 +69,8 @@ class ActionSteps extends BaseStepDef {
     }
   }
 
+  When("I click browser back") { () =>
+    driver.navigate().back()
+  }
+
 }
