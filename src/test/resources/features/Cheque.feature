@@ -1,4 +1,4 @@
-@test @jenkins @a11y @zap
+@test @jenkins
 Feature: Cheque Journey
 
   Background:
@@ -29,6 +29,7 @@ Feature: Cheque Journey
     Then I am on the feedback page
     # test to be adjusted when feedback page created
 
+  @a11y @zap
   Scenario: User completes a request for a cheque and clicks back
     When I click to submit refund request
     Then I am on the cheque request received page
@@ -37,6 +38,7 @@ Feature: Cheque Journey
     Then I am on the cheque request received page
     And The cheque request received page contains reference P800REFNO1
 
+  @a11y
   Scenario: User changes address for their cheque
     When I click the link contact HMRC
     Then I am on the change your address page
