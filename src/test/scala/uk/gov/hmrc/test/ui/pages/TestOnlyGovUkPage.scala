@@ -26,7 +26,7 @@ object TestOnlyGovUkPage extends BasePage {
   override def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe "Test Only - Claim an income tax refund - GOV.UK"
+    currentPageTitle   shouldBe "Test Only - Get an Income Tax refund - GOV.UK"
   }
 
 }
