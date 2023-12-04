@@ -22,7 +22,7 @@ trait BasePage extends BaseStepDef {
 
   val h1: String
   val url: String
-  val serviceName: String = "Claim an income tax refund"
+  val serviceName: String = "Get an Income Tax refund"
 
   def currentUrl: String         = driver.getCurrentUrl()
   def currentPageTitle: String   = driver.getTitle
