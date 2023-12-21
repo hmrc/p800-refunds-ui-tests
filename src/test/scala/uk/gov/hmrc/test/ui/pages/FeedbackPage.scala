@@ -22,6 +22,6 @@ object FeedbackPage extends BasePage {
 
   // TO BE UPDATED WHEN WE SET UP FEEDBACK SERVICE
   val h1  = "Request received"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/request-received#"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/request-received#"
 
 }
