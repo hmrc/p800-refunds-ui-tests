@@ -21,6 +21,6 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 object ChequeRequestReceivedPage extends BasePage {
 
   val h1  = "Request received"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/request-received"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/request-received"
 
 }
