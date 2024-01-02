@@ -58,14 +58,13 @@ class ActionSteps extends BaseStepDef {
 
   When("^I click the link (.*)$") { (link: String) =>
     link match {
-      case "Sign in or create a personal tax account" => clickById("personal-tax-account-sign-in")
-      case "Call the income tax helpline"             => clickById("income-tax-general-enquiries")
-      case "call or write to the Income Tax helpline" => clickById("general-enquiries-link")
-      case "contact HMRC"                             =>
+      case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
+      case "call or write to the Income Tax helpline"      => clickById("general-enquiries-link")
+      case "contact HMRC"                                  =>
         clickByCssSelector("span.govuk-details__summary-text")
         clickById("contact-hmrc-link")
-      case "what did you think of this service"       => clickById("survey-link")
-      case _                                          => throw new Exception(link + " not found")
+      case "what did you think of this service"            => clickById("survey-link")
+      case _                                               => throw new Exception(link + " not found")
     }
   }
 

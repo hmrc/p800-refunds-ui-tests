@@ -30,7 +30,7 @@ class AssertionSteps extends BaseStepDef {
       case "what is your reference"           => eventually(WhatIsP800ReferencePage.assertPage())
       case "check your reference"             => eventually(CheckYourReferencePage.assertPage())
       case "do you want a bank transfer"      => eventually(DoYouWantABankTransferPage.assertPage())
-      case "your cheque will be posted"       => eventually(YourChequeWillBePostedPage.assertPage())
+      case "complete your refund request"     => eventually(CompleteYourRefundRequestPage.assertPage())
       case "cheque request received"          => eventually(ChequeRequestReceivedPage.assertPage())
       case "change your address"              => eventually(ChangeYourDetailsPage.assertPage())
       case "we cannot confirm your reference" => eventually(WeCannotConfirmYourReferencePage.assertPage())
