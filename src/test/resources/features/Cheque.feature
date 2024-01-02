@@ -12,7 +12,7 @@ Feature: Cheque Journey
     When I select yes it's correct and click continue
     Then I am on the do you want a bank transfer page
     When I select no I want a cheque and click continue
-    Then I am on the your cheque will be posted page
+    Then I am on the complete your refund request page
 
   Scenario: User completes a request for a cheque and visits the income tax helpline
     When I click to submit refund request

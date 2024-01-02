@@ -12,11 +12,5 @@ Feature: Logged in journey
   Scenario: User chooses to log in from reference page
     When I select not signed in and click continue
     Then I am on the what is your reference page
-    When I click the link Sign in or create a personal tax account
+    When I click the link Sign in using your Government Gateway user ID
     Then I am on the auth login page
-
-  Scenario: User chooses to visit income tax helpline
-    When I select not signed in and click continue
-    Then I am on the what is your reference page
-    When I click the link Call the income tax helpline
-    Then I am on the income tax page in a new tab
