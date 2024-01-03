@@ -56,7 +56,7 @@ class AssertionSteps extends BaseStepDef {
     page match {
       case "check your reference"    => findTextByCssSelector("p.govuk-body") shouldBe s"You entered $reference."
       case "cheque request received" =>
-        findTextByCssSelector("div.govuk-panel__body") shouldBe s"P800 reference\n$reference"
+        findTextByCssSelector("div.govuk-panel__body") shouldBe s"Your P800 reference\n$reference"
       case _                         => throw new Exception(page + " not found")
     }
   }
