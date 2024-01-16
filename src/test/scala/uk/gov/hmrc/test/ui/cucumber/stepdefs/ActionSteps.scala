@@ -30,28 +30,27 @@ class ActionSteps extends BaseStepDef {
 
   When("^I select (.*) and click continue$") { (option: String) =>
     option match {
-      case "yes to sign in"      => clickById("sign-in")
-      case "not signed in"       => clickById("sign-in-2")
-      case "yes it's correct"    => clickById("reference-check")
-      case "no it's not correct" => clickById("reference-check-2")
-      case "no I want a cheque"  => clickById("do-you-want-your-refund-via-bank-transfer-2")
-      case _                     => throw new Exception(option + " not found")
+      case "yes to sign in"     => clickById("sign-in")
+      case "not signed in"      => clickById("sign-in-2")
+      case "no I want a cheque" => clickById("do-you-want-your-refund-via-bank-transfer-2")
+      case _                    => throw new Exception(option + " not found")
     }
     clickById("submit")
   }
 
   When("^I click to (.*)$") { (element: String) =>
     element match {
+      case "continue"              => clickById("submit")
       case "submit refund request" => clickById("submit-refund-request")
-      case "try again"             => clickById("try-again")
       case _                       => throw new Exception(element + " not found")
     }
   }
 
   When("^I enter (.*) in the (.*) input and click continue$") { (userEntry: String, input: String) =>
     input match {
-      case "reference" => enterTextById("reference", userEntry)
-      case _           => throw new Exception(input + " not found")
+      case "reference"                 => enterTextById("reference", userEntry)
+      case "national insurance number" => enterTextById("nationalInsuranceNumber", userEntry)
+      case _                           => throw new Exception(input + " not found")
     }
     clickById("submit")
   }
@@ -60,11 +59,17 @@ class ActionSteps extends BaseStepDef {
     link match {
       case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
       case "call or write to the Income Tax helpline"      => clickById("general-enquiries-link")
-      case "contact HMRC"                                  =>
-        clickByCssSelector("span.govuk-details__summary-text")
-        clickById("contact-hmrc-link")
       case "what did you think of this service"            => clickById("survey-link")
       case _                                               => throw new Exception(link + " not found")
+    }
+  }
+
+  When("^I click the dropdown link (.*)$") { (link: String) =>
+    clickByCssSelector("span.govuk-details__summary-text")
+    link match {
+      case "contact HMRC"                          => clickById("contact-hmrc-link")
+      case "find a lost National Insurance number" => clickById("lost-national-insurance-number-link")
+      case _                                       => throw new Exception(link + " not found")
     }
   }
 
