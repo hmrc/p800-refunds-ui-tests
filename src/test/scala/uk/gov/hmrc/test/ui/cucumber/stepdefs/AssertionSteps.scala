@@ -49,6 +49,7 @@ class AssertionSteps extends BaseStepDef {
     page match {
       case "income tax"                     => eventually(IncomeTaxPage.assertPage())
       case "lost national insurance number" => eventually(LostNationalInsuranceNumberPage.assertPage())
+      case "print preview"                  => driver.getCurrentUrl shouldBe "chrome://print/"
       case _                                => throw new Exception(page + " not found")
     }
     driver.close()
@@ -70,7 +71,7 @@ class AssertionSteps extends BaseStepDef {
   Then("^The page has rows for (.*)$") { (rows: String) =>
     rows match {
       case "just reference and NINO" =>
-        findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"Reference\nP800REFNO1\nChange\nReference"
+        findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\nP800REFNO1\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
         )                                              shouldBe s"National insurance number\nAA000000A\nChange\nNational insurance number"

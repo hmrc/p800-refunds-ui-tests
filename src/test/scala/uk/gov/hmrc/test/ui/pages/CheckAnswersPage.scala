@@ -24,4 +24,3 @@ object CheckAnswersPage extends BasePage {
   val url = TestConfiguration.url("p800-refunds-frontend") + "/check-your-answers"
 
 }
-
