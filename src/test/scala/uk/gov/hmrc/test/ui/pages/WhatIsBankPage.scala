@@ -24,4 +24,3 @@ object WhatIsBankPage extends BasePage {
   val url = TestConfiguration.url("p800-refunds-frontend") + "/what-is-the-name-of-your-bank-account"
 
 }
-

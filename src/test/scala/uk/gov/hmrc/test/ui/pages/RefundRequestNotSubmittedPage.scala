@@ -18,9 +18,9 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object WeNeedToConfirmYourIdentityBankTransferPage extends BasePage {
+object RefundRequestNotSubmittedPage extends BasePage {
 
-  val h1  = "We need you to confirm your identity"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/we-need-you-to-confirm-your-identity"
+  val h1  = "Your refund request has not been submitted"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/your-refund-request-has-not-been-submitted"
 
 }

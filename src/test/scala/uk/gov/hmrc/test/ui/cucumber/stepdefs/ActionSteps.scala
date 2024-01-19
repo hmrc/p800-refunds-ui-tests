@@ -35,6 +35,7 @@ class ActionSteps extends BaseStepDef {
       case "not signed in"      => clickById("sign-in-2")
       case "yes, bank transfer" => clickById("do-you-want-your-refund-via-bank-transfer")
       case "no I want a cheque" => clickById("do-you-want-your-refund-via-bank-transfer-2")
+      case "cheque"             => clickById("way-to-get-refund-2")
       case _                    => throw new Exception(option + " not found")
     }
     clickById("submit")
@@ -42,10 +43,11 @@ class ActionSteps extends BaseStepDef {
 
   When("^I click to (.*)$") { (element: String) =>
     element match {
-      case "continue"              => clickById("submit")
-      case "submit refund request" => clickById("submit-refund-request")
-      case "approve the refund"    => clickById("approve-this-refund")
-      case _                       => throw new Exception(element + " not found")
+      case "continue"                           => clickById("submit")
+      case "submit refund request"              => clickById("submit-refund-request")
+      case "approve the refund"                 => clickById("approve-this-refund")
+      case "choose another way to get my money" => clickById("try-again")
+      case _                                    => throw new Exception(element + " not found")
     }
   }
 
@@ -58,8 +60,9 @@ class ActionSteps extends BaseStepDef {
         enterTextById("date.month", userEntry.substring(3, 5))
         enterTextById("date.year", userEntry.substring(6, 10))
       case "bank"                      =>
+        clickById("selectedBankId")
+        findElementById("selectedBankId").sendKeys(Keys.DELETE)
         enterTextById("selectedBankId", userEntry)
-        findElementById("selectedBankId").sendKeys(Keys.RETURN)
       case _                           => throw new Exception(input + " not found")
     }
     input match {
@@ -75,6 +78,9 @@ class ActionSteps extends BaseStepDef {
       case "call or write to the Income Tax helpline"      => clickById("general-enquiries-link")
       case "what did you think of this service"            => clickById("survey-link")
       case "refresh this page"                             => clickById("refresh-this-page")
+      case "my bank is not listed"                         => clickById("myAccountIsNotListed")
+      case "choose another way to get my money"            => clickById("choose-another-way")
+      case "change my bank"                                => clickById("change-bank")
       case _                                               => throw new Exception(link + " not found")
     }
   }
@@ -97,6 +103,7 @@ class ActionSteps extends BaseStepDef {
     TestOnlyStartPage.assertPage()
     result match {
       case "request success" => clickByLinkText("Finish Succeed")
+      case "request failed"  => clickByLinkText("Finish Fail")
       case _                 => throw new Exception(result + " not found")
     }
   }

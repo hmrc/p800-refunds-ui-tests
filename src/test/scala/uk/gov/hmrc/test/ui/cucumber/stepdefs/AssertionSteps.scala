@@ -46,6 +46,8 @@ class AssertionSteps extends BaseStepDef {
       case "give your permission"                               => eventually(GiveYourPermissionPage.assertPage())
       case "verifying account"                                  => eventually(VerifyingBankAccountPage.assertPage())
       case "bank transfer request received"                     => eventually(BankTransferRequestReceivedPage.assertPage())
+      case "choose another way to receive your refund"          => eventually(ChooseAnotherWayPage.assertPage())
+      case "refund request not submitted"                       => eventually(RefundRequestNotSubmittedPage.assertPage())
       case _                                                    => throw new Exception(page + " not found")
     }
   }
