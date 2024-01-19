@@ -19,7 +19,7 @@ Feature: Bank Transfer Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -42,7 +42,7 @@ Feature: Bank Transfer Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -66,7 +66,7 @@ Feature: Bank Transfer Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -90,7 +90,7 @@ Feature: Bank Transfer Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -108,7 +108,7 @@ Feature: Bank Transfer Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -130,7 +130,7 @@ Feature: Bank Transfer Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -159,7 +159,7 @@ Feature: Bank Transfer Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -183,7 +183,7 @@ Feature: Bank Transfer Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -193,7 +193,7 @@ Feature: Bank Transfer Journey
     And The first paragraph contains Chase
     When I click the link change my bank
     Then I am on the what is the name of your bank page
-    When I enter Barclays Personal in the bank input and click continue
+    When I change the bank input to Barclays Personal and click continue
     Then I am on the give your permission page
     And The first paragraph contains Barclays Personal
 

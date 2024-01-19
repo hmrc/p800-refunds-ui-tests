@@ -47,7 +47,7 @@ Feature: Logged In Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -72,7 +72,7 @@ Feature: Logged In Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -100,7 +100,7 @@ Feature: Logged In Journey
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB
+    And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue

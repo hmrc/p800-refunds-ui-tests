@@ -36,7 +36,7 @@ class ActionSteps extends BaseStepDef {
       case "yes, bank transfer"                                  => clickById("do-you-want-your-refund-via-bank-transfer")
       case "no I want a cheque"                                  => clickById("do-you-want-your-refund-via-bank-transfer-2")
       case "bank transfer using your Government Gateway user ID" => clickById("way-to-get-refund")
-      case "cheque"                                              => clickById("way-to-get-refund-2")
+      case "cheque" | "bank transfer logged out"                 => clickById("way-to-get-refund-2")
       case _                                                     => throw new Exception(option + " not found")
     }
     clickById("submit")
@@ -48,6 +48,8 @@ class ActionSteps extends BaseStepDef {
       case "submit refund request"              => clickById("submit-refund-request")
       case "approve the refund"                 => clickById("approve-this-refund")
       case "choose another way to get my money" => clickById("try-again")
+      case "try again"                          => clickById("try-again")
+      case "choose another method"              => clickById("choose-another-method-link")
       case _                                    => throw new Exception(element + " not found")
     }
   }
@@ -61,9 +63,35 @@ class ActionSteps extends BaseStepDef {
         enterTextById("date.month", userEntry.substring(3, 5))
         enterTextById("date.year", userEntry.substring(6, 10))
       case "bank"                      =>
+        enterTextById("selectedBankId", userEntry)
+      case _                           => throw new Exception(input + " not found")
+    }
+    input match {
+      case "bank"                                                      => clickById("continue")
+      case "reference" | "national insurance number" | "date of birth" => clickById("submit")
+      case _                                                           => throw new Exception(input + " not found")
+    }
+  }
+
+  When("^I change the (.*) input to (.*) and click continue$") { (input: String, newAnswer: String) =>
+    input match {
+      case "reference"                 =>
+        findElementById("reference").clear()
+        enterTextById("reference", newAnswer)
+      case "national insurance number" =>
+        findElementById("nationalInsuranceNumber").clear()
+        enterTextById("nationalInsuranceNumber", newAnswer)
+      case "date of birth"             =>
+        findElementById("date.day").clear()
+        enterTextById("date.day", newAnswer.substring(0, 2))
+        findElementById("date.month").clear()
+        enterTextById("date.month", newAnswer.substring(3, 5))
+        findElementById("date.year").clear()
+        enterTextById("date.year", newAnswer.substring(6, 10))
+      case "bank"                      =>
         clickById("selectedBankId")
         findElementById("selectedBankId").sendKeys(Keys.DELETE)
-        enterTextById("selectedBankId", userEntry)
+        enterTextById("selectedBankId", newAnswer)
       case _                           => throw new Exception(input + " not found")
     }
     input match {

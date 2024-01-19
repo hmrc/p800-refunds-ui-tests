@@ -17,7 +17,7 @@ Feature: Cheque Journey
   Scenario: User completes a request for a cheque and visits the income tax helpline
     When I enter AA000000A in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO
+    And The page has rows for just reference and NINO with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -31,7 +31,7 @@ Feature: Cheque Journey
   Scenario: User completes a request for a cheque and decides to give feedback
     When I enter AA000000A in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO
+    And The page has rows for just reference and NINO with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -47,7 +47,7 @@ Feature: Cheque Journey
   Scenario: User completes a request for a cheque and clicks back
     When I enter AA000000A in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO
+    And The page has rows for just reference and NINO with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue
@@ -63,7 +63,7 @@ Feature: Cheque Journey
   Scenario: User changes address for their cheque
     When I enter AA000000A in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO
+    And The page has rows for just reference and NINO with NINO AA000000A
     When I click to continue
     Then I am on the we have confirmed your identity page
     When I click to continue

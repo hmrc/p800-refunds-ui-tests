@@ -48,6 +48,7 @@ class AssertionSteps extends BaseStepDef {
       case "bank transfer request received"                     => eventually(BankTransferRequestReceivedPage.assertPage())
       case "choose another way to receive your refund"          => eventually(ChooseAnotherWayPage.assertPage())
       case "refund request not submitted"                       => eventually(RefundRequestNotSubmittedPage.assertPage())
+      case "we cannot confirm your identity"                    => eventually(WeCannotConfirmYourIdentityPage.assertPage())
       case _                                                    => throw new Exception(page + " not found")
     }
   }
@@ -90,19 +91,19 @@ class AssertionSteps extends BaseStepDef {
     }
   }
 
-  Then("^The page has rows for (.*)$") { (rows: String) =>
+  Then("^The page has rows for (.*) with NINO (.*)$") { (rows: String, nino: String) =>
     rows match {
       case "just reference and NINO" =>
         findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\nP800REFNO1\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
-        )                                              shouldBe s"National insurance number\nAA000000A\nChange\nNational insurance number"
+        )                                              shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
         isPresent("Date of birth")                     shouldBe false
       case "reference, NINO and DOB" =>
         findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\nP800REFNO1\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
-        )                                              shouldBe s"National insurance number\nAA000000A\nChange\nNational insurance number"
+        )                                              shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
         findTextByCssSelector(
           "dl > div:nth-child(3)"
         )                                              shouldBe s"Date of birth\n01 January 2000\nChange\nDate of birth"
