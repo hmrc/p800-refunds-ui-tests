@@ -24,4 +24,3 @@ object WeCannotConfirmYourIdentityPage extends BasePage {
   val url = TestConfiguration.url("p800-refunds-frontend") + "/we-cannot-confirm-your-identity"
 
 }
-

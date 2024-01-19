@@ -50,6 +50,9 @@ class ActionSteps extends BaseStepDef {
       case "choose another way to get my money" => clickById("try-again")
       case "try again"                          => clickById("try-again")
       case "choose another method"              => clickById("choose-another-method-link")
+      case "change reference"                   => clickById("change-reference")
+      case "change nino"                        => clickById("change-national-insurance-number")
+      case "change date of birth"               => clickById("change-date-of-birth")
       case _                                    => throw new Exception(element + " not found")
     }
   }

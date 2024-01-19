@@ -93,13 +93,21 @@ class AssertionSteps extends BaseStepDef {
 
   Then("^The page has rows for (.*) with NINO (.*)$") { (rows: String, nino: String) =>
     rows match {
-      case "just reference and NINO" =>
+      case "just reference and NINO"                          =>
         findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\nP800REFNO1\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
         )                                              shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
         isPresent("Date of birth")                     shouldBe false
-      case "reference, NINO and DOB" =>
+      case "just reference and NINO with the changed answers" =>
+        findTextByCssSelector(
+          "dl > div:nth-child(1)"
+        )                          shouldBe s"P800 reference\nP800REFChanged\nChange\nP800 reference"
+        findTextByCssSelector(
+          "dl > div:nth-child(2)"
+        )                          shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
+        isPresent("Date of birth") shouldBe false
+      case "reference, NINO and DOB"                          =>
         findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\nP800REFNO1\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
@@ -107,8 +115,17 @@ class AssertionSteps extends BaseStepDef {
         findTextByCssSelector(
           "dl > div:nth-child(3)"
         )                                              shouldBe s"Date of birth\n01 January 2000\nChange\nDate of birth"
-
-      case _                         => throw new Exception(rows + " not found")
+      case "reference, NINO and DOB with the changed answers" =>
+        findTextByCssSelector(
+          "dl > div:nth-child(1)"
+        ) shouldBe s"P800 reference\nP800REFChanged\nChange\nP800 reference"
+        findTextByCssSelector(
+          "dl > div:nth-child(2)"
+        ) shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
+        findTextByCssSelector(
+          "dl > div:nth-child(3)"
+        ) shouldBe s"Date of birth\n10 October 1990\nChange\nDate of birth"
+      case _                                                  => throw new Exception(rows + " not found")
     }
   }
 

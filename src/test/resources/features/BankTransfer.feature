@@ -124,7 +124,6 @@ Feature: Bank Transfer Journey
     Then I am on the cheque request received page
     And The page contains P800REFNO1
 
-  @a11y @zap
   Scenario: User's refund request is not submitted so applies for cheque instead
     When I enter AA000000A in the national insurance number input and click continue
     Then I am on the what is your date of birth page
@@ -154,6 +153,7 @@ Feature: Bank Transfer Journey
     Then I am on the cheque request received page
     And The page contains P800REFNO1
 
+  @a11y @zap
   Scenario: User's refund request is not submitted so they click back
     When I enter AA000000A in the national insurance number input and click continue
     Then I am on the what is your date of birth page

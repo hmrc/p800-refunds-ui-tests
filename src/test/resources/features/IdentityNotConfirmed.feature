@@ -105,6 +105,7 @@ Feature: Identity Verification Fails
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO MA000003A
 
+  @a11y @zap
   Scenario: Bank transfer user fails identity verification and completes a cheque journey
     When I select yes, bank transfer and click continue
     Then I am on the we need to confirm your identity for bank transfer page
