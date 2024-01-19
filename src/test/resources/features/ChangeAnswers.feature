@@ -1,5 +1,5 @@
 @test @jenkins
-Feature: Changing answers
+Feature: Changing Answers
 
   Background:
     Given I start a journey
