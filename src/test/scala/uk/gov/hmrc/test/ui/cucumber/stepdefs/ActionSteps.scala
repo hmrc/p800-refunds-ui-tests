@@ -31,12 +31,13 @@ class ActionSteps extends BaseStepDef {
 
   When("^I select (.*) and click continue$") { (option: String) =>
     option match {
-      case "yes to sign in"     => clickById("sign-in")
-      case "not signed in"      => clickById("sign-in-2")
-      case "yes, bank transfer" => clickById("do-you-want-your-refund-via-bank-transfer")
-      case "no I want a cheque" => clickById("do-you-want-your-refund-via-bank-transfer-2")
-      case "cheque"             => clickById("way-to-get-refund-2")
-      case _                    => throw new Exception(option + " not found")
+      case "yes to sign in"                                      => clickById("sign-in")
+      case "not signed in"                                       => clickById("sign-in-2")
+      case "yes, bank transfer"                                  => clickById("do-you-want-your-refund-via-bank-transfer")
+      case "no I want a cheque"                                  => clickById("do-you-want-your-refund-via-bank-transfer-2")
+      case "bank transfer using your Government Gateway user ID" => clickById("way-to-get-refund")
+      case "cheque"                                              => clickById("way-to-get-refund-2")
+      case _                                                     => throw new Exception(option + " not found")
     }
     clickById("submit")
   }

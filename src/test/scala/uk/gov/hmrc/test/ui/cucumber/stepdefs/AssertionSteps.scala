@@ -66,8 +66,16 @@ class AssertionSteps extends BaseStepDef {
     driver.switchTo().window(windows(0).toString)
   }
 
-  Then("^The page contains reference (.*)$") { (reference: String) =>
-    findTextByCssSelector("div.govuk-panel__body") shouldBe s"Your P800 reference:\n$reference"
+  Then("^The (.*) contains (.*)$") { (feature: String, input: String) =>
+    feature match {
+      case "page"            => findTextByCssSelector("div.govuk-panel__body") shouldBe s"Your P800 reference:\n$input"
+      case "first paragraph" =>
+        findTextByCssSelector(
+          "p:nth-child(2)"
+        ) shouldBe s"By choosing approve, you will be redirected to $input to securely log in and approve your refund of £1,231.22. Change my bank."
+      case "redirect url"    =>
+        findElementById("redirectionUrl").getAttribute("value") shouldBe s"http://localhost:9416$input"
+    }
   }
 
   Then("^The page lists (.*)$") { (items: String) =>
@@ -101,12 +109,6 @@ class AssertionSteps extends BaseStepDef {
 
       case _                         => throw new Exception(rows + " not found")
     }
-  }
-
-  Then("^The top paragraph mentions the bank (.*)$") { (bank: String) =>
-    findTextByCssSelector(
-      "p:nth-child(2)"
-    ) shouldBe s"By choosing approve, you will be redirected to $bank to securely log in and approve your refund of £1,231.22. Change my bank."
   }
 
 }

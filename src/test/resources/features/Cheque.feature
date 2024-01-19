@@ -24,7 +24,7 @@ Feature: Cheque Journey
     Then I am on the complete your refund request page
     When I click to submit refund request
     Then I am on the cheque request received page
-    And The page contains reference P800REFNO1
+    And The page contains P800REFNO1
     When I click the link call or write to the Income Tax helpline
     Then I am on the income tax page in a new tab
 
@@ -38,7 +38,7 @@ Feature: Cheque Journey
     Then I am on the complete your refund request page
     When I click to submit refund request
     Then I am on the cheque request received page
-    And The page contains reference P800REFNO1
+    And The page contains P800REFNO1
     When I click the link what did you think of this service
     Then I am on the feedback page
     # test to be adjusted when feedback page created
@@ -54,10 +54,10 @@ Feature: Cheque Journey
     Then I am on the complete your refund request page
     When I click to submit refund request
     Then I am on the cheque request received page
-    And The page contains reference P800REFNO1
+    And The page contains P800REFNO1
     When I click browser back
     Then I am on the cheque request received page
-    And The page contains reference P800REFNO1
+    And The page contains P800REFNO1
 
   @a11y
   Scenario: User changes address for their cheque
