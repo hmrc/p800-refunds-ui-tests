@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.openqa.selenium.Keys
 import uk.gov.hmrc.test.ui.pages._
 
 class ActionSteps extends BaseStepDef {
@@ -32,6 +33,7 @@ class ActionSteps extends BaseStepDef {
     option match {
       case "yes to sign in"     => clickById("sign-in")
       case "not signed in"      => clickById("sign-in-2")
+      case "yes, bank transfer" => clickById("do-you-want-your-refund-via-bank-transfer")
       case "no I want a cheque" => clickById("do-you-want-your-refund-via-bank-transfer-2")
       case _                    => throw new Exception(option + " not found")
     }
@@ -42,6 +44,7 @@ class ActionSteps extends BaseStepDef {
     element match {
       case "continue"              => clickById("submit")
       case "submit refund request" => clickById("submit-refund-request")
+      case "approve the refund"    => clickById("approve-this-refund")
       case _                       => throw new Exception(element + " not found")
     }
   }
@@ -50,9 +53,20 @@ class ActionSteps extends BaseStepDef {
     input match {
       case "reference"                 => enterTextById("reference", userEntry)
       case "national insurance number" => enterTextById("nationalInsuranceNumber", userEntry)
+      case "date of birth"             =>
+        enterTextById("date.day", userEntry.substring(0, 2))
+        enterTextById("date.month", userEntry.substring(3, 5))
+        enterTextById("date.year", userEntry.substring(6, 10))
+      case "bank"                      =>
+        enterTextById("selectedBankId", userEntry)
+        findElementById("selectedBankId").sendKeys(Keys.RETURN)
       case _                           => throw new Exception(input + " not found")
     }
-    clickById("submit")
+    input match {
+      case "bank"                                                      => clickById("continue")
+      case "reference" | "national insurance number" | "date of birth" => clickById("submit")
+      case _                                                           => throw new Exception(input + " not found")
+    }
   }
 
   When("^I click the link (.*)$") { (link: String) =>
@@ -60,6 +74,7 @@ class ActionSteps extends BaseStepDef {
       case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
       case "call or write to the Income Tax helpline"      => clickById("general-enquiries-link")
       case "what did you think of this service"            => clickById("survey-link")
+      case "refresh this page"                             => clickById("refresh-this-page")
       case _                                               => throw new Exception(link + " not found")
     }
   }
@@ -75,6 +90,15 @@ class ActionSteps extends BaseStepDef {
 
   When("I click browser back") { () =>
     driver.navigate().back()
+  }
+
+  When("""^I navigate to test-only and select (.*)$""") { (result: String) =>
+    driver.navigate.to(TestOnlyStartPage.url)
+    TestOnlyStartPage.assertPage()
+    result match {
+      case "request success" => clickByLinkText("Finish Succeed")
+      case _                 => throw new Exception(result + " not found")
+    }
   }
 
 }

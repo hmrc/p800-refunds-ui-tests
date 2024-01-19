@@ -25,20 +25,28 @@ class AssertionSteps extends BaseStepDef {
 
   Then("^I am on the (.*) page$") { (page: String) =>
     page match {
-      case "do you want to sign in"                      => eventually(DoYouWantToSignInPage.assertPage())
-      case "auth login"                                  => eventually(AuthLoginPage.assertPage())
-      case "what is your reference"                      => eventually(WhatIsP800ReferencePage.assertPage())
-      case "do you want a bank transfer"                 => eventually(DoYouWantABankTransferPage.assertPage())
-      case "complete your refund request"                => eventually(CompleteYourRefundRequestPage.assertPage())
-      case "cheque request received"                     => eventually(ChequeRequestReceivedPage.assertPage())
-      case "change your address"                         => eventually(ChangeYourDetailsPage.assertPage())
-      case "we need to confirm your identity for cheque" =>
+      case "do you want to sign in"                             => eventually(DoYouWantToSignInPage.assertPage())
+      case "auth login"                                         => eventually(AuthLoginPage.assertPage())
+      case "what is your reference"                             => eventually(WhatIsP800ReferencePage.assertPage())
+      case "do you want a bank transfer"                        => eventually(DoYouWantABankTransferPage.assertPage())
+      case "complete your refund request"                       => eventually(CompleteYourRefundRequestPage.assertPage())
+      case "cheque request received"                            => eventually(ChequeRequestReceivedPage.assertPage())
+      case "change your address"                                => eventually(ChangeYourDetailsPage.assertPage())
+      case "we need to confirm your identity for cheque"        =>
         eventually(WeNeedToConfirmYourIdentityChequePage.assertPage())
-      case "what is your national insurance number"      => eventually(WhatIsNinoPage.assertPage())
-      case "check answers for cheque"                    => eventually(CheckAnswersPage.assertPage())
-      case "we have confirmed your identity"             => eventually(WeHaveConfirmedYourIdentityPage.assertPage())
-      case "feedback"                                    => eventually(FeedbackPage.assertPage())
-      case _                                             => throw new Exception(page + " not found")
+      case "what is your national insurance number"             => eventually(WhatIsNinoPage.assertPage())
+      case "check answers for cheque"                           => eventually(CheckAnswersPage.assertPage())
+      case "check answers for bank transfer"                    => eventually(CheckAnswersPage.assertPage())
+      case "we have confirmed your identity"                    => eventually(WeHaveConfirmedYourIdentityPage.assertPage())
+      case "feedback"                                           => eventually(FeedbackPage.assertPage())
+      case "we need to confirm your identity for bank transfer" =>
+        eventually(WeNeedToConfirmYourIdentityBankTransferPage.assertPage())
+      case "what is your date of birth"                         => eventually(WhatIsDobPage.assertPage())
+      case "what is the name of your bank"                      => eventually(WhatIsBankPage.assertPage())
+      case "give your permission"                               => eventually(GiveYourPermissionPage.assertPage())
+      case "verifying account"                                  => eventually(VerifyingBankAccountPage.assertPage())
+      case "bank transfer request received"                     => eventually(BankTransferRequestReceivedPage.assertPage())
+      case _                                                    => throw new Exception(page + " not found")
     }
   }
 
@@ -64,6 +72,10 @@ class AssertionSteps extends BaseStepDef {
     items match {
       case "just reference and NINO" =>
         findTextByCssSelector("ul.govuk-list--bullet") shouldBe s"P800 reference\nnational insurance number"
+      case "reference, NINO and DOB" =>
+        findTextByCssSelector(
+          "ul.govuk-list--bullet"
+        ) shouldBe s"P800 reference\nnational insurance number\ndate of birth"
       case _                         => throw new Exception(items + " not found")
     }
   }
@@ -76,8 +88,23 @@ class AssertionSteps extends BaseStepDef {
           "dl > div:nth-child(2)"
         )                                              shouldBe s"National insurance number\nAA000000A\nChange\nNational insurance number"
         isPresent("Date of birth")                     shouldBe false
+      case "reference, NINO and DOB" =>
+        findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\nP800REFNO1\nChange\nP800 reference"
+        findTextByCssSelector(
+          "dl > div:nth-child(2)"
+        )                                              shouldBe s"National insurance number\nAA000000A\nChange\nNational insurance number"
+        findTextByCssSelector(
+          "dl > div:nth-child(3)"
+        )                                              shouldBe s"Date of birth\n01 January 2000\nChange\nDate of birth"
+
       case _                         => throw new Exception(rows + " not found")
     }
+  }
+
+  Then("^The top paragraph mentions the bank (.*)$") { (bank: String) =>
+    findTextByCssSelector(
+      "p:nth-child(2)"
+    ) shouldBe s"By choosing approve, you will be redirected to $bank to securely log in and approve your refund of £1,231.22. Change my bank."
   }
 
 }

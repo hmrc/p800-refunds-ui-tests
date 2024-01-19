@@ -1,4 +1,4 @@
 
-Feature: User identity cannot be verified
+Feature: Identity Verification Fails
 
   //TODO

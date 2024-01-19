@@ -1,5 +1,5 @@
 @test @jenkins
-Feature: Logged in journey
+Feature: Logged In Journey
 
   Background:
     Given I start a journey
@@ -21,3 +21,9 @@ Feature: Logged in journey
     Then I am on the auth login page
 
   Scenario: User chooses to log in from reference page (bank transfer)
+
+  Scenario: User chooses to log in after bank is not listed
+
+  Scenario: User chooses to log in from the give permission page
+
+  Scenario: User chooses to log in after bank transfer refund request is not submitted
