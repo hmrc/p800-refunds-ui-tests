@@ -44,15 +44,15 @@ class ActionSteps extends BaseStepDef {
 
   When("^I click to (.*)$") { (element: String) =>
     element match {
+      case "approve the refund"                 => clickById("approve-this-refund")
+      case "change date of birth"               => clickById("change-date-of-birth")
+      case "change nino"                        => clickById("change-national-insurance-number")
+      case "change reference"                   => clickById("change-reference")
+      case "choose another method"              => clickById("choose-another-method-link")
+      case "choose another way to get my money" => clickById("try-again")
       case "continue"                           => clickById("submit")
       case "submit refund request"              => clickById("submit-refund-request")
-      case "approve the refund"                 => clickById("approve-this-refund")
-      case "choose another way to get my money" => clickById("try-again")
       case "try again"                          => clickById("try-again")
-      case "choose another method"              => clickById("choose-another-method-link")
-      case "change reference"                   => clickById("change-reference")
-      case "change nino"                        => clickById("change-national-insurance-number")
-      case "change date of birth"               => clickById("change-date-of-birth")
       case _                                    => throw new Exception(element + " not found")
     }
   }
@@ -106,13 +106,13 @@ class ActionSteps extends BaseStepDef {
 
   When("^I click the link (.*)$") { (link: String) =>
     link match {
-      case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
       case "call or write to the Income Tax helpline"      => clickById("general-enquiries-link")
-      case "what did you think of this service"            => clickById("survey-link")
-      case "refresh this page"                             => clickById("refresh-this-page")
-      case "my bank is not listed"                         => clickById("myAccountIsNotListed")
-      case "choose another way to get my money"            => clickById("choose-another-way")
       case "change my bank"                                => clickById("change-bank")
+      case "choose another way to get my money"            => clickById("choose-another-way")
+      case "my bank is not listed"                         => clickById("myAccountIsNotListed")
+      case "refresh this page"                             => clickById("refresh-this-page")
+      case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
+      case "what did you think of this service"            => clickById("survey-link")
       case _                                               => throw new Exception(link + " not found")
     }
   }
