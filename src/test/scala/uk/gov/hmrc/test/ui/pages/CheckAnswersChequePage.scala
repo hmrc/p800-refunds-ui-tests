@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object WhatIsP800ReferencePage extends BasePage {
+object CheckAnswersChequePage extends BasePage {
 
-  val h1  = "What is your P800 reference?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/what-is-your-p800-reference"
+  val h1  = "Check your answers"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/check-your-answers"
 
 }

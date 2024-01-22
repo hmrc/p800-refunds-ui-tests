@@ -10,9 +10,9 @@ Feature: Bank Transfer Journey
     Then I am on the we need to confirm your identity for bank transfer page
     And The page lists reference, NINO and DOB
     When I click to continue
-    Then I am on the what is your reference page
+    Then I am on the what is your reference for bank transfer page
     When I enter P800REFNO1 in the reference input and click continue
-    Then I am on the what is your national insurance number page
+    Then I am on the what is your national insurance number for bank transfer page
 
   Scenario: User completes a bank transfer and visits the income tax helpline
     When I enter AA000000A in the national insurance number input and click continue
@@ -21,7 +21,7 @@ Feature: Bank Transfer Journey
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
@@ -44,7 +44,7 @@ Feature: Bank Transfer Journey
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Monzo Business in the bank input and click continue
@@ -68,7 +68,7 @@ Feature: Bank Transfer Journey
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Santander Personal in the bank input and click continue
@@ -92,7 +92,7 @@ Feature: Bank Transfer Journey
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
     When I click the link my bank is not listed
@@ -110,7 +110,7 @@ Feature: Bank Transfer Journey
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
@@ -131,7 +131,7 @@ Feature: Bank Transfer Journey
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
@@ -161,7 +161,7 @@ Feature: Bank Transfer Journey
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
@@ -185,7 +185,7 @@ Feature: Bank Transfer Journey
     Then I am on the check answers for bank transfer page
     And The page has rows for reference, NINO and DOB with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue

@@ -21,6 +21,6 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 object WhatIsBankPage extends BasePage {
 
   val h1  = "What is the name of your bank?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/what-is-the-name-of-your-bank-account"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/what-is-the-name-of-your-bank-account"
 
 }

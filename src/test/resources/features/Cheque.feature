@@ -10,16 +10,16 @@ Feature: Cheque Journey
     Then I am on the we need to confirm your identity for cheque page
     And The page lists just reference and NINO
     When I click to continue
-    Then I am on the what is your reference page
+    Then I am on the what is your reference for cheque page
     When I enter P800REFNO1 in the reference input and click continue
-    Then I am on the what is your national insurance number page
+    Then I am on the what is your national insurance number for cheque page
 
   Scenario: User completes a request for a cheque and visits the income tax helpline
     When I enter AA000000A in the national insurance number input and click continue
     Then I am on the check answers for cheque page
     And The page has rows for just reference and NINO with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for cheque page
     When I click to continue
     Then I am on the complete your refund request page
     When I click to submit refund request
@@ -33,7 +33,7 @@ Feature: Cheque Journey
     Then I am on the check answers for cheque page
     And The page has rows for just reference and NINO with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for cheque page
     When I click to continue
     Then I am on the complete your refund request page
     When I click to submit refund request
@@ -49,7 +49,7 @@ Feature: Cheque Journey
     Then I am on the check answers for cheque page
     And The page has rows for just reference and NINO with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for cheque page
     When I click to continue
     Then I am on the complete your refund request page
     When I click to submit refund request
@@ -65,7 +65,7 @@ Feature: Cheque Journey
     Then I am on the check answers for cheque page
     And The page has rows for just reference and NINO with NINO AA000000A
     When I click to continue
-    Then I am on the we have confirmed your identity page
+    Then I am on the we have confirmed your identity for cheque page
     When I click to continue
     Then I am on the complete your refund request page
     When I click the dropdown link contact HMRC

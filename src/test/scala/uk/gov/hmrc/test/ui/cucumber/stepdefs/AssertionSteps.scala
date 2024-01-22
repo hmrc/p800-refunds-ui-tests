@@ -25,31 +25,37 @@ class AssertionSteps extends BaseStepDef {
 
   Then("^I am on the (.*) page$") { (page: String) =>
     page match {
-      case "auth login"                                         => eventually(AuthLoginPage.assertPage())
-      case "bank transfer request received"                     => eventually(BankTransferRequestReceivedPage.assertPage())
-      case "change your address"                                => eventually(ChangeYourDetailsPage.assertPage())
-      case "check answers for bank transfer"                    => eventually(CheckAnswersPage.assertPage())
-      case "check answers for cheque"                           => eventually(CheckAnswersPage.assertPage())
-      case "cheque request received"                            => eventually(ChequeRequestReceivedPage.assertPage())
-      case "choose another way to receive your refund"          => eventually(ChooseAnotherWayPage.assertPage())
-      case "complete your refund request"                       => eventually(CompleteYourRefundRequestPage.assertPage())
-      case "do you want a bank transfer"                        => eventually(DoYouWantABankTransferPage.assertPage())
-      case "do you want to sign in"                             => eventually(DoYouWantToSignInPage.assertPage())
-      case "feedback"                                           => eventually(FeedbackPage.assertPage())
-      case "give your permission"                               => eventually(GiveYourPermissionPage.assertPage())
-      case "refund request not submitted"                       => eventually(RefundRequestNotSubmittedPage.assertPage())
-      case "verifying account"                                  => eventually(VerifyingBankAccountPage.assertPage())
-      case "we cannot confirm your identity"                    => eventually(WeCannotConfirmYourIdentityPage.assertPage())
-      case "we have confirmed your identity"                    => eventually(WeHaveConfirmedYourIdentityPage.assertPage())
-      case "we need to confirm your identity for bank transfer" =>
+      case "auth login"                                               => eventually(AuthLoginPage.assertPage())
+      case "bank transfer request received"                           => eventually(BankTransferRequestReceivedPage.assertPage())
+      case "change your address"                                      => eventually(ChangeYourDetailsPage.assertPage())
+      case "check answers for bank transfer"                          => eventually(CheckAnswersBankTransferPage.assertPage())
+      case "check answers for cheque"                                 => eventually(CheckAnswersChequePage.assertPage())
+      case "cheque request received"                                  => eventually(ChequeRequestReceivedPage.assertPage())
+      case "choose another way to receive your refund"                => eventually(ChooseAnotherWayPage.assertPage())
+      case "complete your refund request"                             => eventually(CompleteYourRefundRequestPage.assertPage())
+      case "do you want a bank transfer"                              => eventually(DoYouWantABankTransferPage.assertPage())
+      case "do you want to sign in"                                   => eventually(DoYouWantToSignInPage.assertPage())
+      case "feedback"                                                 => eventually(FeedbackPage.assertPage())
+      case "give your permission"                                     => eventually(GiveYourPermissionPage.assertPage())
+      case "refund request not submitted"                             => eventually(RefundRequestNotSubmittedPage.assertPage())
+      case "verifying account"                                        => eventually(VerifyingBankAccountPage.assertPage())
+      case "we cannot confirm your identity"                          => eventually(WeCannotConfirmYourIdentityPage.assertPage())
+      case "we have confirmed your identity for bank transfer"        =>
+        eventually(WeHaveConfirmedYourIdentityBankTransferPage.assertPage())
+      case "we have confirmed your identity for cheque"               =>
+        eventually(WeHaveConfirmedYourIdentityChequePage.assertPage())
+      case "we need to confirm your identity for bank transfer"       =>
         eventually(WeNeedToConfirmYourIdentityBankTransferPage.assertPage())
-      case "we need to confirm your identity for cheque"        =>
+      case "we need to confirm your identity for cheque"              =>
         eventually(WeNeedToConfirmYourIdentityChequePage.assertPage())
-      case "what is the name of your bank"                      => eventually(WhatIsBankPage.assertPage())
-      case "what is your date of birth"                         => eventually(WhatIsDobPage.assertPage())
-      case "what is your national insurance number"             => eventually(WhatIsNinoPage.assertPage())
-      case "what is your reference"                             => eventually(WhatIsP800ReferencePage.assertPage())
-      case _                                                    => throw new Exception(page + " not found")
+      case "what is the name of your bank"                            => eventually(WhatIsBankPage.assertPage())
+      case "what is your date of birth"                               => eventually(WhatIsDobPage.assertPage())
+      case "what is your national insurance number for bank transfer" =>
+        eventually(WhatIsNinoBankTransferPage.assertPage())
+      case "what is your national insurance number for cheque"        => eventually(WhatIsNinoChequePage.assertPage())
+      case "what is your reference for bank transfer"                 => eventually(WhatIsP800ReferenceBankTransferPage.assertPage())
+      case "what is your reference for cheque"                        => eventually(WhatIsP800ReferenceChequePage.assertPage())
+      case _                                                          => throw new Exception(page + " not found")
     }
   }
 

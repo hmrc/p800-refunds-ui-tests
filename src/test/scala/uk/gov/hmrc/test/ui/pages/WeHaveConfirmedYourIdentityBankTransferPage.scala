@@ -18,9 +18,9 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object WhatIsDobPage extends BasePage {
+object WeHaveConfirmedYourIdentityBankTransferPage extends BasePage {
 
-  val h1  = "What is your date of birth?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/what-is-your-date-of-birth"
+  val h1  = "We have confirmed your identity"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/we-have-confirmed-your-identity"
 
 }

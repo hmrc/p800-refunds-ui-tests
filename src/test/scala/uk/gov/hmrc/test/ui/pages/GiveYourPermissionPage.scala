@@ -21,6 +21,6 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 object GiveYourPermissionPage extends BasePage {
 
   val h1  = "Give your permission"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/give-your-permission"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/give-your-permission"
 
 }

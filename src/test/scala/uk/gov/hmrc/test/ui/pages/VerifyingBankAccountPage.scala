@@ -21,6 +21,6 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 object VerifyingBankAccountPage extends BasePage {
 
   val h1  = "We are verifying your bank account"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/we-are-verifying-your-bank-account"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/we-are-verifying-your-bank-account"
 
 }
