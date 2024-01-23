@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
+object LostNationalInsuranceNumberPage extends BasePage {
 
-object CompleteYourRefundRequestPage extends BasePage {
+  val h1  = "Find a lost National Insurance number"
+  val url = "https://www.gov.uk/lost-national-insurance-number"
 
-  val h1  = "Complete your refund request to get your cheque"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/complete-your-refunds-request-to-get-your-cheque"
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Find a lost National Insurance number - GOV.UK"
+  }
 
 }

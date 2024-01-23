@@ -18,9 +18,9 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object CheckYourReferencePage extends BasePage {
+object ChooseAnotherWayPage extends BasePage {
 
-  val h1  = "Check your reference"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/check-your-reference"
+  val h1  = "Choose another way to receive your refund"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/choose-another-way-to-receive-your-refund"
 
 }

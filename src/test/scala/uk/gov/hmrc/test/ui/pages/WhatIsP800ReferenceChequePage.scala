@@ -18,9 +18,9 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object CompleteYourRefundRequestPage extends BasePage {
+object WhatIsP800ReferenceChequePage extends BasePage {
 
-  val h1  = "Complete your refund request to get your cheque"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/complete-your-refunds-request-to-get-your-cheque"
+  val h1  = "What is your P800 reference?"
+  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/what-is-your-p800-reference"
 
 }
