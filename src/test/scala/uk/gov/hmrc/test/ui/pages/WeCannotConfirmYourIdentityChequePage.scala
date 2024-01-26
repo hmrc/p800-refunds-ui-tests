@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,10 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object ChooseAnotherWayPage extends BasePage {
+object WeCannotConfirmYourIdentityChequePage extends BasePage {
 
-  val h1  = "Choose another way to receive your refund"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/choose-another-way-to-receive-your-refund"
+  val h1    = "We cannot confirm your identity"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/cannot-confirm-your-identity-try-again"
+  val title = "Cheque - cannot confirm your identity try again"
 
 }

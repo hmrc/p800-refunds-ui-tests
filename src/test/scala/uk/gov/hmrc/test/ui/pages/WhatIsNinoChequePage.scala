@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object WhatIsNinoChequePage extends BasePage {
 
-  val h1  = "What is your National Insurance number?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/what-is-your-national-insurance-number"
+  val h1    = "What is your National Insurance number?"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/enter-your-national-insurance-number"
+  val title = "Cheque - enter your National Insurance number"
 
 }

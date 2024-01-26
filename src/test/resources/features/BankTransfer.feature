@@ -96,7 +96,7 @@ Feature: Bank Transfer Journey
     When I click to continue
     Then I am on the what is the name of your bank page
     When I click the link my bank is not listed
-    Then I am on the choose another way to receive your refund page
+    Then I am on the choose another way to receive your refund from bank transfer page
     When I select cheque and click continue
     Then I am on the complete your refund request page
     When I click to submit refund request
@@ -117,7 +117,7 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click the link choose another way to get my money
-    Then I am on the choose another way to receive your refund page
+    Then I am on the choose another way to receive your refund from bank transfer page
     When I select cheque and click continue
     Then I am on the complete your refund request page
     When I click to submit refund request
@@ -146,7 +146,7 @@ Feature: Bank Transfer Journey
     When I navigate to test-only and select request failed
     Then I am on the refund request not submitted page
     When I click to choose another way to get my money
-    Then I am on the choose another way to receive your refund page
+    Then I am on the choose another way to receive your refund from bank transfer page
     When I select cheque and click continue
     Then I am on the complete your refund request page
     When I click to submit refund request

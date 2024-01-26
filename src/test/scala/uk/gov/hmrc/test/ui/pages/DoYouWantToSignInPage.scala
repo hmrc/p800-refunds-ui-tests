@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object DoYouWantToSignInPage extends BasePage {
 
-  val h1  = "Do you want to sign in?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/do-you-want-to-sign-in"
+  val h1    = "Do you want to sign in?"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/do-you-want-to-sign-in"
+  val title = "Do you want to sign in?"
 
 }

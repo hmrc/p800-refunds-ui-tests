@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object DoYouWantABankTransferPage extends BasePage {
 
-  val h1  = "Do you want your refund by bank transfer?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/do-you-want-your-refund-via-bank-transfer"
+  val h1    = "Do you want your refund by bank transfer?"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/do-you-want-your-refund-via-bank-transfer"
+  val title = "Do you want to refund by bank transfer?"
 
 }

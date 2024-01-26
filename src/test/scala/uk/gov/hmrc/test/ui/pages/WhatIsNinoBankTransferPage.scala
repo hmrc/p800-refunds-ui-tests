@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object WhatIsNinoBankTransferPage extends BasePage {
 
-  val h1  = "What is your National Insurance number?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/what-is-your-national-insurance-number"
+  val h1    = "What is your National Insurance number?"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/enter-your-national-insurance-number"
+  val title = "Bank transfer - enter your National Insurance number"
 
 }

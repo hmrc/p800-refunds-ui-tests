@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object WeNeedToConfirmYourIdentityChequePage extends BasePage {
 
-  val h1  = "We need you to confirm your identity"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/we-need-you-to-confirm-your-identity"
+  val h1    = "We need you to confirm your identity"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/confirm-your-identity"
+  val title = "Cheque - confirm your identity"
 
 }

@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object WhatIsP800ReferenceChequePage extends BasePage {
 
-  val h1  = "What is your P800 reference?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/cheque/what-is-your-p800-reference"
+  val h1    = "What is your P800 reference?"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/enter-your-p800-reference"
+  val title = "Cheque - enter your p800 reference"
 
 }

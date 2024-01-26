@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object BankTransferRequestReceivedPage extends BasePage {
 
-  val h1  = "Bank transfer request received"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/request-received"
+  val h1    = "Bank transfer request received"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/request-received"
+  val title = "Bank transfer - request received"
 
 }

@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object CheckAnswersBankTransferPage extends BasePage {
 
-  val h1  = "Check your answers"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/check-your-answers"
+  val h1    = "Check your answers"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/check-your-answers"
+  val title = "Bank transfer - check your answers"
 
 }

@@ -18,9 +18,10 @@ package uk.gov.hmrc.test.ui.pages
 
 object ChangeYourDetailsPage extends BasePage {
 
-  val h1  = "Change your address and personal details"
-  val url =
+  val h1    = "Change your address and personal details"
+  val url   =
     "https://www.gov.uk/government/organisations/hm-revenue-customs/contact/change-your-personal-details"
+  val title = ""
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)

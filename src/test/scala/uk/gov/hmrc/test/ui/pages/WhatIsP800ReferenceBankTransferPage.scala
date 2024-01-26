@@ -20,7 +20,8 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object WhatIsP800ReferenceBankTransferPage extends BasePage {
 
-  val h1  = "What is your P800 reference?"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/what-is-your-p800-reference"
+  val h1    = "What is your P800 reference?"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/enter-your-p800-reference"
+  val title = "Bank transfer - enter your p800 reference"
 
 }

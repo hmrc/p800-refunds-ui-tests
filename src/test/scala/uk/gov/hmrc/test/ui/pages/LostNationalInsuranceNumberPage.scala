@@ -18,8 +18,9 @@ package uk.gov.hmrc.test.ui.pages
 
 object LostNationalInsuranceNumberPage extends BasePage {
 
-  val h1  = "Find a lost National Insurance number"
-  val url = "https://www.gov.uk/lost-national-insurance-number"
+  val h1    = "Find a lost National Insurance number"
+  val url   = "https://www.gov.uk/lost-national-insurance-number"
+  val title = ""
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)

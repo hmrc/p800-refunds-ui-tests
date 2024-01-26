@@ -20,8 +20,9 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object TestOnlyGovUkPage extends BasePage {
 
-  val h1  = "Tax overpayments and underpayments"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/test-only/gov-uk-route-in"
+  val h1    = "Tax overpayments and underpayments"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/test-only/gov-uk-route-in"
+  val title = ""
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)

@@ -22,6 +22,7 @@ trait BasePage extends BaseStepDef {
 
   val h1: String
   val url: String
+  val title: String
   val serviceName: String = "Get an Income Tax refund"
 
   def currentUrl: String         = driver.getCurrentUrl()
@@ -31,7 +32,7 @@ trait BasePage extends BaseStepDef {
   def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe s"$h1 - $serviceName - GOV.UK"
+    currentPageTitle   shouldBe s"$title - $serviceName - GOV.UK"
   }
 
 }

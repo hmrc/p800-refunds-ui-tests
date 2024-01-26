@@ -20,8 +20,9 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object TestOnlyStartPage extends BasePage {
 
-  val h1  = "Test Only Landing Page"
-  val url = TestConfiguration.url("p800-refunds-frontend") + "/test-only"
+  val h1    = "Test Only Landing Page"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/test-only"
+  val title = ""
 
   override def assertPage(): Unit = {
     currentUrl           should include(url)
