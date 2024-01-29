@@ -148,7 +148,7 @@ object BankTransferRequestReceivedPage extends BasePage {
 
 object RefundRequestNotSubmittedPage extends BasePage {
   val h1    = "Your refund request has not been submitted"
-  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/refund request not submitted"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/refund-request-not-submitted"
   val title = "Bank transfer - refund request not submitted"
 }
 
