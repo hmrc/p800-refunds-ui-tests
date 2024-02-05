@@ -22,9 +22,8 @@ import uk.gov.hmrc.test.ui.pages._
 class ActionSteps extends BaseStepDef {
 
   Given("I start a journey") { () =>
-    driver.navigate.to(TestOnlyStartPage.url)
-    TestOnlyStartPage.assertPage()
-    clickByLinkText("drop failed attempts collection")
+    driver.navigate.to(TestOnlyClearAttemptsPage.url)
+    TestOnlyClearAttemptsPage.assertPage()
     driver.navigate.to(TestOnlyStartPage.url)
     TestOnlyStartPage.assertPage()
     clickByLinkText("start journey via gov-uk")

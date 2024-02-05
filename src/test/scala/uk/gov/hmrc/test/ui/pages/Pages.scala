@@ -51,6 +51,14 @@ object TestOnlyStartPage extends BasePage {
   }
 }
 
+object TestOnlyClearAttemptsPage extends BasePage {
+  val h1                          = ""
+  val url                         = TestConfiguration.url("p800-refunds-frontend") + "/test-only/clear-attempts"
+  val title                       = ""
+  override def assertPage(): Unit =
+    currentUrl should include(url)
+}
+
 object TestOnlyGovUkPage extends BasePage {
   val h1    = "Tax overpayments and underpayments"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/test-only/gov-uk-route-in"
