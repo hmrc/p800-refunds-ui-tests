@@ -24,6 +24,9 @@ class ActionSteps extends BaseStepDef {
   Given("I start a journey") { () =>
     driver.navigate.to(TestOnlyStartPage.url)
     TestOnlyStartPage.assertPage()
+    clickByLinkText("drop failed attempts collection")
+    driver.navigate.to(TestOnlyStartPage.url)
+    TestOnlyStartPage.assertPage()
     clickByLinkText("start journey via gov-uk")
     TestOnlyGovUkPage.assertPage()
     clickByLinkText("Claim Now >")
