@@ -292,3 +292,5 @@ Feature: Locked Out
     And The page has rows for reference, NINO and DOB with NINO MA000003A
     When I click to continue
     Then I am on the locked out for bank transfer page
+
+  #TODO: locked out returns to service

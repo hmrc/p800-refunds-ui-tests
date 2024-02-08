@@ -149,6 +149,17 @@ object GiveYourPermissionPage extends BasePage {
   val title = "Bank transfer - give your permission"
 }
 
+object BankStubPage extends BasePage {
+  val h1    = "Bank Stub Page"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/test-only/bank-page"
+  val title = ""
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Test Only - Get an Income Tax refund - GOV.UK"
+  }
+}
+
 object VerifyingBankAccountPage extends BasePage {
   val h1    = "We are verifying your bank account"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/verifying-your-bank-account"

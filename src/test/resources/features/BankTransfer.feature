@@ -28,6 +28,8 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
@@ -51,6 +53,8 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Monzo Business
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
@@ -75,6 +79,8 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Santander Personal
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
@@ -140,6 +146,8 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Failed and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
@@ -170,6 +178,8 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Failed and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
@@ -201,3 +211,5 @@ Feature: Bank Transfer Journey
   Scenario: User checks for NINO
     When I click the dropdown link find a lost National Insurance number
     Then I am on the lost national insurance number page in a new tab
+
+  #TODO: click cancelled on bank stub

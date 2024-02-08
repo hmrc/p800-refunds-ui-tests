@@ -26,6 +26,7 @@ class AssertionSteps extends BaseStepDef {
   Then("^I am on the (.*) page$") { (page: String) =>
     page match {
       case "auth login"                                                   => eventually(AuthLoginPage.assertPage())
+      case "bank stub"                                                    => eventually(BankStubPage.assertPage())
       case "bank transfer request received"                               => eventually(BankTransferRequestReceivedPage.assertPage())
       case "change your address"                                          => eventually(ChangeYourDetailsPage.assertPage())
       case "check answers for bank transfer"                              => eventually(CheckAnswersBankTransferPage.assertPage())

@@ -43,6 +43,8 @@ Feature: Identity Verification Fails
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
@@ -125,5 +127,3 @@ Feature: Identity Verification Fails
     When I select bank transfer using your Government Gateway user ID and click continue
     Then I am on the auth login page
     And The redirect url contains /tax-you-paid/choose-year
-
-  #TODO: add tests for the lockout page when it connected to the journey

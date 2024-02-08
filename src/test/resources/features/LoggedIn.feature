@@ -111,6 +111,8 @@ Feature: Logged In Journey
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
