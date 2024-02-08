@@ -112,7 +112,7 @@ Feature: Logged In Journey
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Failed and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
