@@ -114,6 +114,7 @@ class ActionSteps extends BaseStepDef {
       case "my bank is not listed"                         => clickById("myAccountIsNotListed")
       case "refresh this page"                             => clickById("refresh-this-page")
       case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
+      case "sign in to you HMRC online account"            => clickById("sign-in-to-you-hmrc-online-account")
       case "what did you think of this service"            => clickById("survey-link")
       case _                                               => throw new Exception(link + " not found")
     }

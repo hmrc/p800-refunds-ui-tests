@@ -124,6 +124,13 @@ object ChooseAnotherWayBankTransferPage extends BasePage {
   val title = "Bank transfer - choose another way to receive your refund"
 }
 
+object WeCannotConfirmYourIdentityBankTransferLockedOutPage extends BasePage {
+  val h1    = "We cannot confirm your identity"
+  val url   =
+    TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/no-more-attempts-left-to-confirm-your-identity"
+  val title = "Bank transfer - no more attempts left to confirm your identity"
+}
+
 object WeHaveConfirmedYourIdentityBankTransferPage extends BasePage {
   val h1    = "We have confirmed your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/your-identity-is-confirmed"
@@ -194,6 +201,12 @@ object ChooseAnotherWayChequePage extends BasePage {
   val h1    = "Choose another way to receive your refund"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/choose-another-way-to-receive-your-refund"
   val title = "Cheque - choose another way to receive your refund"
+}
+
+object WeCannotConfirmYourIdentityChequeLockedOutPage extends BasePage {
+  val h1    = "We cannot confirm your identity"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/no-more-attempts-left-to-confirm-your-identity"
+  val title = "Cheque - no more attempts left to confirm your identity"
 }
 
 object WeHaveConfirmedYourIdentityChequePage extends BasePage {
