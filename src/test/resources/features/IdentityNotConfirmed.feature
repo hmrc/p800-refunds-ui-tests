@@ -14,11 +14,11 @@ Feature: Identity Verification Fails
     And The page lists just reference and NINO
     When I click to continue
     Then I am on the what is your reference for cheque page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for cheque page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to choose another method
@@ -30,11 +30,11 @@ Feature: Identity Verification Fails
     Then I am on the what is your reference for bank transfer page
     When I click to continue
     Then I am on the what is your national insurance number for bank transfer page
-    When I change the national insurance number input to AA000000A and click continue
+    When I change the national insurance number input to AB999999C and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -50,7 +50,7 @@ Feature: Identity Verification Fails
     Then I am on the verifying account page
     When I navigate to test-only and select request success
     Then I am on the bank transfer request received page
-    And The page contains P800REFNO1
+    And The page contains 1234567890
 
   Scenario: Cheque user fails identity verification and logs in
     When I select no I want a cheque and click continue
@@ -58,11 +58,11 @@ Feature: Identity Verification Fails
     And The page lists just reference and NINO
     When I click to continue
     Then I am on the what is your reference for cheque page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for cheque page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to choose another method
@@ -78,13 +78,13 @@ Feature: Identity Verification Fails
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to choose another method
@@ -96,16 +96,16 @@ Feature: Identity Verification Fails
     Then I am on the what is your reference for cheque page
     When I click to continue
     Then I am on the what is your national insurance number for cheque page
-    When I change the national insurance number input to AA000000A and click continue
+    When I change the national insurance number input to AB999999C and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO AA000000A
+    And The page has rows for just reference and NINO with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for cheque page
     When I click to continue
     Then I am on the complete your refund request page
     When I click to submit refund request
     Then I am on the cheque request received page
-    And The page contains P800REFNO1
+    And The page contains 1234567890
 
   Scenario: Bank transfer user fails identity verification and logs in
     When I select yes, bank transfer and click continue
@@ -113,13 +113,13 @@ Feature: Identity Verification Fails
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to choose another method
@@ -127,3 +127,5 @@ Feature: Identity Verification Fails
     When I select bank transfer using your Government Gateway user ID and click continue
     Then I am on the auth login page
     And The redirect url contains /tax-you-paid/choose-year
+
+  #TODO: tests for failed responses by check-reference API

@@ -88,7 +88,7 @@ class AssertionSteps extends BaseStepDef {
       case "first paragraph" =>
         findTextByCssSelector(
           "p:nth-child(2)"
-        ) shouldBe s"By choosing approve, you will be redirected to $input to securely log in and approve your refund of £1,231.22. Change my bank."
+        ) shouldBe s"By choosing approve, you will be redirected to $input to securely log in and approve your refund of £4,321.09. Change my bank."
       case "page"            => findTextByCssSelector("div.govuk-panel__body") shouldBe s"Your P800 reference:\n$input"
       case "redirect url"    =>
         findElementById("redirectionUrl").getAttribute("value") shouldBe s"http://localhost:9416$input"
@@ -110,7 +110,7 @@ class AssertionSteps extends BaseStepDef {
   Then("^The page has rows for (.*) with NINO (.*)$") { (rows: String, nino: String) =>
     rows match {
       case "just reference and NINO"                          =>
-        findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\nP800REFNO1\nChange\nP800 reference"
+        findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\n1234567890\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
         )                                              shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
@@ -118,13 +118,13 @@ class AssertionSteps extends BaseStepDef {
       case "just reference and NINO with the changed answers" =>
         findTextByCssSelector(
           "dl > div:nth-child(1)"
-        )                          shouldBe s"P800 reference\nP800REFChanged\nChange\nP800 reference"
+        )                          shouldBe s"P800 reference\n234567890\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
         )                          shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
         isPresent("Date of birth") shouldBe false
       case "reference, NINO and DOB"                          =>
-        findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\nP800REFNO1\nChange\nP800 reference"
+        findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\n1234567890\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
         )                                              shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
@@ -134,7 +134,7 @@ class AssertionSteps extends BaseStepDef {
       case "reference, NINO and DOB with the changed answers" =>
         findTextByCssSelector(
           "dl > div:nth-child(1)"
-        ) shouldBe s"P800 reference\nP800REFChanged\nChange\nP800 reference"
+        ) shouldBe s"P800 reference\n234567890\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
         ) shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"

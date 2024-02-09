@@ -13,21 +13,21 @@ Feature: Locked Out
     And The page lists just reference and NINO
     When I click to continue
     Then I am on the what is your reference for cheque page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for cheque page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to try again
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to try again
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the locked out for cheque page
     When I click the link sign in to you HMRC online account
@@ -40,16 +40,16 @@ Feature: Locked Out
     And The page lists just reference and NINO
     When I click to continue
     Then I am on the what is your reference for cheque page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for cheque page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to try again
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to choose another method
@@ -65,7 +65,7 @@ Feature: Locked Out
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the locked out for bank transfer page
 
@@ -75,11 +75,11 @@ Feature: Locked Out
     And The page lists just reference and NINO
     When I click to continue
     Then I am on the what is your reference for cheque page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for cheque page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to choose another method
@@ -95,12 +95,12 @@ Feature: Locked Out
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to try again
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the locked out for bank transfer page
 
@@ -110,11 +110,11 @@ Feature: Locked Out
     And The page lists just reference and NINO
     When I click to continue
     Then I am on the what is your reference for cheque page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for cheque page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to choose another method
@@ -130,7 +130,7 @@ Feature: Locked Out
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to choose another method
@@ -144,7 +144,7 @@ Feature: Locked Out
     Then I am on the what is your national insurance number for cheque page
     When I click to continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the locked out for cheque page
 
@@ -154,23 +154,23 @@ Feature: Locked Out
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to try again
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to try again
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the locked out for bank transfer page
     When I click the link sign in to you HMRC online account
@@ -183,18 +183,18 @@ Feature: Locked Out
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to try again
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to choose another method
@@ -208,7 +208,7 @@ Feature: Locked Out
     Then I am on the what is your national insurance number for cheque page
     When I click to continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the locked out for cheque page
 
@@ -218,13 +218,13 @@ Feature: Locked Out
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to choose another method
@@ -238,12 +238,12 @@ Feature: Locked Out
     Then I am on the what is your national insurance number for cheque page
     When I click to continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to try again
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the locked out for cheque page
 
@@ -253,13 +253,13 @@ Feature: Locked Out
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
-    When I enter MA000003A in the national insurance number input and click continue
+    When I enter AB099999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
     When I click to choose another method
@@ -273,7 +273,7 @@ Feature: Locked Out
     Then I am on the what is your national insurance number for cheque page
     When I click to continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO MA000003A
+    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
     When I click to choose another method
@@ -289,7 +289,7 @@ Feature: Locked Out
     Then I am on the what is your date of birth page
     When I click to continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO MA000003A
+    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the locked out for bank transfer page
 
