@@ -245,6 +245,12 @@ object FeedbackPage extends BasePage {
   val title = "Cheque - request received"
 }
 
+object TechnicalDifficultiesPage extends BasePage {
+  val h1    = "Sorry, we’re experiencing technical difficulties"
+  val url   = TestConfiguration.url("p800-refunds-frontend")
+  val title = "Sorry, we are experiencing technical difficulties - 500"
+}
+
 object AuthLoginPage extends BasePage {
   val h1    = "Authority Wizard"
   val url   =
