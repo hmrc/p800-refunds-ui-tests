@@ -22,6 +22,8 @@ import uk.gov.hmrc.test.ui.pages._
 class ActionSteps extends BaseStepDef {
 
   Given("I start a journey") { () =>
+    driver.navigate.to(TestOnlyClearAttemptsPage.url)
+    TestOnlyClearAttemptsPage.assertPage()
     driver.navigate.to(TestOnlyStartPage.url)
     TestOnlyStartPage.assertPage()
     clickByLinkText("start journey via gov-uk")
@@ -37,6 +39,9 @@ class ActionSteps extends BaseStepDef {
       case "no I want a cheque"                                  => clickById("do-you-want-your-refund-via-bank-transfer-2")
       case "bank transfer using your Government Gateway user ID" => clickById("way-to-get-refund")
       case "cheque" | "bank transfer logged out"                 => clickById("way-to-get-refund-2")
+      case "Authorised"                                          => clickById("bank-result")
+      case "Cancelled"                                           => clickById("bank-result-2")
+      case "Failed"                                              => clickById("bank-result-3")
       case _                                                     => throw new Exception(option + " not found")
     }
     clickById("submit")
@@ -112,6 +117,7 @@ class ActionSteps extends BaseStepDef {
       case "my bank is not listed"                         => clickById("myAccountIsNotListed")
       case "refresh this page"                             => clickById("refresh-this-page")
       case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
+      case "sign in to you HMRC online account"            => clickById("sign-in-to-you-hmrc-online-account")
       case "what did you think of this service"            => clickById("survey-link")
       case _                                               => throw new Exception(link + " not found")
     }

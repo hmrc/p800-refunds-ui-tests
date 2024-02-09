@@ -11,15 +11,15 @@ Feature: Bank Transfer Journey
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-    When I enter P800REFNO1 in the reference input and click continue
+    When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
 
   Scenario: User completes a bank transfer and visits the income tax helpline
-    When I enter AA000000A in the national insurance number input and click continue
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -28,21 +28,23 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
     When I navigate to test-only and select request success
     Then I am on the bank transfer request received page
-    And The page contains P800REFNO1
+    And The page contains 1234567890
     When I click the link call or write to the Income Tax helpline
     Then I am on the income tax page in a new tab
 
   Scenario: User completes a bank transfer and decides to give feedback
-    When I enter AA000000A in the national insurance number input and click continue
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -51,22 +53,24 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Monzo Business
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
     When I navigate to test-only and select request success
     Then I am on the bank transfer request received page
-    And The page contains P800REFNO1
+    And The page contains 1234567890
     When I click the link what did you think of this service
 #    Then I am on the feedback page
 
   @a11y @zap
   Scenario: User completes a bank transfer and clicks back
-    When I enter AA000000A in the national insurance number input and click continue
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -75,22 +79,24 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Santander Personal
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
     When I navigate to test-only and select request success
     Then I am on the bank transfer request received page
-    And The page contains P800REFNO1
+    And The page contains 1234567890
     When I click browser back
 #    Then I am on the bank transfer request received page
-#    And The page contains P800REFNO1
+#    And The page contains 1234567890
 
   Scenario: User's bank is not listed and they apply for cheque instead
-    When I enter AA000000A in the national insurance number input and click continue
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -101,14 +107,14 @@ Feature: Bank Transfer Journey
     Then I am on the complete your refund request page
     When I click to submit refund request
     Then I am on the cheque request received page
-    And The page contains P800REFNO1
+    And The page contains 1234567890
 
   Scenario: User chooses to apply for cheque from the give permission page
-    When I enter AA000000A in the national insurance number input and click continue
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -122,14 +128,14 @@ Feature: Bank Transfer Journey
     Then I am on the complete your refund request page
     When I click to submit refund request
     Then I am on the cheque request received page
-    And The page contains P800REFNO1
+    And The page contains 1234567890
 
   Scenario: User's refund request is not submitted so applies for cheque instead
-    When I enter AA000000A in the national insurance number input and click continue
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -140,6 +146,8 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Failed and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
@@ -151,15 +159,15 @@ Feature: Bank Transfer Journey
     Then I am on the complete your refund request page
     When I click to submit refund request
     Then I am on the cheque request received page
-    And The page contains P800REFNO1
+    And The page contains 1234567890
 
   @a11y @zap
   Scenario: User's refund request is not submitted so they click back
-    When I enter AA000000A in the national insurance number input and click continue
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -170,6 +178,8 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Chase
     When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Failed and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
@@ -179,11 +189,11 @@ Feature: Bank Transfer Journey
 #    Then I am on the refund request not submitted page
 
   Scenario: User decides to change bank account from the give permission page
-    When I enter AA000000A in the national insurance number input and click continue
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AA000000A
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
     When I click to continue
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
@@ -201,3 +211,5 @@ Feature: Bank Transfer Journey
   Scenario: User checks for NINO
     When I click the dropdown link find a lost National Insurance number
     Then I am on the lost national insurance number page in a new tab
+
+  #TODO: click cancelled on bank stub

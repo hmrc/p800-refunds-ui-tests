@@ -51,6 +51,14 @@ object TestOnlyStartPage extends BasePage {
   }
 }
 
+object TestOnlyClearAttemptsPage extends BasePage {
+  val h1                          = ""
+  val url                         = TestConfiguration.url("p800-refunds-frontend") + "/test-only/clear-attempts"
+  val title                       = ""
+  override def assertPage(): Unit =
+    currentUrl should include(url)
+}
+
 object TestOnlyGovUkPage extends BasePage {
   val h1    = "Tax overpayments and underpayments"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/test-only/gov-uk-route-in"
@@ -116,6 +124,13 @@ object ChooseAnotherWayBankTransferPage extends BasePage {
   val title = "Bank transfer - choose another way to receive your refund"
 }
 
+object WeCannotConfirmYourIdentityBankTransferLockedOutPage extends BasePage {
+  val h1    = "We cannot confirm your identity"
+  val url   =
+    TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/no-more-attempts-left-to-confirm-your-identity"
+  val title = "Bank transfer - no more attempts left to confirm your identity"
+}
+
 object WeHaveConfirmedYourIdentityBankTransferPage extends BasePage {
   val h1    = "We have confirmed your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/your-identity-is-confirmed"
@@ -132,6 +147,17 @@ object GiveYourPermissionPage extends BasePage {
   val h1    = "Give your permission"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/give-your-permission"
   val title = "Bank transfer - give your permission"
+}
+
+object BankStubPage extends BasePage {
+  val h1    = "Bank Stub Page"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/test-only/bank-page"
+  val title = ""
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Test Only - Get an Income Tax refund - GOV.UK"
+  }
 }
 
 object VerifyingBankAccountPage extends BasePage {
@@ -188,6 +214,12 @@ object ChooseAnotherWayChequePage extends BasePage {
   val title = "Cheque - choose another way to receive your refund"
 }
 
+object WeCannotConfirmYourIdentityChequeLockedOutPage extends BasePage {
+  val h1    = "We cannot confirm your identity"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/no-more-attempts-left-to-confirm-your-identity"
+  val title = "Cheque - no more attempts left to confirm your identity"
+}
+
 object WeHaveConfirmedYourIdentityChequePage extends BasePage {
   val h1    = "We have confirmed your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/your-identity-is-confirmed"
@@ -211,6 +243,12 @@ object FeedbackPage extends BasePage {
   val h1    = "Cheque request received"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/request-received#"
   val title = "Cheque - request received"
+}
+
+object TechnicalDifficultiesPage extends BasePage {
+  val h1    = "Sorry, we’re experiencing technical difficulties"
+  val url   = TestConfiguration.url("p800-refunds-frontend")
+  val title = "Sorry, we are experiencing technical difficulties - 500"
 }
 
 object AuthLoginPage extends BasePage {
