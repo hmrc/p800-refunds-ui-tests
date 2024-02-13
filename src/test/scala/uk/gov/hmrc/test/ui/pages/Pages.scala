@@ -17,9 +17,9 @@
 package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseStepDef
+import uk.gov.hmrc.test.ui.cucumber.stepdefs.BaseSteps
 
-trait BasePage extends BaseStepDef {
+trait BasePage extends BaseSteps {
 
   val h1: String
   val url: String

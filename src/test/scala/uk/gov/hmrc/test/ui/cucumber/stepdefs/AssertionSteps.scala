@@ -18,10 +18,12 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import java.time.Duration
 
+import org.mongodb.scala.MongoClient
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
+import uk.gov.hmrc.test.ui.mongo.MongoHelper.GenericObservable
 import uk.gov.hmrc.test.ui.pages._
 
-class AssertionSteps extends BaseStepDef {
+class AssertionSteps extends BaseSteps {
 
   Then("^I am on the (.*) page$") { (page: String) =>
     page match {
@@ -92,6 +94,7 @@ class AssertionSteps extends BaseStepDef {
       case "page"            => findTextByCssSelector("div.govuk-panel__body") shouldBe s"Your P800 reference:\n$input"
       case "redirect url"    =>
         findElementById("redirectionUrl").getAttribute("value") shouldBe s"http://localhost:9416$input"
+      case _                 => throw new Exception(feature + " not found")
     }
   }
 
@@ -142,6 +145,16 @@ class AssertionSteps extends BaseStepDef {
           "dl > div:nth-child(3)"
         ) shouldBe s"Date of birth\n10 October 1990\nChange\nDate of birth"
       case _                                                  => throw new Exception(rows + " not found")
+    }
+  }
+
+  Then("^A failed attempt (.*) logged in Mongo$") { (hasFailed: String) =>
+    val results =
+      MongoClient().getDatabase("p800-refunds-frontend").getCollection("failed-verification-attempts").find().results()
+    hasFailed match {
+      case "Is"    => results.length  shouldBe 1
+      case "Isn't" => results.isEmpty shouldBe true
+      case _       => throw new Exception(hasFailed + " not found")
     }
   }
 

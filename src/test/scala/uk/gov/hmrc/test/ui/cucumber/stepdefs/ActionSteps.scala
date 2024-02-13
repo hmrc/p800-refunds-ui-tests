@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import org.openqa.selenium.Keys
 import uk.gov.hmrc.test.ui.pages._
 
-class ActionSteps extends BaseStepDef {
+class ActionSteps extends BaseSteps {
 
   Given("I start a journey") { () =>
     driver.navigate.to(TestOnlyClearAttemptsPage.url)

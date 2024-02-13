@@ -25,7 +25,7 @@ import uk.gov.hmrc.webdriver.SingletonDriver
 
 import scala.util.Try
 
-trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
+trait BaseSteps extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
 
   def enterTextById(id: String, text: String): Unit = findElementById(id).sendKeys(text)
 
