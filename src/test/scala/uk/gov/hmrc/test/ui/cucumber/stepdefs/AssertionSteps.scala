@@ -149,11 +149,11 @@ class AssertionSteps extends BaseSteps {
   }
 
   Then("^A failed attempt (.*) logged in Mongo$") { (hasFailed: String) =>
-    val results =
+    val ipList =
       MongoClient().getDatabase("p800-refunds-frontend").getCollection("failed-verification-attempts").find().results()
     hasFailed match {
-      case "Is"    => results.length  shouldBe 1
-      case "Isn't" => results.isEmpty shouldBe true
+      case "Is"    => ipList.length  shouldBe 1
+      case "Isn't" => ipList.isEmpty shouldBe true
       case _       => throw new Exception(hasFailed + " not found")
     }
   }

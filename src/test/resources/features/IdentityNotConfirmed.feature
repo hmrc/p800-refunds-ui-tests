@@ -151,7 +151,6 @@ Feature: Identity Verification Fails
       | AB499999C | technical difficulties                     | Isn't          | 403                         |
       | AB599999C | technical difficulties                     | Isn't          | 500                         |
 
-  @solo
   Scenario Outline: Reference Check API fails (bank transfer)
     When I select yes, bank transfer and click continue
     Then I am on the we need to confirm your identity for bank transfer page
