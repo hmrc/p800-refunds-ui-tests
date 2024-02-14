@@ -34,7 +34,7 @@
     },
     {
       "reason": "Result of bank test data",
-      "url": "http:\/\/localhost:10150\/get-an-income-tax-refund\/bank-transfer\/.*",
+      "url": "http:\/\/localhost:10150\/get-an-income-tax-refund\/.*",
       "contextId": 1,
       "ruleId": 90022,
       "urlIsRegex": "true",
