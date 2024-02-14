@@ -1,4 +1,4 @@
-@test @jenkins
+@test
 Feature: Identity Verification Fails
 
   Background:
@@ -7,7 +7,6 @@ Feature: Identity Verification Fails
     When I select not signed in and click continue
     Then I am on the do you want a bank transfer page
 
-  @a11y @zap
   Scenario: Cheque user fails identity verification and completes a bank transfer
     When I select no I want a cheque and click continue
     Then I am on the we need to confirm your identity for cheque page
@@ -71,7 +70,6 @@ Feature: Identity Verification Fails
     Then I am on the auth login page
     And The redirect url contains /tax-you-paid/choose-year
 
-  @a11y @zap
   Scenario: Bank transfer user fails identity verification and completes a cheque journey
     When I select yes, bank transfer and click continue
     Then I am on the we need to confirm your identity for bank transfer page

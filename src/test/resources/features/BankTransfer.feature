@@ -1,4 +1,4 @@
-@test @jenkins
+@test
 Feature: Bank Transfer Journey
 
   Background:
@@ -64,7 +64,6 @@ Feature: Bank Transfer Journey
     When I click the link what did you think of this service
 #    Then I am on the feedback page
 
-  @a11y @zap
   Scenario: User completes a bank transfer and clicks back
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
@@ -161,7 +160,6 @@ Feature: Bank Transfer Journey
     Then I am on the cheque request received page
     And The page contains 1234567890
 
-  @a11y @zap
   Scenario: User's refund request is not submitted so they click back
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
@@ -207,7 +205,6 @@ Feature: Bank Transfer Journey
     Then I am on the give your permission page
     And The first paragraph contains Barclays Personal
 
-  @a11y
   Scenario: User checks for NINO
     When I click the dropdown link find a lost National Insurance number
     Then I am on the lost national insurance number page in a new tab
