@@ -21,9 +21,6 @@ import org.openqa.selenium.{By, WebElement}
 import org.scalatest.concurrent.Eventually
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
-
-import scala.util.Try
 
 trait BaseSteps extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
 
@@ -49,7 +46,4 @@ trait BaseSteps extends ScalaDsl with EN with BrowserDriver with Eventually with
 
   def clickByCssSelector(text: String): Unit = findElementByCssSelector(text).click()
 
-  sys.addShutdownHook {
-    Try(SingletonDriver.closeInstance)
-  }
 }
