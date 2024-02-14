@@ -16,21 +16,11 @@
 
 package uk.gov.hmrc.test.ui.driver
 
-import org.openqa.selenium.chrome.ChromeOptions
-import org.openqa.selenium.{MutableCapabilities, WebDriver}
-import org.scalatest.concurrent.Eventually
-import org.scalatest.time.{Millis, Seconds, Span}
-import uk.gov.hmrc.webdriver.SingletonDriver
+import org.openqa.selenium.remote.RemoteWebDriver
+import uk.gov.hmrc.selenium.webdriver.Driver
 
-trait BrowserDriver extends Eventually {
+trait BrowserDriver {
 
-  val options: Option[MutableCapabilities] = {
-    val chromeOptions: ChromeOptions = new ChromeOptions()
-    Some(chromeOptions)
-  }
+  implicit lazy val driver: RemoteWebDriver = Driver.instance
 
-  implicit lazy val driver: WebDriver = SingletonDriver.getInstance(options)
-
-  implicit override val patienceConfig: PatienceConfig =
-    PatienceConfig(timeout = scaled(Span(10, Seconds)), interval = scaled(Span(50, Millis)))
 }

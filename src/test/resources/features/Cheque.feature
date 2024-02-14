@@ -1,4 +1,4 @@
-@test @jenkins
+@test
 Feature: Cheque Journey
 
   Background:
@@ -43,7 +43,6 @@ Feature: Cheque Journey
     Then I am on the feedback page
     # test to be adjusted when feedback page created
 
-  @a11y @zap
   Scenario: User completes a request for a cheque and clicks back
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
@@ -59,7 +58,6 @@ Feature: Cheque Journey
     Then I am on the cheque request received page
     And The page contains 1234567890
 
-  @a11y
   Scenario: User changes address for their cheque
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
@@ -71,7 +69,6 @@ Feature: Cheque Journey
     When I click the dropdown link contact HMRC
     Then I am on the change your address page
 
-  @a11y
   Scenario: User checks for NINO
     When I click the dropdown link find a lost National Insurance number
     Then I am on the lost national insurance number page in a new tab

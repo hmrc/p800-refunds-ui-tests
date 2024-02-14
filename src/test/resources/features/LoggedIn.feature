@@ -1,4 +1,4 @@
-@test @jenkins
+@test
 Feature: Logged In Journey
 
   Background:

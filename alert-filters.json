@@ -23,6 +23,22 @@
       "ruleId": 10021,
       "urlIsRegex": "true",
       "newLevel": -1
+    },
+    {
+      "reason": "Result of bank test data",
+      "url": "http:\/\/localhost:10150\/get-an-income-tax-refund\/bank-transfer\/.*",
+      "contextId": 1,
+      "ruleId": 10023,
+      "urlIsRegex": "true",
+      "newLevel": -1
+    },
+    {
+      "reason": "Result of bank test data",
+      "url": "http:\/\/localhost:10150\/get-an-income-tax-refund\/.*",
+      "contextId": 1,
+      "ruleId": 90022,
+      "urlIsRegex": "true",
+      "newLevel": -1
     }
   ],
   "remove": []
