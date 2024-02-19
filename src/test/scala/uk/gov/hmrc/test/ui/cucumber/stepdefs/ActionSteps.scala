@@ -16,19 +16,27 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.mongodb.scala.MongoClient
 import org.openqa.selenium.Keys
 import uk.gov.hmrc.test.ui.pages._
 
 class ActionSteps extends BaseSteps {
 
-  Given("I start a journey") { () =>
+  Given("^I start a (.*)$") { (journey: String) =>
     driver.navigate.to(TestOnlyClearAttemptsPage.url)
     TestOnlyClearAttemptsPage.assertPage()
     driver.navigate.to(TestOnlyStartPage.url)
     TestOnlyStartPage.assertPage()
-    clickByLinkText("start journey via gov-uk")
-    TestOnlyGovUkPage.assertPage()
-    clickByLinkText("Claim Now >")
+    journey match {
+      case "journey"         =>
+        clickByLinkText("start journey via gov-uk")
+        TestOnlyGovUkPage.assertPage()
+        clickByLinkText("Claim Now >")
+      case "webhook journey" =>
+        MongoClient().getDatabase("p800-refunds-external-api").getCollection("fraud-check-status").drop()
+        clickByLinkText("webhook notification")
+      case _                 => throw new Exception(journey + " not found")
+    }
   }
 
   When("^I select (.*) and click continue$") { (option: String) =>
@@ -144,6 +152,27 @@ class ActionSteps extends BaseSteps {
       case "request failed"  => clickByLinkText("Finish Fail")
       case _                 => throw new Exception(result + " not found")
     }
+  }
+
+  When("""^I enter Record Id (.*), Record Type (.*) and Event Value (.*)$""") {
+    (record_id: String, record_type: String, event_value: String) =>
+      enterTextById("recordId", record_id)
+      record_type match {
+        case "AccountAssessment"  => clickById("recordType")
+        case "ConsentTransaction" => clickById("recordType-2")
+        case "Account"            => clickById("recordType-3")
+        case "AccountTransaction" => clickById("recordType-4")
+        case "StandingOrder"      => clickById("recordType-5")
+        case "ScheduledPayment"   => clickById("recordType-6")
+        case "DirectDebit"        => clickById("recordType-7")
+        case "Consent"            => clickById("recordType-8")
+        case _                    => throw new Exception(record_type + " not found")
+      }
+      event_value match {
+        case "Valid"    => clickById("eventValue")
+        case "NotValid" => clickById("eventValue-2")
+        case _          => throw new Exception(event_value + " not found")
+      }
   }
 
 }

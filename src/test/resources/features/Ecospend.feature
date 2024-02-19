@@ -34,3 +34,29 @@ Feature: Ecospend APIs
      | Internal Server Error 500 |
      | Bad Gateway 502           |
      | Service Unavailable 503   |
+
+  Scenario Outline: External API webhook
+    Given I start a webhook journey
+    Then I am on the simulate webhook page
+    When I enter Record Id <record_id>, Record Type <record_type> and Event Value <event_value>
+    And I click to continue
+    Then A notification is sent with the correct <record_id>, <record_type> and <event_value>
+    And Mongo is populated with the correct <record_id>, <record_type> and <event_value>
+    Examples:
+      | record_id | record_type        | event_value |
+      | TestAAV   | AccountAssessment  | Valid       |
+      | TestAANV  | AccountAssessment  | NotValid    |
+      | TestCTV   | ConsentTransaction | Valid       |
+      | TestCTNV  | ConsentTransaction | NotValid    |
+      | TestAV    | Account            | Valid       |
+      | TestANV   | Account            | NotValid    |
+      | TestATV   | AccountTransaction | Valid       |
+      | TestATNV  | AccountTransaction | NotValid    |
+      | TestSOV   | StandingOrder      | Valid       |
+      | TestSONV  | StandingOrder      | NotValid    |
+      | TestSPV   | ScheduledPayment   | Valid       |
+      | TestSPNV  | ScheduledPayment   | NotValid    |
+      | TestDDV   | DirectDebit        | Valid       |
+      | TestDDNV  | DirectDebit        | NotValid    |
+      | TestCV    | Consent            | Valid       |
+      | TestCNV   | Consent            | NotValid    |

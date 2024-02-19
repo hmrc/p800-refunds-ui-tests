@@ -59,6 +59,17 @@ object TestOnlyClearAttemptsPage extends BasePage {
     currentUrl should include(url)
 }
 
+object TestOnlyWebhookPage extends BasePage {
+  val h1    = "Simulate webhook notification"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/test-only/simulate-webhook"
+  val title = ""
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Test Only - Get an Income Tax refund - GOV.UK"
+  }
+}
+
 object TestOnlyGovUkPage extends BasePage {
   val h1    = "Tax overpayments and underpayments"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/test-only/gov-uk-route-in"
