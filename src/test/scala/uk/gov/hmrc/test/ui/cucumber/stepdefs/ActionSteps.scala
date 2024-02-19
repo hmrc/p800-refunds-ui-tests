@@ -33,7 +33,7 @@ class ActionSteps extends BaseSteps {
         TestOnlyGovUkPage.assertPage()
         clickByLinkText("Claim Now >")
       case "webhook journey" =>
-        MongoClient().getDatabase("p800-refunds-external-api").getCollection("fraud-check-status").drop()
+        MongoClient().getDatabase("p800-refunds-external-api").getCollection("fraud-check-status").drop().head()
         clickByLinkText("webhook notification")
       case _                 => throw new Exception(journey + " not found")
     }
