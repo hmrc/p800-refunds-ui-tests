@@ -47,6 +47,7 @@ class AssertionSteps extends BaseSteps {
         eventually(WeCannotConfirmYourIdentityBankTransferLockedOutPage.assertPage())
       case "locked out for cheque"                                        => eventually(WeCannotConfirmYourIdentityChequeLockedOutPage.assertPage())
       case "refund request not submitted"                                 => eventually(RefundRequestNotSubmittedPage.assertPage())
+      case "simulate webhook"                                             => eventually(TestOnlyWebhookPage.assertPage())
       case "technical difficulties"                                       => eventually(TechnicalDifficultiesPage.assertPage())
       case "verifying account"                                            => eventually(VerifyingBankAccountPage.assertPage())
       case "we cannot confirm your identity for bank transfer"            =>
@@ -156,6 +157,23 @@ class AssertionSteps extends BaseSteps {
       case "Isn't" => ipList.isEmpty shouldBe true
       case _       => throw new Exception(hasFailed + " not found")
     }
+  }
+
+  Then("^A notification is sent with the correct (.*), (.*) and (.*)$") {
+    (record_id: String, record_type: String, event_value: String) =>
+      findTextByTagName("Body") should include
+      s"""{"event_value":"$event_value","record_type":"$record_type","record_id":"$record_id"}"""
+  }
+
+  Then("^Mongo is populated with the correct (.*), (.*) and (.*)$") {
+    (record_id: String, record_type: String, event_value: String) =>
+      MongoClient()
+        .getDatabase("p800-refunds-external-api")
+        .getCollection("fraud-check-status")
+        .find()
+        .results()
+        .toString() should include
+      s"""(fraudCheckStatusRequest,{"record_type": "$record_type", "record_id": "$record_id", "event_value": "$event_value"})"""
   }
 
 }
