@@ -173,3 +173,25 @@ Feature: Identity Verification Fails
       | AB399999C | technical difficulties                            | Isn't          | 400                         |
       | AB499999C | technical difficulties                            | Isn't          | 403                         |
       | AB599999C | technical difficulties                            | Isn't          | 500                         |
+
+  Scenario Outline: Trace Individual API fails
+    When I select yes, bank transfer and click continue
+    Then I am on the we need to confirm your identity for bank transfer page
+    And The page lists reference, NINO and DOB
+    When I click to continue
+    Then I am on the what is your reference for bank transfer page
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter <NINO> in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO <NINO>
+    When I click to continue
+    Then I am on the <Page> page
+    And A failed attempt <Failed attempt> logged in Mongo
+    Examples:
+      | NINO      | Page                   | Failed attempt | Response |
+      | AB699999C | technical difficulties | Isn't          | 404      |
+      | AB799999C | technical difficulties | Isn't          | 400      |
+      | AB899999C | technical difficulties | Isn't          | 500      |
