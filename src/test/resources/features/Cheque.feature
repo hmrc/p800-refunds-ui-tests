@@ -73,3 +73,13 @@ Feature: Cheque Journey
     When I click the dropdown link find a lost National Insurance number
     Then I am on the lost national insurance number page in a new tab
 
+  Scenario: Payable order API returns 422
+    When I enter AB909999C in the national insurance number input and click continue
+    Then I am on the check answers for cheque page
+    And The page has rows for just reference and NINO with NINO AB909999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for cheque page
+    When I click to continue
+    Then I am on the complete your refund request page
+    When I click to submit refund request
+    Then I am on the technical difficulties page
