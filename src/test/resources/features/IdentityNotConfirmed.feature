@@ -22,7 +22,7 @@ Feature: Identity Verification Fails
     Then I am on the we cannot confirm your identity for cheque page
     When I click to choose another method
     Then I am on the choose another way to receive your refund from cheque page
-    When I select bank transfer logged out and click continue
+    When I select not signed in and click continue
     Then I am on the we need to confirm your identity for bank transfer page
     And The page lists reference, NINO and DOB
     When I click to continue
@@ -66,7 +66,7 @@ Feature: Identity Verification Fails
     Then I am on the we cannot confirm your identity for cheque page
     When I click to choose another method
     Then I am on the choose another way to receive your refund from cheque page
-    When I select bank transfer using your Government Gateway user ID and click continue
+    When I select yes to sign in and click continue
     Then I am on the auth login page
     And The redirect url contains /tax-you-paid/choose-year
 

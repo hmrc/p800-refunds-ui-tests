@@ -220,9 +220,9 @@ object WeCannotConfirmYourIdentityChequePage extends BasePage {
 }
 
 object ChooseAnotherWayChequePage extends BasePage {
-  val h1    = "Choose another way to receive your refund"
-  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/choose-another-way-to-receive-your-refund"
-  val title = "Cheque - choose another way to receive your refund"
+  val h1    = "Claim your refund by bank transfer"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/claim-your-refund-by-bank-transfer"
+  val title = "Cheque - claim your refund by bank transfer"
 }
 
 object WeCannotConfirmYourIdentityChequeLockedOutPage extends BasePage {
