@@ -235,6 +235,7 @@ Feature: Bank Transfer Journey
     When I click the link refresh this page
     Then I am on the verifying account page
     When I receive a not received response
-    Then I am still on the verifying account page after 5 seconds
+    And I click the link refresh this page
+    Then I am on the verifying account page
 
   #TODO: click failed or cancelled on bank stub

@@ -78,11 +78,6 @@ class AssertionSteps extends BaseSteps {
     }
   }
 
-  Then("^I am still on the verifying account page after (.*) seconds$") { (seconds: String) =>
-    Thread.sleep(seconds.toInt * 1000)
-    eventually(VerifyingBankAccountPage.assertPage())
-  }
-
   Then("^I am on the (.*) page in a new tab$") { (page: String) =>
     val wait    = new WebDriverWait(driver, Duration.ofSeconds(10))
     wait.until(ExpectedConditions.numberOfWindowsToBe(2))
