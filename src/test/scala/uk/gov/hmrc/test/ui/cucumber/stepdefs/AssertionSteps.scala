@@ -24,6 +24,8 @@ import org.scalatest.time.{Seconds, Span}
 import uk.gov.hmrc.test.ui.mongo.MongoHelper.GenericObservable
 import uk.gov.hmrc.test.ui.pages._
 
+import scala.language.postfixOps
+
 class AssertionSteps extends BaseSteps {
 
   Then("^I am on the (.*) page$") { (page: String) =>
@@ -82,7 +84,8 @@ class AssertionSteps extends BaseSteps {
   }
 
   Then("^I am on the (.*) page in a new tab$") { (page: String) =>
-    new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.numberOfWindowsToBe(2))
+    val wait    = new WebDriverWait(driver, Duration.ofSeconds(10))
+    wait.until(ExpectedConditions.numberOfWindowsToBe(2))
     val windows = driver.getWindowHandles.toArray().toSeq
     driver.switchTo().window(windows(1).toString)
     page match {

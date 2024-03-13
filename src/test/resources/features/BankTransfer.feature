@@ -1,4 +1,4 @@
-@test @solo
+@test
 Feature: Bank Transfer Journey
 
   Background:
