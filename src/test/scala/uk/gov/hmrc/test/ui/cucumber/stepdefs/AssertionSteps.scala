@@ -20,6 +20,7 @@ import java.time.Duration
 
 import org.mongodb.scala.MongoClient
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
+import org.scalatest.time.{Seconds, Span}
 import uk.gov.hmrc.test.ui.mongo.MongoHelper.GenericObservable
 import uk.gov.hmrc.test.ui.pages._
 
@@ -29,7 +30,8 @@ class AssertionSteps extends BaseSteps {
     page match {
       case "auth login"                                                   => eventually(AuthLoginPage.assertPage())
       case "bank stub"                                                    => eventually(BankStubPage.assertPage())
-      case "bank transfer request received"                               => eventually(BankTransferRequestReceivedPage.assertPage())
+      case "bank transfer request received"                               =>
+        eventually(timeout(Span(10, Seconds)))(BankTransferRequestReceivedPage.assertPage())
       case "change your address"                                          => eventually(ChangeYourDetailsPage.assertPage())
       case "check answers for bank transfer"                              => eventually(CheckAnswersBankTransferPage.assertPage())
       case "check answers for cheque"                                     => eventually(CheckAnswersChequePage.assertPage())
@@ -46,7 +48,8 @@ class AssertionSteps extends BaseSteps {
       case "locked out for bank transfer"                                 =>
         eventually(WeCannotConfirmYourIdentityBankTransferLockedOutPage.assertPage())
       case "locked out for cheque"                                        => eventually(WeCannotConfirmYourIdentityChequeLockedOutPage.assertPage())
-      case "refund request not submitted"                                 => eventually(RefundRequestNotSubmittedPage.assertPage())
+      case "refund request not submitted"                                 =>
+        eventually(timeout(Span(10, Seconds)))(RefundRequestNotSubmittedPage.assertPage())
       case "simulate webhook"                                             => eventually(TestOnlyWebhookPage.assertPage())
       case "technical difficulties"                                       => eventually(TechnicalDifficultiesPage.assertPage())
       case "verifying account"                                            => eventually(VerifyingBankAccountPage.assertPage())
@@ -71,6 +74,11 @@ class AssertionSteps extends BaseSteps {
       case "what is your reference for cheque"                            => eventually(WhatIsP800ReferenceChequePage.assertPage())
       case _                                                              => throw new Exception(page + " not found")
     }
+  }
+
+  Then("^I am still on the verifying account page after (.*) seconds$") { (seconds: String) =>
+    Thread.sleep(seconds.toInt * 1000)
+    eventually(VerifyingBankAccountPage.assertPage())
   }
 
   Then("^I am on the (.*) page in a new tab$") { (page: String) =>

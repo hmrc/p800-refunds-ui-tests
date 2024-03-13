@@ -112,11 +112,11 @@ Feature: Logged In Journey
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Failed and click continue
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
-    When I navigate to test-only and select request failed
+    When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click to choose another way to get my money
     Then I am on the choose another way to receive your refund from bank transfer page

@@ -18,11 +18,14 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.mongodb.scala.MongoClient
 import org.openqa.selenium.Keys
+import uk.gov.hmrc.test.ui.mongo.MongoHelper.GenericObservable
 import uk.gov.hmrc.test.ui.pages._
+import scala.sys.process._
 
 class ActionSteps extends BaseSteps {
 
   Given("^I start a (.*)$") { (journey: String) =>
+    MongoClient().getDatabase("p800-refunds-frontend").getCollection("journey").drop().head()
     driver.navigate.to(TestOnlyClearAttemptsPage.url)
     TestOnlyClearAttemptsPage.assertPage()
     driver.navigate.to(TestOnlyStartPage.url)
@@ -144,16 +147,6 @@ class ActionSteps extends BaseSteps {
     driver.navigate().back()
   }
 
-  When("""^I navigate to test-only and select (.*)$""") { (result: String) =>
-    driver.navigate.to(TestOnlyStartPage.url)
-    TestOnlyStartPage.assertPage()
-    result match {
-      case "request success" => clickByLinkText("Finish Succeed")
-      case "request failed"  => clickByLinkText("Finish Fail")
-      case _                 => throw new Exception(result + " not found")
-    }
-  }
-
   When("""^I enter Record Id (.*), Record Type (.*) and Event Value (.*)$""") {
     (record_id: String, record_type: String, event_value: String) =>
       enterTextById("recordId", record_id)
@@ -169,10 +162,31 @@ class ActionSteps extends BaseSteps {
         case _                    => throw new Exception(record_type + " not found")
       }
       event_value match {
-        case "Valid"    => clickById("eventValue")
-        case "NotValid" => clickById("eventValue-2")
-        case _          => throw new Exception(event_value + " not found")
+        case "Valid"       => clickById("eventValue")
+        case "NotValid"    => clickById("eventValue-2")
+        case "NotReceived" => clickById("eventValue-3")
+        case _             => throw new Exception(event_value + " not found")
       }
+  }
+
+  When("""^I receive a (.*) response$""") { (status: String) =>
+    val accountSummaryResponse = MongoClient()
+      .getDatabase("p800-refunds-frontend")
+      .getCollection("journey")
+      .find()
+      .results()
+      .toString()
+    val index                  = accountSummaryResponse.indexOf("bankAccountSummary,{\"id\"")
+    val consent_id             = accountSummaryResponse.substring(index + 27, index + 63)
+    status match {
+      case "valid"        =>
+        s"""curl -v POST -H \"Content-Type: application/json\" -d '{\"event_value\":\"Valid\",\"record_type\":\"AccountAssessment\",\"record_id\":\"$consent_id\"}' http://localhost:10152/status""".!!
+      case "not valid"    =>
+        s"""curl -v POST -H \"Content-Type: application/json\" -d '{\"event_value\":\"NotValid\",\"record_type\":\"AccountAssessment\",\"record_id\":\"$consent_id\"}' http://localhost:10152/status""".!!
+      case "not received" =>
+        s"""curl -v POST -H \"Content-Type: application/json\" -d '{\"event_value\":\"NotReceived\",\"record_type\":\"AccountAssessment\",\"record_id\":\"$consent_id\"}' http://localhost:10152/status""".!!
+      case _              => throw new Exception(status + " not found")
+    }
   }
 
 }

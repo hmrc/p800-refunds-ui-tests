@@ -1,4 +1,4 @@
-@test
+@test @solo
 Feature: Bank Transfer Journey
 
   Background:
@@ -33,7 +33,7 @@ Feature: Bank Transfer Journey
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
-    When I navigate to test-only and select request success
+    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
     When I click the link call or write to the Income Tax helpline
@@ -58,7 +58,7 @@ Feature: Bank Transfer Journey
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
-    When I navigate to test-only and select request success
+    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
     When I click the link what did you think of this service
@@ -83,12 +83,14 @@ Feature: Bank Transfer Journey
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
-    When I navigate to test-only and select request success
+    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
     When I click browser back
-#    Then I am on the bank transfer request received page
-#    And The page contains 1234567890
+    Then I am on the bank stub page
+    When I click browser back
+    Then I am on the bank transfer request received page
+    And The page contains 1234567890
 
   Scenario: User's bank is not listed and they apply for cheque instead
     When I enter AB999999C in the national insurance number input and click continue
@@ -146,11 +148,11 @@ Feature: Bank Transfer Journey
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Failed and click continue
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
-    When I navigate to test-only and select request failed
+    When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click to choose another way to get my money
     Then I am on the choose another way to receive your refund from bank transfer page
@@ -177,14 +179,16 @@ Feature: Bank Transfer Journey
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Failed and click continue
+    When I select Authorised and click continue
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
-    When I navigate to test-only and select request failed
+    When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click browser back
-#    Then I am on the refund request not submitted page
+    Then I am on the bank stub page
+    When I click browser back
+    Then I am on the refund request not submitted page
 
   Scenario: User decides to change bank account from the give permission page
     When I enter AB999999C in the national insurance number input and click continue
@@ -209,4 +213,28 @@ Feature: Bank Transfer Journey
     When I click the dropdown link find a lost National Insurance number
     Then I am on the lost national insurance number page in a new tab
 
-  #TODO: click cancelled on bank stub
+  Scenario: User stays on verifying page after ecospend sends no response
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your permission page
+    And The first paragraph contains Chase
+    Then I am on the give your permission page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the verifying account page
+    When I click the link refresh this page
+    Then I am on the verifying account page
+    When I receive a not received response
+    Then I am still on the verifying account page after 5 seconds
+
+  #TODO: click failed or cancelled on bank stub
