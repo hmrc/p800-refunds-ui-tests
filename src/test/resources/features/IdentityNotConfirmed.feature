@@ -47,7 +47,7 @@ Feature: Identity Verification Fails
     Then I am on the verifying account page
     When I click the link refresh this page
     Then I am on the verifying account page
-    When I navigate to test-only and select request success
+    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
 
