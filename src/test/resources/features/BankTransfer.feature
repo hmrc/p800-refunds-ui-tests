@@ -162,7 +162,7 @@ Feature: Bank Transfer Journey
     Then I am on the cheque request received page
     And The page contains 1234567890
 
-  Scenario: User fails ecospend check is not submitted so they click back
+  Scenario: User fails ecospend check and they click back
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue

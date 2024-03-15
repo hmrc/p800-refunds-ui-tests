@@ -68,7 +68,7 @@ Feature: Cheque Journey
     Then I am on the is your address up to date page
     When I select no to update address and click continue
     Then I am on the update your address page
-    When I click the link Contact HMRC
+    When I click the link contact HMRC
     Then I am on the change your address page
 
   Scenario: User checks for NINO
