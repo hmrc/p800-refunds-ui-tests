@@ -53,6 +53,8 @@ class ActionSteps extends BaseSteps {
       case "Authorised"                                          => clickById("bank-result")
       case "Cancelled"                                           => clickById("bank-result-2")
       case "Failed"                                              => clickById("bank-result-3")
+      case "yes for address"                                     => clickById("address-up-to-date")
+      case "no to update address"                                => clickById("address-up-to-date-2")
       case _                                                     => throw new Exception(option + " not found")
     }
     clickById("submit")
@@ -125,6 +127,7 @@ class ActionSteps extends BaseSteps {
       case "call or write to the Income Tax helpline"      => clickById("general-enquiries-link")
       case "change my bank"                                => clickById("change-bank")
       case "choose another way to get my money"            => clickById("choose-another-way")
+      case "Contact HMRC"                                  => clickById("contact-hmrc-link")
       case "my bank is not listed"                         => clickById("myAccountIsNotListed")
       case "refresh this page"                             => clickById("refresh-this-page")
       case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
@@ -137,7 +140,6 @@ class ActionSteps extends BaseSteps {
   When("^I click the dropdown link (.*)$") { (link: String) =>
     clickByCssSelector("span.govuk-details__summary-text")
     link match {
-      case "contact HMRC"                          => clickById("contact-hmrc-link")
       case "find a lost National Insurance number" => clickById("lost-national-insurance-number-link")
       case _                                       => throw new Exception(link + " not found")
     }

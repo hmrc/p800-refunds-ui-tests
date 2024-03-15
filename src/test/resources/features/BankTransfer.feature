@@ -105,8 +105,8 @@ Feature: Bank Transfer Journey
     When I click the link my bank is not listed
     Then I am on the choose another way to receive your refund from bank transfer page
     When I select cheque and click continue
-    Then I am on the complete your refund request page
-    When I click to submit refund request
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
     Then I am on the cheque request received page
     And The page contains 1234567890
 
@@ -126,12 +126,12 @@ Feature: Bank Transfer Journey
     When I click the link choose another way to get my money
     Then I am on the choose another way to receive your refund from bank transfer page
     When I select cheque and click continue
-    Then I am on the complete your refund request page
-    When I click to submit refund request
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
     Then I am on the cheque request received page
     And The page contains 1234567890
 
-  Scenario: User's refund request is not submitted so applies for cheque instead
+  Scenario: User fails ecospend check so applies for cheque instead
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -157,12 +157,12 @@ Feature: Bank Transfer Journey
     When I click to choose another way to get my money
     Then I am on the choose another way to receive your refund from bank transfer page
     When I select cheque and click continue
-    Then I am on the complete your refund request page
-    When I click to submit refund request
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
     Then I am on the cheque request received page
     And The page contains 1234567890
 
-  Scenario: User's refund request is not submitted so they click back
+  Scenario: User fails ecospend check is not submitted so they click back
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue

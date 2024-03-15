@@ -100,8 +100,8 @@ Feature: Identity Verification Fails
     When I click to continue
     Then I am on the we have confirmed your identity for cheque page
     When I click to continue
-    Then I am on the complete your refund request page
-    When I click to submit refund request
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
     Then I am on the cheque request received page
     And The page contains 1234567890
 

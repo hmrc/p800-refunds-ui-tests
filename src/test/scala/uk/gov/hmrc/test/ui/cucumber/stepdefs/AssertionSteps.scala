@@ -24,8 +24,6 @@ import org.scalatest.time.{Seconds, Span}
 import uk.gov.hmrc.test.ui.mongo.MongoHelper.GenericObservable
 import uk.gov.hmrc.test.ui.pages._
 
-import scala.language.postfixOps
-
 class AssertionSteps extends BaseSteps {
 
   Then("^I am on the (.*) page$") { (page: String) =>
@@ -42,11 +40,11 @@ class AssertionSteps extends BaseSteps {
         eventually(ChooseAnotherWayBankTransferPage.assertPage())
       case "choose another way to receive your refund from cheque"        =>
         eventually(ChooseAnotherWayChequePage.assertPage())
-      case "complete your refund request"                                 => eventually(CompleteYourRefundRequestPage.assertPage())
       case "do you want a bank transfer"                                  => eventually(DoYouWantABankTransferPage.assertPage())
       case "do you want to sign in"                                       => eventually(DoYouWantToSignInPage.assertPage())
       case "feedback"                                                     => eventually(FeedbackPage.assertPage())
       case "give your permission"                                         => eventually(GiveYourPermissionPage.assertPage())
+      case "is your address up to date"                                   => eventually(IsYourAddressUpToDatePage.assertPage())
       case "locked out for bank transfer"                                 =>
         eventually(WeCannotConfirmYourIdentityBankTransferLockedOutPage.assertPage())
       case "locked out for cheque"                                        => eventually(WeCannotConfirmYourIdentityChequeLockedOutPage.assertPage())
@@ -54,6 +52,7 @@ class AssertionSteps extends BaseSteps {
         eventually(timeout(Span(10, Seconds)))(RefundRequestNotSubmittedPage.assertPage())
       case "simulate webhook"                                             => eventually(TestOnlyWebhookPage.assertPage())
       case "technical difficulties"                                       => eventually(TechnicalDifficultiesPage.assertPage())
+      case "update your address"                                          => eventually(UpdateYourAddressPage.assertPage())
       case "verifying account"                                            => eventually(VerifyingBankAccountPage.assertPage())
       case "we cannot confirm your identity for bank transfer"            =>
         eventually(WeCannotConfirmYourIdentityBankTransferPage.assertPage())
