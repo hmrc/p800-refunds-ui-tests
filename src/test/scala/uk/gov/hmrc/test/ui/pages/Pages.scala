@@ -237,10 +237,16 @@ object WeHaveConfirmedYourIdentityChequePage extends BasePage {
   val title = "Cheque - your identity is confirmed"
 }
 
-object CompleteYourRefundRequestPage extends BasePage {
-  val h1    = "Complete your refund request to get your cheque"
-  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/complete-refund-request"
-  val title = "Cheque - complete refund request"
+object IsYourAddressUpToDatePage extends BasePage {
+  val h1    = "Is your address up to date?"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/is-your-address-up-to-date"
+  val title = "Cheque - is your address up to date"
+}
+
+object UpdateYourAddressPage extends BasePage {
+  val h1    = "Update your address"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/update-your-address"
+  val title = "Cheque - update your address"
 }
 
 object ChequeRequestReceivedPage extends BasePage {

@@ -21,8 +21,8 @@ Feature: Cheque Journey
     When I click to continue
     Then I am on the we have confirmed your identity for cheque page
     When I click to continue
-    Then I am on the complete your refund request page
-    When I click to submit refund request
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
     Then I am on the cheque request received page
     And The page contains 1234567890
     When I click the link call or write to the Income Tax helpline
@@ -35,8 +35,8 @@ Feature: Cheque Journey
     When I click to continue
     Then I am on the we have confirmed your identity for cheque page
     When I click to continue
-    Then I am on the complete your refund request page
-    When I click to submit refund request
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
     Then I am on the cheque request received page
     And The page contains 1234567890
     When I click the link what did you think of this service
@@ -50,8 +50,8 @@ Feature: Cheque Journey
     When I click to continue
     Then I am on the we have confirmed your identity for cheque page
     When I click to continue
-    Then I am on the complete your refund request page
-    When I click to submit refund request
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
     Then I am on the cheque request received page
     And The page contains 1234567890
     When I click browser back
@@ -65,8 +65,10 @@ Feature: Cheque Journey
     When I click to continue
     Then I am on the we have confirmed your identity for cheque page
     When I click to continue
-    Then I am on the complete your refund request page
-    When I click the dropdown link contact HMRC
+    Then I am on the is your address up to date page
+    When I select no to update address and click continue
+    Then I am on the update your address page
+    When I click the link contact HMRC
     Then I am on the change your address page
 
   Scenario: User checks for NINO
@@ -80,6 +82,6 @@ Feature: Cheque Journey
     When I click to continue
     Then I am on the we have confirmed your identity for cheque page
     When I click to continue
-    Then I am on the complete your refund request page
-    When I click to submit refund request
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
     Then I am on the technical difficulties page
