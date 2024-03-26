@@ -51,7 +51,7 @@ class AssertionSteps extends BaseSteps {
       case "refund request not submitted"                                 =>
         eventually(timeout(Span(10, Seconds)))(RefundRequestNotSubmittedPage.assertPage())
       case "simulate webhook"                                             => eventually(TestOnlyWebhookPage.assertPage())
-      case "technical difficulties"                                       => eventually(TechnicalDifficultiesPage.assertPage())
+      case "technical difficulties"                                       => eventually(timeout(Span(10, Seconds)))(TechnicalDifficultiesPage.assertPage())
       case "update your address"                                          => eventually(UpdateYourAddressPage.assertPage())
       case "verifying account"                                            => eventually(VerifyingBankAccountPage.assertPage())
       case "we cannot confirm your identity for bank transfer"            =>
