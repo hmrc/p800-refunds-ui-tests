@@ -85,3 +85,13 @@ Feature: Cheque Journey
     Then I am on the is your address up to date page
     When I select yes for address and click continue
     Then I am on the technical difficulties page
+
+  Scenario: User has already claimed refund and fails reference check
+    When I enter AB199999C in the national insurance number input and click continue
+    Then I am on the check answers for cheque page
+    And The page has rows for just reference and NINO with NINO AB199999C
+    When I click to continue
+    Then I am on the there is a problem page
+    And A failed attempt Isn't logged in Mongo
+    When I click the link contact us
+    Then I am on the income tax enquiries page

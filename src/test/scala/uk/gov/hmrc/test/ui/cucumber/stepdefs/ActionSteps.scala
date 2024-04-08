@@ -127,7 +127,7 @@ class ActionSteps extends BaseSteps {
       case "call or write to the Income Tax helpline"      => clickById("general-enquiries-link")
       case "change my bank"                                => clickById("change-bank")
       case "choose another way to get my money"            => clickById("choose-another-way")
-      case "contact HMRC"                                  => clickById("contact-hmrc-link")
+      case "contact HMRC" | "contact us"                   => clickById("contact-hmrc-link")
       case "my bank is not listed"                         => clickById("myAccountIsNotListed")
       case "refresh this page"                             => clickById("refresh-this-page")
       case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
