@@ -142,6 +142,13 @@ object WeCannotConfirmYourIdentityBankTransferLockedOutPage extends BasePage {
   val title = "Bank transfer - no more attempts left to confirm your identity"
 }
 
+object ThereIsAProblemPage extends BasePage {
+  val h1    = "There is a problem"
+  val url   =
+    TestConfiguration.url("p800-refunds-frontend") + "/there-is-a-problem"
+  val title = "There is a problem"
+}
+
 object WeHaveConfirmedYourIdentityBankTransferPage extends BasePage {
   val h1    = "We have confirmed your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/your-identity-is-confirmed"

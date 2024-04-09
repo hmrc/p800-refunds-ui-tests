@@ -260,4 +260,16 @@ Feature: Bank Transfer Journey
     When I receive a valid response
     Then I am on the refund request not submitted page
 
+  Scenario: User has already claimed refund and fails reference check
+    When I enter AB199999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB199999C
+    When I click to continue
+    Then I am on the there is a problem page
+    And A failed attempt Isn't logged in Mongo
+    When I click the link contact us
+    Then I am on the income tax enquiries page
+
   #TODO: click failed or cancelled on bank stub

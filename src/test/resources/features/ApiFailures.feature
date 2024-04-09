@@ -24,7 +24,6 @@ Feature: API Failures
     Examples:
       | NINO      | Page                                       | Failed attempt | Response                    |
       | AB099999C | we cannot confirm your identity for cheque | Is             | 404                         |
-      | AB199999C | we cannot confirm your identity for cheque | Isn't          | 422 - refund already taken  |
       | AB299999C | technical difficulties                     | Isn't          | 422 - unprocessable entity  |
       | AB399999C | technical difficulties                     | Isn't          | 400                         |
       | AB499999C | technical difficulties                     | Isn't          | 403                         |
@@ -49,7 +48,6 @@ Feature: API Failures
     Examples:
       | NINO      | Page                                              | Failed attempt | Response                    |
       | AB099999C | we cannot confirm your identity for bank transfer | Is             | 404                         |
-      | AB199999C | we cannot confirm your identity for bank transfer | Isn't          | 422 - refund already taken  |
       | AB299999C | technical difficulties                            | Isn't          | 422 - unprocessable entity  |
       | AB399999C | technical difficulties                            | Isn't          | 400                         |
       | AB499999C | technical difficulties                            | Isn't          | 403                         |
