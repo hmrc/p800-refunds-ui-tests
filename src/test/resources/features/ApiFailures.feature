@@ -75,6 +75,24 @@ Feature: API Failures
       | AB799999C | technical difficulties | Isn't          | 400      |
       | AB899999C | technical difficulties | Isn't          | 500      |
 
+  Scenario: Issue Payable Order API fails
+    When I select no I want a cheque and click continue
+    Then I am on the we need to confirm your identity for cheque page
+    And The page lists just reference and NINO
+    When I click to continue
+    Then I am on the what is your reference for cheque page
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for cheque page
+    When I enter AB979999C in the national insurance number input and click continue
+    Then I am on the check answers for cheque page
+    And The page has rows for just reference and NINO with NINO AB979999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for cheque page
+    When I click to continue
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
+    Then I am on the technical difficulties page
+
   Scenario Outline: EDH risk check API fails
     When I select yes, bank transfer and click continue
     Then I am on the we need to confirm your identity for bank transfer page
@@ -134,12 +152,11 @@ Feature: API Failures
     When I receive a valid response
     Then I am on the technical difficulties page
     Examples:
-      | NINO      | Response |
-      | AB999991C | 400      |
-      | AB999992C | 403      |
-      | AB999993C | 500      |
-      | AB999994C | 422      |
-      | AB999995C | 422      |
+      | NINO      | Response                   |
+      | AB999991C | 400                        |
+      | AB999992C | 403                        |
+      | AB999993C | 500                        |
+      | AB999995C | 422 - unprocessable entity |
 
   Scenario: Suspend overpayment API fails
     When I select yes, bank transfer and click continue

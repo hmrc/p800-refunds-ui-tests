@@ -272,4 +272,25 @@ Feature: Bank Transfer Journey
     When I click the link contact us
     Then I am on the income tax enquiries page
 
+  Scenario: Claim Overpayment API returns 422
+    When I enter AB999994C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999994C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your permission page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the verifying account page
+    When I receive a valid response
+    Then I am on the technical difficulties page
+    #test to be updated pending OPS-11880
+
   #TODO: click failed or cancelled on bank stub

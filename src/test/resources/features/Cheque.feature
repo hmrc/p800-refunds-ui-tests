@@ -85,6 +85,7 @@ Feature: Cheque Journey
     Then I am on the is your address up to date page
     When I select yes for address and click continue
     Then I am on the technical difficulties page
+    #test to be updated pending OPS-11880
 
   Scenario: User has already claimed refund and fails reference check
     When I enter AB199999C in the national insurance number input and click continue
