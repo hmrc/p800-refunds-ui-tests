@@ -100,7 +100,7 @@ class AssertionSteps extends BaseSteps {
       case "first paragraph" =>
         findTextByCssSelector(
           "p:nth-child(2)"
-        ) shouldBe s"By choosing approve, you will be transferred to $input to securely log in and approve your refund of £4,321.09. Change my bank."
+        ) shouldBe s"By choosing approve, you will be transferred to $input to securely sign in and approve your refund of £4,321.09. Change my bank."
       case "page"            => findTextByCssSelector("div.govuk-panel__body") shouldBe s"Your P800 reference:\n$input"
       case "redirect url"    =>
         findElementById("redirectionUrl").getAttribute("value") shouldBe s"http://localhost:9416$input"
