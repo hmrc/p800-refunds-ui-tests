@@ -136,9 +136,9 @@ object WeCannotConfirmYourIdentityBankTransferPage extends BasePage {
 }
 
 object ChooseAnotherWayBankTransferPage extends BasePage {
-  val h1    = "Choose another way to receive your refund"
+  val h1    = "Choose another way to get your refund"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/choose-another-way-to-receive-your-refund"
-  val title = "Bank transfer - choose another way to receive your refund"
+  val title = "Bank transfer - choose another way to get your refund"
 }
 
 object WeCannotConfirmYourIdentityBankTransferLockedOutPage extends BasePage {
