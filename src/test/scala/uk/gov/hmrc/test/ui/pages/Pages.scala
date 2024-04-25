@@ -87,6 +87,12 @@ object DoYouWantToSignInPage extends BasePage {
   val title = "Do you want to sign in?"
 }
 
+object YouCannotConfirmYourIdentityYetPage extends BasePage {
+  val h1    = "You cannot confirm your identity yet"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/you-cannot-confirm-your-identity-yet"
+  val title = "You cannot confirm your identity yet"
+}
+
 object DoYouWantABankTransferPage extends BasePage {
   val h1    = "Do you want your refund by bank transfer?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/do-you-want-your-refund-via-bank-transfer"
@@ -130,9 +136,9 @@ object WeCannotConfirmYourIdentityBankTransferPage extends BasePage {
 }
 
 object ChooseAnotherWayBankTransferPage extends BasePage {
-  val h1    = "Choose another way to receive your refund"
+  val h1    = "Choose another way to get your refund"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/choose-another-way-to-receive-your-refund"
-  val title = "Bank transfer - choose another way to receive your refund"
+  val title = "Bank transfer - choose another way to get your refund"
 }
 
 object WeCannotConfirmYourIdentityBankTransferLockedOutPage extends BasePage {
@@ -262,11 +268,28 @@ object ChequeRequestReceivedPage extends BasePage {
   val title = "Cheque - request received"
 }
 
-object FeedbackPage extends BasePage {
-  // TO BE UPDATED WHEN WE SET UP FEEDBACK SERVICE
-  val h1    = "Cheque request received"
-  val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/request-received#"
-  val title = "Cheque - request received"
+object FeedbackForChequePage extends BasePage {
+  val h1    = "Give feedback"
+  val url   =
+    "http://localhost:9514/feedback/p800-refunds-cheque"
+  val title = ""
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Give feedback - GOV.UK"
+  }
+}
+
+object FeedbackForBankTransferPage extends BasePage {
+  val h1    = "Give feedback"
+  val url   =
+    "http://localhost:9514/feedback/p800-refunds-bank-transfer"
+  val title = ""
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Give feedback - GOV.UK"
+  }
 }
 
 object TechnicalDifficultiesPage extends BasePage {

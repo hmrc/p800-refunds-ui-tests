@@ -26,19 +26,24 @@ class ActionSteps extends BaseSteps {
 
   Given("^I start a (.*)$") { (journey: String) =>
     MongoClient().getDatabase("p800-refunds-frontend").getCollection("journey").drop().head()
-    driver.navigate.to(TestOnlyClearAttemptsPage.url)
-    TestOnlyClearAttemptsPage.assertPage()
+    journey match {
+      case "journey"                         =>
+        driver.navigate.to(TestOnlyClearAttemptsPage.url)
+        TestOnlyClearAttemptsPage.assertPage()
+      case "new journey" | "webhook journey" => ()
+      case _                                 => throw new Exception(journey + " not found")
+    }
     driver.navigate.to(TestOnlyStartPage.url)
     TestOnlyStartPage.assertPage()
     journey match {
-      case "journey"         =>
+      case "journey" | "new journey" =>
         clickByLinkText("start journey via gov-uk")
         TestOnlyGovUkPage.assertPage()
         clickByLinkText("Claim Now >")
-      case "webhook journey" =>
+      case "webhook journey"         =>
         MongoClient().getDatabase("p800-refunds-external-api").getCollection("fraud-check-status").drop().head()
         clickByLinkText("webhook notification")
-      case _                 => throw new Exception(journey + " not found")
+      case _                         => throw new Exception(journey + " not found")
     }
   }
 
@@ -62,16 +67,17 @@ class ActionSteps extends BaseSteps {
 
   When("^I click to (.*)$") { (element: String) =>
     element match {
-      case "approve the refund"                 => clickById("approve-this-refund")
-      case "change date of birth"               => clickById("change-date-of-birth")
-      case "change nino"                        => clickById("change-national-insurance-number")
-      case "change reference"                   => clickById("change-reference")
-      case "choose another method"              => clickById("choose-another-method-link")
-      case "choose another way to get my money" => clickById("try-again")
-      case "continue"                           => clickById("submit")
-      case "submit refund request"              => clickById("submit-refund-request")
-      case "try again"                          => clickById("try-again")
-      case _                                    => throw new Exception(element + " not found")
+      case "approve the refund"                                                         => clickById("approve-this-refund")
+      case "change date of birth"                                                       => clickById("change-date-of-birth")
+      case "change nino"                                                                => clickById("change-national-insurance-number")
+      case "change reference"                                                           => clickById("change-reference")
+      case "choose another way to get my refund" | "claim your refund by bank transfer" =>
+        clickById("choose-another-method-link")
+      case "choose another way to get my refund via button"                             => clickById("try-again")
+      case "continue"                                                                   => clickById("submit")
+      case "submit refund request"                                                      => clickById("submit-refund-request")
+      case "try again"                                                                  => clickById("try-again")
+      case _                                                                            => throw new Exception(element + " not found")
     }
   }
 
@@ -124,24 +130,20 @@ class ActionSteps extends BaseSteps {
 
   When("^I click the link (.*)$") { (link: String) =>
     link match {
-      case "call or write to the Income Tax helpline"      => clickById("general-enquiries-link")
-      case "change my bank"                                => clickById("change-bank")
-      case "choose another way to get my money"            => clickById("choose-another-way")
-      case "contact HMRC" | "contact us"                   => clickById("contact-hmrc-link")
-      case "my bank is not listed"                         => clickById("myAccountIsNotListed")
-      case "refresh this page"                             => clickById("refresh-this-page")
-      case "Sign in using your Government Gateway user ID" => clickById("personal-tax-account-sign-in")
-      case "sign in to you HMRC online account"            => clickById("sign-in-to-you-hmrc-online-account")
-      case "what did you think of this service"            => clickById("survey-link")
-      case _                                               => throw new Exception(link + " not found")
-    }
-  }
-
-  When("^I click the dropdown link (.*)$") { (link: String) =>
-    clickByCssSelector("span.govuk-details__summary-text")
-    link match {
-      case "find a lost National Insurance number" => clickById("lost-national-insurance-number-link")
-      case _                                       => throw new Exception(link + " not found")
+      case "change my bank"                                   => clickById("change-bank")
+      case "choose another way to get my refund"              => clickById("choose-another-way")
+      case "contact HMRC" | "contact us"                      => clickById("contact-hmrc-link")
+      case "contact us after lockout"                         => clickByCssSelector("p > a:nth-child(2)")
+      case "contact us from lockout"                          => clickById("contact-hmrc")
+      case "get help to find it"                              => clickById("lost-national-insurance-number-link")
+      case "my bank is not listed"                            => clickById("myAccountIsNotListed")
+      case "refresh this page"                                => clickById("refresh-this-page")
+      case "Sign in using your Government Gateway user ID"    => clickById("personal-tax-account-sign-in")
+      case "sign in to you HMRC online account"               => clickById("sign-in-to-you-hmrc-online-account")
+      case "sign in to you HMRC online account after lockout" => clickByCssSelector("p > a:nth-child(1)")
+      case "what did you think of this service"               => clickById("survey-link")
+      case "write to us or call the Income Tax helpline"      => clickById("general-enquiries-link")
+      case _                                                  => throw new Exception(link + " not found")
     }
   }
 

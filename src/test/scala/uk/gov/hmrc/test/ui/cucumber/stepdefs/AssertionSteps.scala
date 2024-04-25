@@ -42,7 +42,8 @@ class AssertionSteps extends BaseSteps {
         eventually(ChooseAnotherWayChequePage.assertPage())
       case "do you want a bank transfer"                                  => eventually(DoYouWantABankTransferPage.assertPage())
       case "do you want to sign in"                                       => eventually(DoYouWantToSignInPage.assertPage())
-      case "feedback"                                                     => eventually(FeedbackPage.assertPage())
+      case "feedback for bank transfer"                                   => eventually(FeedbackForBankTransferPage.assertPage())
+      case "feedback for cheque"                                          => eventually(FeedbackForChequePage.assertPage())
       case "give your permission"                                         => eventually(GiveYourPermissionPage.assertPage())
       case "income tax enquiries"                                         => eventually(IncomeTaxPage.assertPage())
       case "is your address up to date"                                   => eventually(IsYourAddressUpToDatePage.assertPage())
@@ -75,6 +76,7 @@ class AssertionSteps extends BaseSteps {
       case "what is your national insurance number for cheque"            => eventually(WhatIsNinoChequePage.assertPage())
       case "what is your reference for bank transfer"                     => eventually(WhatIsP800ReferenceBankTransferPage.assertPage())
       case "what is your reference for cheque"                            => eventually(WhatIsP800ReferenceChequePage.assertPage())
+      case "you cannot confirm your identity yet"                         => eventually(YouCannotConfirmYourIdentityYetPage.assertPage())
       case _                                                              => throw new Exception(page + " not found")
     }
   }
@@ -98,7 +100,7 @@ class AssertionSteps extends BaseSteps {
       case "first paragraph" =>
         findTextByCssSelector(
           "p:nth-child(2)"
-        ) shouldBe s"By choosing approve, you will be redirected to $input to securely log in and approve your refund of £4,321.09. Change my bank."
+        ) shouldBe s"By choosing approve, you will be transferred to $input to securely sign in and approve your refund of £4,321.09. Change my bank."
       case "page"            => findTextByCssSelector("div.govuk-panel__body") shouldBe s"Your P800 reference:\n$input"
       case "redirect url"    =>
         findElementById("redirectionUrl").getAttribute("value") shouldBe s"http://localhost:9416$input"
@@ -124,7 +126,7 @@ class AssertionSteps extends BaseSteps {
         findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\n1234567890\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
-        )                                              shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
+        )                                              shouldBe s"National Insurance number\n$nino\nChange\nNational Insurance number"
         isPresent("Date of birth")                     shouldBe false
       case "just reference and NINO with the changed answers" =>
         findTextByCssSelector(
@@ -132,13 +134,13 @@ class AssertionSteps extends BaseSteps {
         )                          shouldBe s"P800 reference\n234567890\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
-        )                          shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
+        )                          shouldBe s"National Insurance number\n$nino\nChange\nNational Insurance number"
         isPresent("Date of birth") shouldBe false
       case "reference, NINO and DOB"                          =>
         findTextByCssSelector("dl > div:nth-child(1)") shouldBe s"P800 reference\n1234567890\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
-        )                                              shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
+        )                                              shouldBe s"National Insurance number\n$nino\nChange\nNational Insurance number"
         findTextByCssSelector(
           "dl > div:nth-child(3)"
         )                                              shouldBe s"Date of birth\n01 January 2000\nChange\nDate of birth"
@@ -148,7 +150,7 @@ class AssertionSteps extends BaseSteps {
         ) shouldBe s"P800 reference\n234567890\nChange\nP800 reference"
         findTextByCssSelector(
           "dl > div:nth-child(2)"
-        ) shouldBe s"National insurance number\n$nino\nChange\nNational insurance number"
+        ) shouldBe s"National Insurance number\n$nino\nChange\nNational Insurance number"
         findTextByCssSelector(
           "dl > div:nth-child(3)"
         ) shouldBe s"Date of birth\n10 October 1990\nChange\nDate of birth"
