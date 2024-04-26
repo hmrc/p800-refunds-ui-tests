@@ -111,11 +111,11 @@ class AssertionSteps extends BaseSteps {
   Then("^The page lists (.*)$") { (items: String) =>
     items match {
       case "just reference and NINO" =>
-        findTextByCssSelector("ul.govuk-list--bullet") shouldBe s"P800 reference\nnational insurance number"
+        findTextByCssSelector("ul.govuk-list--bullet") shouldBe s"P800 reference\nNational Insurance number"
       case "reference, NINO and DOB" =>
         findTextByCssSelector(
           "ul.govuk-list--bullet"
-        ) shouldBe s"P800 reference\nnational insurance number\ndate of birth"
+        ) shouldBe s"P800 reference\nNational Insurance number\ndate of birth"
       case _                         => throw new Exception(items + " not found")
     }
   }
