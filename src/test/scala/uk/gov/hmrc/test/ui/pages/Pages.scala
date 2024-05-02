@@ -96,56 +96,56 @@ object YouCannotConfirmYourIdentityYetPage extends BasePage {
 object DoYouWantABankTransferPage extends BasePage {
   val h1    = "Do you want your refund by bank transfer?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/do-you-want-your-refund-via-bank-transfer"
-  val title = "Do you want to refund by bank transfer?"
+  val title = "Do you want your refund by bank transfer?"
 }
 
 object WeNeedToConfirmYourIdentityBankTransferPage extends BasePage {
   val h1    = "We need you to confirm your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/confirm-your-identity"
-  val title = "Bank transfer - confirm your identity"
+  val title = "We need you to confirm your identity"
 }
 
 object WhatIsP800ReferenceBankTransferPage extends BasePage {
   val h1    = "What is your P800 reference?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/enter-your-p800-reference"
-  val title = "Bank transfer - enter your p800 reference"
+  val title = "What is your P800 reference?"
 }
 
 object WhatIsNinoBankTransferPage extends BasePage {
   val h1    = "What is your National Insurance number?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/enter-your-national-insurance-number"
-  val title = "Bank transfer - enter your National Insurance number"
+  val title = "What is your National Insurance number?"
 }
 
 object WhatIsDobPage extends BasePage {
   val h1    = "What is your date of birth?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/enter-your-date-of-birth"
-  val title = "Bank transfer - enter your date of birth"
+  val title = "What is your date of birth?"
 }
 
 object CheckAnswersBankTransferPage extends BasePage {
   val h1    = "Check your answers"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/check-your-answers"
-  val title = "Bank transfer - check your answers"
+  val title = "Check your answers"
 }
 
 object WeCannotConfirmYourIdentityBankTransferPage extends BasePage {
   val h1    = "We cannot confirm your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/cannot-confirm-your-identity-try-again"
-  val title = "Bank transfer - cannot confirm your identity try again"
+  val title = "We cannot confirm your identity"
 }
 
 object ChooseAnotherWayBankTransferPage extends BasePage {
   val h1    = "Choose another way to get your refund"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/choose-another-way-to-receive-your-refund"
-  val title = "Bank transfer - choose another way to get your refund"
+  val title = "Choose another way to get your refund"
 }
 
 object WeCannotConfirmYourIdentityBankTransferLockedOutPage extends BasePage {
   val h1    = "We cannot confirm your identity"
   val url   =
     TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/no-more-attempts-left-to-confirm-your-identity"
-  val title = "Bank transfer - no more attempts left to confirm your identity"
+  val title = "We cannot confirm your identity"
 }
 
 object ThereIsAProblemPage extends BasePage {
@@ -158,19 +158,19 @@ object ThereIsAProblemPage extends BasePage {
 object WeHaveConfirmedYourIdentityBankTransferPage extends BasePage {
   val h1    = "We have confirmed your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/your-identity-is-confirmed"
-  val title = "Bank transfer - your identity is confirmed"
+  val title = "We have confirmed your identity"
 }
 
 object WhatIsBankPage extends BasePage {
   val h1    = "What is the name of your bank?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/enter-name-of-your-bank"
-  val title = "Bank transfer - enter name of your bank"
+  val title = "What is the name of your bank?"
 }
 
 object GiveYourPermissionPage extends BasePage {
   val h1    = "Give your permission"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/give-your-permission"
-  val title = "Bank transfer - give your permission"
+  val title = "Give your permission"
 }
 
 object BankStubPage extends BasePage {
@@ -187,85 +187,85 @@ object BankStubPage extends BasePage {
 object VerifyingBankAccountPage extends BasePage {
   val h1    = "We are verifying your bank account"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/verifying-your-bank-account"
-  val title = "Bank transfer - verifying your bank account"
+  val title = "We are verifying your bank account"
 }
 
 object BankTransferRequestReceivedPage extends BasePage {
   val h1    = "Bank transfer request received"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/request-received"
-  val title = "Bank transfer - request received"
+  val title = "Bank transfer request received"
 }
 
 object RefundRequestNotSubmittedPage extends BasePage {
   val h1    = "Your refund request has not been submitted"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/refund-request-not-submitted"
-  val title = "Bank transfer - refund request not submitted"
+  val title = "Your refund request has not been submitted"
 }
 
 object WeNeedToConfirmYourIdentityChequePage extends BasePage {
   val h1    = "We need you to confirm your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/confirm-your-identity"
-  val title = "Cheque - confirm your identity"
+  val title = "We need you to confirm your identity"
 }
 
 object WhatIsP800ReferenceChequePage extends BasePage {
   val h1    = "What is your P800 reference?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/enter-your-p800-reference"
-  val title = "Cheque - enter your p800 reference"
+  val title = "What is your P800 reference?"
 }
 
 object WhatIsNinoChequePage extends BasePage {
   val h1    = "What is your National Insurance number?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/enter-your-national-insurance-number"
-  val title = "Cheque - enter your National Insurance number"
+  val title = "What is your National Insurance number?"
 }
 
 object CheckAnswersChequePage extends BasePage {
   val h1    = "Check your answers"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/check-your-answers"
-  val title = "Cheque - check your answers"
+  val title = "Check your answers"
 }
 
 object WeCannotConfirmYourIdentityChequePage extends BasePage {
   val h1    = "We cannot confirm your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/cannot-confirm-your-identity-try-again"
-  val title = "Cheque - cannot confirm your identity try again"
+  val title = "We cannot confirm your identity"
 }
 
 object ChooseAnotherWayChequePage extends BasePage {
   val h1    = "Claim your refund by bank transfer"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/claim-your-refund-by-bank-transfer"
-  val title = "Cheque - claim your refund by bank transfer"
+  val title = "Claim your refund by bank transfer"
 }
 
 object WeCannotConfirmYourIdentityChequeLockedOutPage extends BasePage {
   val h1    = "We cannot confirm your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/no-more-attempts-left-to-confirm-your-identity"
-  val title = "Cheque - no more attempts left to confirm your identity"
+  val title = "We cannot confirm your identity"
 }
 
 object WeHaveConfirmedYourIdentityChequePage extends BasePage {
   val h1    = "We have confirmed your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/your-identity-is-confirmed"
-  val title = "Cheque - your identity is confirmed"
+  val title = "We have confirmed your identity"
 }
 
 object IsYourAddressUpToDatePage extends BasePage {
   val h1    = "Is your address up to date?"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/is-your-address-up-to-date"
-  val title = "Cheque - is your address up to date"
+  val title = "Is your address up to date?"
 }
 
 object UpdateYourAddressPage extends BasePage {
   val h1    = "Update your address"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/update-your-address"
-  val title = "Cheque - update your address"
+  val title = "Update your address"
 }
 
 object ChequeRequestReceivedPage extends BasePage {
   val h1    = "Cheque request received"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/request-received"
-  val title = "Cheque - request received"
+  val title = "Cheque request received"
 }
 
 object FeedbackForChequePage extends BasePage {
