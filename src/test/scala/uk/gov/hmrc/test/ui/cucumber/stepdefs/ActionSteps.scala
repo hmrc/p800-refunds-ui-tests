@@ -135,6 +135,8 @@ class ActionSteps extends BaseSteps {
       case "contact HMRC" | "contact us"                      => clickById("contact-hmrc-link")
       case "contact us after lockout"                         => clickByCssSelector("p > a:nth-child(2)")
       case "contact us from lockout"                          => clickById("contact-hmrc")
+      case "Cymraeg"                                          => clickByCssSelector("nav > ul > li:nth-child(2) > a")
+      case "English"                                          => clickByCssSelector("nav > ul > li:nth-child(1) > a")
       case "get help to find it"                              => clickById("lost-national-insurance-number-link")
       case "my bank is not listed"                            => clickById("myAccountIsNotListed")
       case "refresh this page"                                => clickById("refresh-this-page")

@@ -87,6 +87,17 @@ object DoYouWantToSignInPage extends BasePage {
   val title = "Do you want to sign in?"
 }
 
+object DoYouWantToSignInWelshPage extends BasePage {
+  val h1    = "A ydych am fewngofnodi?"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/do-you-want-to-sign-in"
+  val title = ""
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "A ydych am fewngofnodi? - Cael ad-daliad Treth Incwm - GOV.UK"
+  }
+}
+
 object YouCannotConfirmYourIdentityYetPage extends BasePage {
   val h1    = "You cannot confirm your identity yet"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/you-cannot-confirm-your-identity-yet"
