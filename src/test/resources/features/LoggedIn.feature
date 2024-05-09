@@ -1,4 +1,4 @@
-@test
+@test @solo
 Feature: Logged In Journey
 
   Background:

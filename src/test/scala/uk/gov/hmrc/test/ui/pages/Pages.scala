@@ -167,10 +167,10 @@ object WhatIsBankPage extends BasePage {
   val title = "What is the name of your bank?"
 }
 
-object GiveYourPermissionPage extends BasePage {
-  val h1    = "Give your permission"
+object GiveYourConsentPage extends BasePage {
+  val h1    = "Give your consent"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/give-your-permission"
-  val title = "Give your permission"
+  val title = "Give your consent"
 }
 
 object BankStubPage extends BasePage {
@@ -335,12 +335,12 @@ object IncomeTaxPage extends BasePage {
 }
 
 object LostNationalInsuranceNumberPage extends BasePage {
-  val h1    = "Find a lost National Insurance number"
-  val url   = "https://www.gov.uk/lost-national-insurance-number"
+  val h1    = "Find your National Insurance number"
+  val url   = "https://www.gov.uk/find-national-insurance-number"
   val title = ""
   override def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
-    currentPageTitle   shouldBe "Find a lost National Insurance number - GOV.UK"
+    currentPageTitle   shouldBe "Find your National Insurance number - GOV.UK"
   }
 }

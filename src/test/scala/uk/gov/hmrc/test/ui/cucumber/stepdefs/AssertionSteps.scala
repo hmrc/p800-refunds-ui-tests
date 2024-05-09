@@ -44,7 +44,7 @@ class AssertionSteps extends BaseSteps {
       case "do you want to sign in"                                       => eventually(DoYouWantToSignInPage.assertPage())
       case "feedback for bank transfer"                                   => eventually(FeedbackForBankTransferPage.assertPage())
       case "feedback for cheque"                                          => eventually(FeedbackForChequePage.assertPage())
-      case "give your permission"                                         => eventually(GiveYourPermissionPage.assertPage())
+      case "give your consent"                                            => eventually(GiveYourConsentPage.assertPage())
       case "income tax enquiries"                                         => eventually(IncomeTaxPage.assertPage())
       case "is your address up to date"                                   => eventually(IsYourAddressUpToDatePage.assertPage())
       case "locked out for bank transfer"                                 =>

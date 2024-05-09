@@ -25,7 +25,7 @@ Feature: Bank Transfer Journey (Happy Paths)
 
   Scenario: User completes a bank transfer and visits the income tax helpline
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
@@ -41,7 +41,7 @@ Feature: Bank Transfer Journey (Happy Paths)
 
   Scenario: User completes a bank transfer and decides to give feedback
     When I enter Monzo Business in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Monzo Business
     When I click to approve the refund
     Then I am on the bank stub page
@@ -57,7 +57,7 @@ Feature: Bank Transfer Journey (Happy Paths)
 
   Scenario: User completes a bank transfer and clicks back
     When I enter Santander Personal in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Santander Personal
     When I click to approve the refund
     Then I am on the bank stub page
@@ -92,7 +92,7 @@ Feature: Bank Transfer Journey (Happy Paths)
 
   Scenario: User chooses to apply for cheque from the give permission page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click the link choose another way to get my refund
     Then I am on the choose another way to receive your refund from bank transfer page
@@ -104,7 +104,7 @@ Feature: Bank Transfer Journey (Happy Paths)
 
   Scenario: User chooses to log in from the give permission page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click the link choose another way to get my refund
     Then I am on the choose another way to receive your refund from bank transfer page
@@ -114,10 +114,10 @@ Feature: Bank Transfer Journey (Happy Paths)
 
   Scenario: User decides to change bank account from the give permission page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click the link change my bank
     Then I am on the what is the name of your bank page
     When I change the bank input to Barclays Personal and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Barclays Personal

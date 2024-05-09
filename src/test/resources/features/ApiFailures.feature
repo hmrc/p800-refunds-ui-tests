@@ -111,7 +111,7 @@ Feature: API Failures
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Test | <error bank> in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Test | <error bank>
     When I click to approve the refund
     Then I am on the technical difficulties page
@@ -141,7 +141,7 @@ Feature: API Failures
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
@@ -173,7 +173,7 @@ Feature: API Failures
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
@@ -206,7 +206,7 @@ Feature: API Failures
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page

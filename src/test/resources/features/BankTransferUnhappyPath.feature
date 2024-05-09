@@ -81,9 +81,9 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
@@ -112,9 +112,9 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
@@ -141,9 +141,9 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
@@ -169,9 +169,9 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
@@ -194,7 +194,7 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
@@ -216,7 +216,7 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I click to continue
     Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
