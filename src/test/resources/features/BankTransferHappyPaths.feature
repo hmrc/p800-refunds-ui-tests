@@ -13,6 +13,8 @@ Feature: Bank Transfer Journey (Happy Paths)
     Then I am on the what is your reference for bank transfer page
     When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
+
+  Scenario: User completes a bank transfer and decides to give feedback
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -22,26 +24,8 @@ Feature: Bank Transfer Journey (Happy Paths)
     Then I am on the we have confirmed your identity for bank transfer page
     When I click to continue
     Then I am on the what is the name of your bank page
-
-  Scenario: User completes a bank transfer and visits the income tax helpline
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
-    When I receive a valid response
-    Then I am on the bank transfer request received page
-    And The page contains 1234567890
-    When I click the link write to us or call the Income Tax helpline
-    Then I am on the income tax page in a new tab
-
-  Scenario: User completes a bank transfer and decides to give feedback
     When I enter Monzo Business in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Monzo Business
     When I click to approve the refund
     Then I am on the bank stub page
@@ -56,8 +40,17 @@ Feature: Bank Transfer Journey (Happy Paths)
     Then I am on the feedback for bank transfer page
 
   Scenario: User completes a bank transfer and clicks back
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
     When I enter Santander Personal in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Santander Personal
     When I click to approve the refund
     Then I am on the bank stub page
@@ -74,7 +67,41 @@ Feature: Bank Transfer Journey (Happy Paths)
     Then I am on the bank transfer request received page
     And The page contains 1234567890
 
+  Scenario: User completes a bank transfer without Reference Check optional fields and visits the income tax helpline
+    When I enter AB990999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB990999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the verifying account page
+    When I click the link refresh this page
+    Then I am on the verifying account page
+    When I receive a valid response
+    Then I am on the bank transfer request received page
+    And The page contains 1234567890
+    When I click the link write to us or call the Income Tax helpline
+    Then I am on the income tax page in a new tab
+
   Scenario: User's bank is not listed and they apply for cheque instead
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
     When I click the link my bank is not listed
     Then I am on the choose another way to receive your refund from bank transfer page
     When I select cheque and click continue
@@ -84,6 +111,15 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The page contains 1234567890
 
   Scenario: User's bank is not listed and they log in instead
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
     When I click the link my bank is not listed
     Then I am on the choose another way to receive your refund from bank transfer page
     When I select bank transfer using your Government Gateway user ID and click continue
@@ -91,8 +127,17 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The redirect url contains /tax-you-paid/choose-year
 
   Scenario: User chooses to apply for cheque from the give permission page
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click the link choose another way to get my refund
     Then I am on the choose another way to receive your refund from bank transfer page
@@ -103,8 +148,17 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The page contains 1234567890
 
   Scenario: User chooses to log in from the give permission page
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click the link choose another way to get my refund
     Then I am on the choose another way to receive your refund from bank transfer page
@@ -113,11 +167,20 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The redirect url contains /tax-you-paid/choose-year
 
   Scenario: User decides to change bank account from the give permission page
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
     When I enter Chase in the bank input and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Chase
     When I click the link change my bank
     Then I am on the what is the name of your bank page
     When I change the bank input to Barclays Personal and click continue
-    Then I am on the give your permission page
+    Then I am on the give your consent page
     And The first paragraph contains Barclays Personal
