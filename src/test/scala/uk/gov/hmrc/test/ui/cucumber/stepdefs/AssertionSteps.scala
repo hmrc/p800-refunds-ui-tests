@@ -100,7 +100,7 @@ class AssertionSteps extends BaseSteps {
     feature match {
       case "first paragraph" =>
         findTextByCssSelector(
-          "p:nth-child(2)"
+          "p.govuk-body:nth-child(2)"
         ) shouldBe s"By choosing approve, you will be transferred to $input to securely sign in and approve your refund of £4,321.09. Change my bank."
       case "page"            => findTextByCssSelector("div.govuk-panel__body") shouldBe s"Your P800 reference:\n$input"
       case "redirect url"    =>
