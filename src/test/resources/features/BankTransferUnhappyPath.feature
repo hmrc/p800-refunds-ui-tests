@@ -70,7 +70,6 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I click the link contact us
     Then I am on the income tax enquiries page
 
-    @solo
   Scenario: Individual Trace doesn't return Surname & other optional fields so later API calls fail
     When I enter AB991999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
