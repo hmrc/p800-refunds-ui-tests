@@ -1,4 +1,4 @@
-@test @solo
+@test
 Feature: Locked Out
 
   Background:
