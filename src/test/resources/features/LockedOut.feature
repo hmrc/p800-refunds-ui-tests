@@ -32,7 +32,7 @@ Feature: Locked Out
     Then I am on the locked out for cheque page
     When I click browser back
     Then I am on the locked out for cheque page
-    When I click the link sign in to you HMRC online account
+    When I click the link sign in to your HMRC online account
     Then I am on the auth login page
     And The redirect url contains /tax-you-paid/choose-year
 
@@ -264,7 +264,7 @@ Feature: Locked Out
     Then I am on the locked out for bank transfer page
     When I click browser back
     Then I am on the locked out for bank transfer page
-    When I click the link sign in to you HMRC online account
+    When I click the link sign in to your HMRC online account
     Then I am on the auth login page
     And The redirect url contains /tax-you-paid/choose-year
 

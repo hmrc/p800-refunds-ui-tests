@@ -28,6 +28,7 @@ class AssertionSteps extends BaseSteps {
 
   Then("^I am on the (.*) page$") { (page: String) =>
     page match {
+      case "accessibility statement"                                      => eventually(AccessibilityStatementPage.assertPage())
       case "auth login"                                                   => eventually(AuthLoginPage.assertPage())
       case "bank stub"                                                    => eventually(BankStubPage.assertPage())
       case "bank transfer request received"                               =>
@@ -88,6 +89,7 @@ class AssertionSteps extends BaseSteps {
     val windows = driver.getWindowHandles.toArray().toSeq
     driver.switchTo().window(windows(1).toString)
     page match {
+      case "get help"                       => eventually(GetHelpPage.assertPage())
       case "income tax"                     => eventually(IncomeTaxPage.assertPage())
       case "lost national insurance number" => eventually(LostNationalInsuranceNumberPage.assertPage())
       case _                                => throw new Exception(page + " not found")
