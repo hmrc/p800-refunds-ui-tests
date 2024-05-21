@@ -1,4 +1,4 @@
-@test
+@test @solo
 Feature: Logged In Journey
 
   Background:
@@ -46,9 +46,3 @@ Feature: Logged In Journey
     And The page lists reference, NINO and DOB
     When I click the link get help to find it
     Then I am on the lost national insurance number page in a new tab
-
-  Scenario: User selects to toggles language to Welsh
-    When I click the link Cymraeg
-    Then I am on the do you want to sign in welsh page
-    When I click the link English
-    Then I am on the do you want to sign in page

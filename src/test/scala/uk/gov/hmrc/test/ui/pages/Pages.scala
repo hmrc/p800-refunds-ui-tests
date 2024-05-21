@@ -355,3 +355,27 @@ object LostNationalInsuranceNumberPage extends BasePage {
     currentPageTitle   shouldBe "Find your National Insurance number - GOV.UK"
   }
 }
+
+object AccessibilityStatementPage extends BasePage {
+  val h1    = "Accessibility statement for Get an Income Tax refund service"
+  val url   =
+    "http://localhost:12346/accessibility-statement/get-an-income-tax-refund?referrerUrl=%2Fget-an-income-tax-refund%2Fdo-you-want-to-sign-in"
+  val title = ""
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Accessibility statement for Get an Income Tax refund service – GOV.UK"
+  }
+}
+
+object GetHelpPage extends BasePage {
+  val h1    = "Get help with a technical problem"
+  val url   =
+    "http://localhost:9250/contact/report-technical-problem?newTab=true&service=p800-refunds-frontend&referrerUrl=%2Fget-an-income-tax-refund%2Fdo-you-want-to-sign-in"
+  val title = ""
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Get help with a technical problem – GOV.UK"
+  }
+}
