@@ -38,7 +38,7 @@ Accessibility tests are run as part of `./run_tests.sh`
 
 ### Running a single test
 
-Placing @solo above a single test and running `./run_solo.sh` will execute a single test.
+Placing `@solo` above a single test and running `./run_solo.sh` will execute a single test.
 
 ## Scalafmt
 
