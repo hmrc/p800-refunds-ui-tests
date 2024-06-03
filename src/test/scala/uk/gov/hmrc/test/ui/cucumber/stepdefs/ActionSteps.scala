@@ -91,6 +91,7 @@ class ActionSteps extends BaseSteps {
         enterTextById("date.year", userEntry.substring(6, 10))
       case "bank"                      =>
         enterTextById("selectedBankId", userEntry)
+        clickById("selectedBankId__option--0")
       case _                           => throw new Exception(input + " not found")
     }
     input match {

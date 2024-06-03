@@ -106,6 +106,28 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I select Authorised and click continue
     Then I am on the refund request not submitted page
 
+  Scenario Outline: Bank Account Summary doesn't return account information
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Test | Account Summary | <Bank> in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Test | Account Summary | <Bank>
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the refund request not submitted page
+    Examples:
+      | Bank                               |
+      | Account Identification set to None |
+      | All optional fields set to None    |
+
   Scenario: User fails ecospend check so applies for cheque instead
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
