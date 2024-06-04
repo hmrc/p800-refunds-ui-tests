@@ -92,6 +92,37 @@ Feature: Bank Transfer Journey (Happy Paths)
     When I click the link write to us or call the Income Tax helpline
     Then I am on the income tax page in a new tab
 
+  Scenario Outline: User completes a bank transfer without Bank Account Summary optional fields
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Test | Account Summary | <Bank> in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Test | Account Summary | <Bank>
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the verifying account page
+    When I click the link refresh this page
+    Then I am on the verifying account page
+    When I receive a valid response
+    Then I am on the bank transfer request received page
+    And The page contains 1234567890
+    Examples:
+      | Bank                                  |
+      | BankID set to None                    |
+      | Calculated owner name set to None     |
+      | Parties 'full legal name' set to None |
+      | Parties all names set to None         |
+      | Parties name set to None              |
+      | Parties set to None                   |
+
   Scenario: User's bank is not listed and they apply for cheque instead
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
