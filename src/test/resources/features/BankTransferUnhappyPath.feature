@@ -11,10 +11,10 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
 
   Scenario: User fails to verify identity in reference check so claims a cheque
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB099999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -42,14 +42,16 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the cheque request received page
     And The page contains 1234567890
 
-  Scenario: User fails to verify identity in reference check so logs in
-    When I enter AB099999C in the national insurance number input and click continue
+  Scenario: User submits reference which is too large and then logs in
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
     Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for bank transfer page
+    And A failed attempt Is logged in Mongo
     When I click to choose another way to get my refund
     Then I am on the choose another way to receive your refund from bank transfer page
     When I select bank transfer using your Government Gateway user ID and click continue
@@ -57,6 +59,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     And The redirect url contains /tax-you-paid/choose-year
 
   Scenario: User has already claimed refund and fails reference check
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB199999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -70,7 +74,33 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I click the link contact us
     Then I am on the income tax enquiries page
 
+  Scenario Outline: User returns to service from Ecospend without an authorised status
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter AB999999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB999999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select <status> and click continue
+    Then I am on the refund request not submitted page
+    Examples:
+      | status   |
+      | Canceled |
+      | Failed   |
+
   Scenario: User fails name-matching
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter NN999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -89,6 +119,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the refund request not submitted page
 
   Scenario: Individual Trace doesn't return surname & other optional fields so name-matching fails
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB991999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -107,6 +139,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the refund request not submitted page
 
   Scenario Outline: Bank Account Summary doesn't return account information
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -129,6 +163,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
       | All optional fields set to None    |
 
   Scenario: Bank Account Summary doesn't return display name
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -151,6 +187,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the refund request not submitted page
 
   Scenario: User fails ecospend check so applies for cheque instead
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -182,6 +220,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     And The page contains 1234567890
 
   Scenario: User fails ecospend check so logs in instead
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -211,6 +251,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     And The redirect url contains /tax-you-paid/choose-year
 
   Scenario: User fails ecospend check and they click back
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -239,6 +281,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the refund request not submitted page
 
   Scenario: User stays on verifying page after ecospend sends no response
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -264,6 +308,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the verifying account page
 
   Scenario: User fails EDH risk check
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB919999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -286,6 +332,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the bank transfer request received page
 
   Scenario: User fails EDH risk check without Reference Check optional fields
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB910999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -308,6 +356,8 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the bank transfer request received page
 
   Scenario: Claim Overpayment API returns 422
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999994C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue

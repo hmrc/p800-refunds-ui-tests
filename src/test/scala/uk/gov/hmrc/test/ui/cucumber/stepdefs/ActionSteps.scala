@@ -56,7 +56,7 @@ class ActionSteps extends BaseSteps {
       case "bank transfer using your Government Gateway user ID" => clickById("way-to-get-refund")
       case "cheque"                                              => clickById("way-to-get-refund-2")
       case "Authorised"                                          => clickById("bank-result")
-      case "Cancelled"                                           => clickById("bank-result-2")
+      case "Canceled"                                            => clickById("bank-result-2")
       case "Failed"                                              => clickById("bank-result-3")
       case "yes for address"                                     => clickById("address-up-to-date")
       case "no to update address"                                => clickById("address-up-to-date-2")
