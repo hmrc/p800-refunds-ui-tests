@@ -11,10 +11,10 @@ Feature: Cheque Journey (Unhappy Paths)
     And The page lists just reference and NINO
     When I click to continue
     Then I am on the what is your reference for cheque page
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for cheque page
 
   Scenario: User fails to verify identity in reference check so claims a bank transfer
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for cheque page
     When I enter AB099999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
     And The page has rows for just reference and NINO with NINO AB099999C
@@ -51,12 +51,14 @@ Feature: Cheque Journey (Unhappy Paths)
     Then I am on the bank transfer request received page
     And The page contains 1234567890
 
-  Scenario: User fails to verify identity in reference check so logs in
-    When I enter AB099999C in the national insurance number input and click continue
+  Scenario: User submits reference which is too large and then logs in
+    When I enter 9999999999 in the reference input and click continue
+    Then I am on the what is your national insurance number for cheque page
+    When I enter AB999999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO AB099999C
     When I click to continue
     Then I am on the we cannot confirm your identity for cheque page
+    And A failed attempt Is logged in Mongo
     When I click to claim your refund by bank transfer
     Then I am on the choose another way to receive your refund from cheque page
     When I select yes to sign in and click continue
@@ -64,6 +66,8 @@ Feature: Cheque Journey (Unhappy Paths)
     And The redirect url contains /tax-you-paid/choose-year
 
   Scenario: User has already claimed refund and fails reference check
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for cheque page
     When I enter AB199999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
     And The page has rows for just reference and NINO with NINO AB199999C
@@ -76,6 +80,8 @@ Feature: Cheque Journey (Unhappy Paths)
     Then I am on the income tax enquiries page
 
   Scenario: Payable order API returns 422
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for cheque page
     When I enter AB909999C in the national insurance number input and click continue
     Then I am on the check answers for cheque page
     And The page has rows for just reference and NINO with NINO AB909999C

@@ -304,9 +304,9 @@ object FeedbackForBankTransferPage extends BasePage {
 }
 
 object TechnicalDifficultiesPage extends BasePage {
-  val h1    = "Sorry, we’re experiencing technical difficulties"
+  val h1    = "Sorry, there is a problem with the service"
   val url   = TestConfiguration.url("p800-refunds-frontend")
-  val title = "Sorry, we are experiencing technical difficulties - 500"
+  val title = "Sorry, there is a problem with the service - 500"
 }
 
 object AuthLoginPage extends BasePage {
