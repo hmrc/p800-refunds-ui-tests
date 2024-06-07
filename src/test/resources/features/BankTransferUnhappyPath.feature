@@ -43,7 +43,7 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     And The page contains 1234567890
 
   Scenario: User submits reference which is too large and then logs in
-    When I enter 1234567890 in the reference input and click continue
+    When I enter 9999999999 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
