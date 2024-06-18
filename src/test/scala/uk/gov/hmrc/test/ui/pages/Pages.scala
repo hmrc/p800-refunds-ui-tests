@@ -180,7 +180,7 @@ object WhatIsBankPage extends BasePage {
 
 object GiveYourConsentPage extends BasePage {
   val h1    = "Give your consent"
-  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/give-your-permission"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/give-your-consent"
   val title = "Give your consent"
 }
 
