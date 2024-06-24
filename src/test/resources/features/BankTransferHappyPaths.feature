@@ -118,6 +118,7 @@ Feature: Bank Transfer Journey (Happy Paths)
       | Bank                                  |
       | BankID set to None                    |
       | Calculated owner name set to None     |
+      | Display name set to None              |
       | Parties 'full legal name' set to None |
       | Parties all names set to None         |
       | Parties name set to None              |
