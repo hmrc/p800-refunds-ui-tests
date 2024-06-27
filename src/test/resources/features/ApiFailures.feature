@@ -70,10 +70,10 @@ Feature: API Failures
     Then I am on the <Page> page
     And A failed attempt <Failed attempt> logged in Mongo
     Examples:
-      | NINO      | Page                   | Failed attempt | Response |
-      | AB699999C | technical difficulties | Isn't          | 404      |
-      | AB799999C | technical difficulties | Isn't          | 400      |
-      | AB899999C | technical difficulties | Isn't          | 500      |
+      | NINO      | Page                                              | Failed attempt | Response |
+      | AB699999C | we cannot confirm your identity for bank transfer | Is             | 404      |
+      | AB799999C | technical difficulties                            | Isn't          | 400      |
+      | AB899999C | technical difficulties                            | Isn't          | 500      |
 
   Scenario: Issue Payable Order API fails
     When I select no I want a cheque and click continue
