@@ -22,12 +22,12 @@ Feature: API Failures
     Then I am on the <Page> page
     And A failed attempt <Failed attempt> logged in Mongo
     Examples:
-      | NINO      | Page                                       | Failed attempt | Response                    |
-      | AB099999C | we cannot confirm your identity for cheque | Is             | 404                         |
-      | AB299999C | technical difficulties                     | Isn't          | 422 - unprocessable entity  |
-      | AB399999C | technical difficulties                     | Isn't          | 400                         |
-      | AB499999C | technical difficulties                     | Isn't          | 403                         |
-      | AB599999C | technical difficulties                     | Isn't          | 500                         |
+      | NINO      | Page                                       | Failed attempt | Response |
+      | AB099999C | we cannot confirm your identity for cheque | Is             | 404      |
+      | AB299999C | there is a problem                         | Isn't          | 422      |
+      | AB399999C | technical difficulties                     | Isn't          | 400      |
+      | AB499999C | technical difficulties                     | Isn't          | 403      |
+      | AB599999C | technical difficulties                     | Isn't          | 500      |
 
   Scenario Outline: Reference Check API fails (bank transfer)
     When I select yes, bank transfer and click continue
@@ -46,12 +46,12 @@ Feature: API Failures
     Then I am on the <Page> page
     And A failed attempt <Failed attempt> logged in Mongo
     Examples:
-      | NINO      | Page                                              | Failed attempt | Response                    |
-      | AB099999C | we cannot confirm your identity for bank transfer | Is             | 404                         |
-      | AB299999C | technical difficulties                            | Isn't          | 422 - unprocessable entity  |
-      | AB399999C | technical difficulties                            | Isn't          | 400                         |
-      | AB499999C | technical difficulties                            | Isn't          | 403                         |
-      | AB599999C | technical difficulties                            | Isn't          | 500                         |
+      | NINO      | Page                                              | Failed attempt | Response |
+      | AB099999C | we cannot confirm your identity for bank transfer | Is             | 404      |
+      | AB299999C | there is a problem                                | Isn't          | 422      |
+      | AB399999C | technical difficulties                            | Isn't          | 400      |
+      | AB499999C | technical difficulties                            | Isn't          | 403      |
+      | AB599999C | technical difficulties                            | Isn't          | 500      |
 
   Scenario Outline: Trace Individual API fails
     When I select yes, bank transfer and click continue
