@@ -283,7 +283,6 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     And I click the link refresh this page
     Then I am on the verifying account page
 
-    @solo
   Scenario Outline: EDH fails with 500 and user clicks link on try again page
     When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
