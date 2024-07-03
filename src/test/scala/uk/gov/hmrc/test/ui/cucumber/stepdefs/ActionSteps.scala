@@ -71,10 +71,12 @@ class ActionSteps extends BaseSteps {
       case "change date of birth"                                                       => clickById("change-date-of-birth")
       case "change nino"                                                                => clickById("change-national-insurance-number")
       case "change reference"                                                           => clickById("change-reference")
+      case "choose another way"                                                         => clickById("choose-another")
       case "choose another way to get my refund" | "claim your refund by bank transfer" =>
         clickById("choose-another-method-link")
       case "choose another way to get my refund via button"                             => clickById("try-again")
       case "continue"                                                                   => clickById("submit")
+      case "return to guidance"                                                         => clickById("refund-guidance")
       case "submit refund request"                                                      => clickById("submit-refund-request")
       case "try again"                                                                  => clickById("try-again")
       case _                                                                            => throw new Exception(element + " not found")

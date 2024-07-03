@@ -123,7 +123,7 @@ Feature: API Failures
       | Bad Gateway 502           |
       | Service Unavailable 503   |
 
-  Scenario Outline: EDH risk check API fails
+  Scenario Outline: EDH risk check API fails with 4xx
     When I select yes, bank transfer and click continue
     Then I am on the we need to confirm your identity for bank transfer page
     And The page lists reference, NINO and DOB
@@ -152,6 +152,33 @@ Feature: API Failures
       | AB929999C | 400      |
       | AB939999C | 403      |
       | AB949999C | 404      |
+
+  Scenario Outline: EDH risk check API fails with 5xx
+    When I select yes, bank transfer and click continue
+    Then I am on the we need to confirm your identity for bank transfer page
+    And The page lists reference, NINO and DOB
+    When I click to continue
+    Then I am on the what is your reference for bank transfer page
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter <NINO> in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO <NINO>
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the refund request not submitted try again page
+    Examples:
+      | NINO      | Response |
       | AB959999C | 500      |
       | AB969999C | 503      |
 
@@ -180,7 +207,7 @@ Feature: API Failures
     When I select Authorised and click continue
     Then I am on the verifying account page
     When I receive a valid response
-    Then I am on the technical difficulties page
+    Then I am on the refund request not submitted try again page
     Examples:
       | NINO      | Response                   |
       | AB999991C | 400                        |

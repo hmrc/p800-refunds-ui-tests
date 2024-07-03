@@ -213,6 +213,17 @@ object RefundRequestNotSubmittedPage extends BasePage {
   val title = "Your refund request has not been submitted"
 }
 
+object RefundRequestNotSubmittedTryAgainPage extends BasePage {
+  val h1    = "Your refund request has not been submitted"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/your-refund-request-has-not-been-submitted"
+  val title = "Your refund request has not been submitted"
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe s"$title - $serviceName - GOV.UK"
+  }
+}
+
 object WeNeedToConfirmYourIdentityChequePage extends BasePage {
   val h1    = "We need you to confirm your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/confirm-your-identity"
@@ -373,9 +384,23 @@ object GetHelpPage extends BasePage {
   val url   =
     "http://localhost:9250/contact/report-technical-problem?newTab=true&service=p800-refunds-frontend&referrerUrl=%2Fget-an-income-tax-refund%2Fdo-you-want-to-sign-in"
   val title = ""
+
   override def assertPage(): Unit = {
     currentUrl           should include(url)
     currentPageHeading shouldBe h1
     currentPageTitle   shouldBe "Get help with a technical problem – GOV.UK"
+  }
+}
+
+object GuidancePage extends BasePage {
+  val h1    = "Tax overpayments and underpayments"
+  val url   =
+    "https://www.gov.uk/tax-overpayments-and-underpayments/if-youre-due-a-refund"
+  val title = ""
+
+  override def assertPage(): Unit = {
+    currentUrl           should include(url)
+    currentPageHeading shouldBe h1
+    currentPageTitle   shouldBe "Tax overpayments and underpayments: If your tax calculation letter (P800) says you’re due a refund - GOV.UK"
   }
 }
