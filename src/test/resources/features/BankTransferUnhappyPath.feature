@@ -283,6 +283,33 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     And I click the link refresh this page
     Then I am on the verifying account page
 
+  Scenario Outline: EDH fails with 500 and user clicks link on try again page
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter AB959999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB959999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the refund request not submitted try again page
+    When I click to <link>
+    Then I am on the <page> page
+    Examples:
+      | link               | page                                                         |
+      | try again          | refund request not submitted try again                       |
+      | choose another way | choose another way to receive your refund from bank transfer |
+      | return to guidance | guidance                                                     |
+
   Scenario: User fails EDH risk check
     When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
@@ -351,7 +378,7 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I select Authorised and click continue
     Then I am on the verifying account page
     When I receive a valid response
-    Then I am on the technical difficulties page
+    Then I am on the refund request not submitted try again page
     #test to be updated pending OPS-11880
 
   #TODO: click failed or cancelled on bank stub

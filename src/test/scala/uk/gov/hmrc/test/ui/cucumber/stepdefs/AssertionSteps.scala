@@ -47,6 +47,7 @@ class AssertionSteps extends BaseSteps {
       case "feedback for bank transfer"                                   => eventually(FeedbackForBankTransferPage.assertPage())
       case "feedback for cheque"                                          => eventually(FeedbackForChequePage.assertPage())
       case "give your consent"                                            => eventually(GiveYourConsentPage.assertPage())
+      case "guidance"                                                     => eventually(GuidancePage.assertPage())
       case "income tax enquiries"                                         => eventually(IncomeTaxPage.assertPage())
       case "is your address up to date"                                   => eventually(IsYourAddressUpToDatePage.assertPage())
       case "locked out for bank transfer"                                 =>
@@ -54,6 +55,8 @@ class AssertionSteps extends BaseSteps {
       case "locked out for cheque"                                        => eventually(WeCannotConfirmYourIdentityChequeLockedOutPage.assertPage())
       case "refund request not submitted"                                 =>
         eventually(timeout(Span(10, Seconds)))(RefundRequestNotSubmittedPage.assertPage())
+      case "refund request not submitted try again"                       =>
+        eventually(timeout(Span(10, Seconds)))(RefundRequestNotSubmittedTryAgainPage.assertPage())
       case "simulate webhook"                                             => eventually(TestOnlyWebhookPage.assertPage())
       case "technical difficulties"                                       => eventually(timeout(Span(10, Seconds)))(TechnicalDifficultiesPage.assertPage())
       case "there is a problem"                                           => eventually(ThereIsAProblemPage.assertPage())
