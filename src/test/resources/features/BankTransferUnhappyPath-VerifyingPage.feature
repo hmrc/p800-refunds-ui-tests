@@ -1,5 +1,5 @@
 @test
-Feature: Bank Transfer Journey (Unhappy Paths)
+Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
 
   Background:
     Given I start a journey
@@ -11,92 +11,6 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-
-  Scenario: User fails to verify identity in reference check so claims a cheque
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB099999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB099999C
-    When I click to continue
-    Then I am on the we cannot confirm your identity for bank transfer page
-    When I click to choose another way to get my refund
-    Then I am on the choose another way to receive your refund from bank transfer page
-    When I select cheque and click continue
-    Then I am on the we need to confirm your identity for cheque page
-    And The page lists just reference and NINO
-    When I click to continue
-    Then I am on the what is your reference for cheque page
-    When I click to continue
-    Then I am on the what is your national insurance number for cheque page
-    When I change the national insurance number input to AB999999C and click continue
-    Then I am on the check answers for cheque page
-    And The page has rows for just reference and NINO with NINO AB999999C
-    When I click to continue
-    Then I am on the we have confirmed your identity for cheque page
-    When I click to continue
-    Then I am on the is your address up to date page
-    When I select yes for address and click continue
-    Then I am on the cheque request received page
-    And The page contains 1234567890
-
-  Scenario: User submits reference which is too large and then logs in
-    When I enter 9999999999 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB999999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    When I click to continue
-    Then I am on the we cannot confirm your identity for bank transfer page
-    And A failed attempt Is logged in Mongo
-    When I click to choose another way to get my refund
-    Then I am on the choose another way to receive your refund from bank transfer page
-    When I select bank transfer using your Government Gateway user ID and click continue
-    Then I am on the auth login page
-    And The redirect url contains /tax-you-paid/choose-year
-
-  Scenario: User has already claimed refund and fails reference check
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB199999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB199999C
-    When I click to continue
-    Then I am on the there is a problem page
-    And A failed attempt Isn't logged in Mongo
-    When I click browser back
-    Then I am on the there is a problem page
-    When I click the link contact us
-    Then I am on the income tax enquiries page
-
-  Scenario Outline: User returns to service from Ecospend without an authorised status
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB999999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB999999C
-    When I click to continue
-    Then I am on the we have confirmed your identity for bank transfer page
-    When I click to continue
-    Then I am on the what is the name of your bank page
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select <status> and click continue
-    Then I am on the refund request not submitted page
-    Examples:
-      | status   |
-      | Canceled |
-      | Failed   |
 
   Scenario: User fails name-matching
     When I enter 1234567890 in the reference input and click continue
@@ -137,178 +51,6 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the refund request not submitted page
-
-  Scenario Outline: Bank Account Summary doesn't return account information
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB999999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB999999C
-    When I click to continue
-    Then I am on the we have confirmed your identity for bank transfer page
-    When I click to continue
-    Then I am on the what is the name of your bank page
-    When I enter Test | Account Summary | <Bank> in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Test | Account Summary | <Bank>
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the refund request not submitted page
-    Examples:
-      | Bank                               |
-      | Account Identification set to None |
-      | All optional fields set to None    |
-
-  Scenario: User fails ecospend check so applies for cheque instead
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB999999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB999999C
-    When I click to continue
-    Then I am on the we have confirmed your identity for bank transfer page
-    When I click to continue
-    Then I am on the what is the name of your bank page
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
-    When I receive a not valid response
-    Then I am on the refund request not submitted page
-    When I click to choose another way to get my refund via button
-    Then I am on the choose another way to receive your refund from bank transfer page
-    When I select cheque and click continue
-    Then I am on the is your address up to date page
-    When I select yes for address and click continue
-    Then I am on the cheque request received page
-    And The page contains 1234567890
-
-  Scenario: User fails ecospend check so logs in instead
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB999999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB999999C
-    When I click to continue
-    Then I am on the we have confirmed your identity for bank transfer page
-    When I click to continue
-    Then I am on the what is the name of your bank page
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
-    When I receive a not valid response
-    Then I am on the refund request not submitted page
-    When I click to choose another way to get my refund via button
-    Then I am on the choose another way to receive your refund from bank transfer page
-    When I select bank transfer using your Government Gateway user ID and click continue
-    Then I am on the auth login page
-    And The redirect url contains /tax-you-paid/choose-year
-
-  Scenario: User fails ecospend check and they click back
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB999999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB999999C
-    When I click to continue
-    Then I am on the we have confirmed your identity for bank transfer page
-    When I click to continue
-    Then I am on the what is the name of your bank page
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
-    When I receive a not valid response
-    Then I am on the refund request not submitted page
-    When I click browser back
-    Then I am on the bank stub page
-    When I click browser back
-    Then I am on the refund request not submitted page
-
-  Scenario: User stays on verifying page after ecospend sends no response
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB999999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB999999C
-    When I click to continue
-    Then I am on the we have confirmed your identity for bank transfer page
-    When I click to continue
-    Then I am on the what is the name of your bank page
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
-    When I receive a not received response
-    And I click the link refresh this page
-    Then I am on the verifying account page
-
-  Scenario Outline: EDH fails with 500 and user clicks link on try again page
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
-    When I enter AB959999C in the national insurance number input and click continue
-    Then I am on the what is your date of birth page
-    When I enter 01 01 2000 in the date of birth input and click continue
-    Then I am on the check answers for bank transfer page
-    And The page has rows for reference, NINO and DOB with NINO AB959999C
-    When I click to continue
-    Then I am on the we have confirmed your identity for bank transfer page
-    When I click to continue
-    Then I am on the what is the name of your bank page
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the refund request not submitted try again page
-    When I click to <link>
-    Then I am on the <page> page
-    Examples:
-      | link               | page                                                         |
-      | try again          | refund request not submitted try again                       |
-      | choose another way | choose another way to receive your refund from bank transfer |
-      | return to guidance | guidance                                                     |
 
   Scenario: User fails EDH risk check
     When I enter 1234567890 in the reference input and click continue
@@ -358,6 +100,110 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     When I receive a valid response
     Then I am on the bank transfer request received page
 
+  Scenario Outline: EDH risk check API fails with 4xx
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter <NINO> in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO <NINO>
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the technical difficulties page
+    Examples:
+      | NINO      | Response |
+      | AB929999C | 400      |
+      | AB939999C | 403      |
+      | AB949999C | 404      |
+
+  Scenario Outline: EDH risk check API fails with 5xx
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter <NINO> in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO <NINO>
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the refund request not submitted try again page
+    Examples:
+      | NINO      | Response |
+      | AB959999C | 500      |
+      | AB969999C | 503      |
+
+  Scenario Outline: EDH fails with 500 and user clicks link on try again page
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter AB959999C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB959999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the refund request not submitted try again page
+    When I click to <link>
+    Then I am on the <page> page
+    Examples:
+      | link               | page                                                         |
+      | try again          | refund request not submitted try again                       |
+      | choose another way | choose another way to receive your refund from bank transfer |
+      | return to guidance | guidance                                                     |
+
+  Scenario Outline: Claim overpayment API fails
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter <NINO> in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO <NINO>
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the verifying account page
+    When I receive a valid response
+    Then I am on the refund request not submitted try again page
+    Examples:
+      | NINO      | Response                   |
+      | AB999991C | 400                        |
+      | AB999992C | 403                        |
+      | AB999993C | 500                        |
+      | AB999995C | 422 - unprocessable entity |
+
   Scenario: Claim Overpayment API returns 422
     When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
@@ -381,4 +227,49 @@ Feature: Bank Transfer Journey (Unhappy Paths)
     Then I am on the refund request not submitted try again page
     #test to be updated pending OPS-11880
 
-  #TODO: click failed or cancelled on bank stub
+  Scenario Outline: Case Management API fails
+    When I enter <NINO> in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO <NINO>
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the verifying account page
+    When I receive a valid response
+    Then I am on the technical difficulties page
+    Examples:
+      | NINO      | Response |
+      | AB919919C | 400      |
+      | AB919929C | 403      |
+      | AB919939C | 500      |
+
+  Scenario: Suspend overpayment API fails
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for bank transfer page
+    When I enter AB919099C in the national insurance number input and click continue
+    Then I am on the what is your date of birth page
+    When I enter 01 01 2000 in the date of birth input and click continue
+    Then I am on the check answers for bank transfer page
+    And The page has rows for reference, NINO and DOB with NINO AB919099C
+    When I click to continue
+    Then I am on the we have confirmed your identity for bank transfer page
+    When I click to continue
+    Then I am on the what is the name of your bank page
+    When I enter Chase in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Chase
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the verifying account page
+    When I receive a valid response
+    Then I am on the technical difficulties page
