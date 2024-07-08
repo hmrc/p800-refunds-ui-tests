@@ -79,6 +79,36 @@ Feature: Cheque Journey (Unhappy Paths)
     When I click the link contact us
     Then I am on the income tax enquiries page
 
+  Scenario Outline: Reference Check API fails
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for cheque page
+    When I enter <NINO> in the national insurance number input and click continue
+    Then I am on the check answers for cheque page
+    And The page has rows for just reference and NINO with NINO <NINO>
+    When I click to continue
+    Then I am on the <Page> page
+    And A failed attempt <Failed attempt> logged in Mongo
+    Examples:
+      | NINO      | Page                                       | Failed attempt | Response |
+      | AB099999C | we cannot confirm your identity for cheque | Is             | 404      |
+      | AB299999C | there is a problem                         | Isn't          | 422      |
+      | AB399999C | technical difficulties                     | Isn't          | 400      |
+      | AB499999C | technical difficulties                     | Isn't          | 403      |
+      | AB599999C | technical difficulties                     | Isn't          | 500      |
+
+  Scenario: Issue Payable Order API fails
+    When I enter 1234567890 in the reference input and click continue
+    Then I am on the what is your national insurance number for cheque page
+    When I enter AB979999C in the national insurance number input and click continue
+    Then I am on the check answers for cheque page
+    And The page has rows for just reference and NINO with NINO AB979999C
+    When I click to continue
+    Then I am on the we have confirmed your identity for cheque page
+    When I click to continue
+    Then I am on the is your address up to date page
+    When I select yes for address and click continue
+    Then I am on the technical difficulties page
+
   Scenario: Payable order API returns 422
     When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for cheque page

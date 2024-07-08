@@ -201,6 +201,12 @@ object VerifyingBankAccountPage extends BasePage {
   val title = "We are verifying your bank account"
 }
 
+object RefundCancelledPage extends BasePage {
+  val h1    = "Refund cancelled"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/refund-cancelled"
+  val title = "Refund cancelled"
+}
+
 object BankTransferRequestReceivedPage extends BasePage {
   val h1    = "Bank transfer request received"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/request-received"

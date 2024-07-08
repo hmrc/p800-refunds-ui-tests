@@ -53,6 +53,7 @@ class AssertionSteps extends BaseSteps {
       case "locked out for bank transfer"                                 =>
         eventually(WeCannotConfirmYourIdentityBankTransferLockedOutPage.assertPage())
       case "locked out for cheque"                                        => eventually(WeCannotConfirmYourIdentityChequeLockedOutPage.assertPage())
+      case "refund cancelled"                                             => eventually(RefundCancelledPage.assertPage())
       case "refund request not submitted"                                 =>
         eventually(timeout(Span(10, Seconds)))(RefundRequestNotSubmittedPage.assertPage())
       case "refund request not submitted try again"                       =>
