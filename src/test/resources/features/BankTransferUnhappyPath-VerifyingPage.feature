@@ -11,10 +11,10 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     And The page lists reference, NINO and DOB
     When I click to continue
     Then I am on the what is your reference for bank transfer page
-
-  Scenario: User fails name-matching
     When I enter 1234567890 in the reference input and click continue
     Then I am on the what is your national insurance number for bank transfer page
+
+  Scenario: User fails name-matching
     When I enter NN999999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -33,8 +33,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     Then I am on the refund request not submitted page
 
   Scenario: Individual Trace doesn't return surname & other optional fields so name-matching fails
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB991999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -53,8 +51,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     Then I am on the refund request not submitted page
 
   Scenario: User fails EDH risk check
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB919999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -77,8 +73,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     Then I am on the bank transfer request received page
 
   Scenario: User fails EDH risk check without Reference Check optional fields
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB910999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -101,8 +95,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     Then I am on the bank transfer request received page
 
   Scenario Outline: EDH risk check API fails with 4xx
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter <NINO> in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -126,8 +118,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
       | AB949999C | 404      |
 
   Scenario Outline: EDH risk check API fails with 5xx
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter <NINO> in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -150,8 +140,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
       | AB969999C | 503      |
 
   Scenario Outline: EDH fails with 500 and user clicks link on try again page
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB959999C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -177,8 +165,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
       | return to guidance | guidance                                                     |
 
   Scenario Outline: Claim overpayment API fails
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter <NINO> in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -205,8 +191,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
       | AB999995C | 422 - unprocessable entity |
 
   Scenario: Claim Overpayment API returns 422
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB999994C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
@@ -253,8 +237,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
       | AB919939C | 500      |
 
   Scenario: Suspend overpayment API fails
-    When I enter 1234567890 in the reference input and click continue
-    Then I am on the what is your national insurance number for bank transfer page
     When I enter AB919099C in the national insurance number input and click continue
     Then I am on the what is your date of birth page
     When I enter 01 01 2000 in the date of birth input and click continue
