@@ -388,7 +388,7 @@ object AccessibilityStatementPage extends BasePage {
 object GetHelpPage extends BasePage {
   val h1    = "Get help with a technical problem"
   val url   =
-    "http://localhost:9250/contact/report-technical-problem?newTab=true&service=p800-refunds-frontend&referrerUrl=%2Fget-an-income-tax-refund%2Fdo-you-want-to-sign-in"
+    "http://localhost:9250/contact/report-technical-problem?service=p800-refunds-frontend&referrerUrl=%2Fget-an-income-tax-refund%2Fdo-you-want-to-sign-in"
   val title = ""
 
   override def assertPage(): Unit = {
