@@ -120,5 +120,6 @@ Feature: Cheque Journey (Unhappy Paths)
     When I click to continue
     Then I am on the is your address up to date page
     When I select yes for address and click continue
-    Then I am on the technical difficulties page
-    #test to be updated pending OPS-11880
+    Then I am on the there is a problem page
+    When I click the link contact us
+    Then I am on the income tax enquiries page

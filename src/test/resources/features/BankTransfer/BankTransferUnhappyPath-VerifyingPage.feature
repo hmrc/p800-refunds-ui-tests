@@ -184,11 +184,11 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I receive a valid response
     Then I am on the refund request not submitted try again page
     Examples:
-      | NINO      | Response                   |
-      | AB999991C | 400                        |
-      | AB999992C | 403                        |
-      | AB999993C | 500                        |
-      | AB999995C | 422 - unprocessable entity |
+      | NINO      | Response                 |
+      | AB999991C | 400                      |
+      | AB999992C | 403                      |
+      | AB999993C | 500                      |
+      | AB999995C | 422 - unexpected message |
 
   Scenario: Claim Overpayment API returns 422
     When I enter AB999994C in the national insurance number input and click continue
@@ -208,8 +208,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I select Authorised and click continue
     Then I am on the verifying account page
     When I receive a valid response
-    Then I am on the refund request not submitted try again page
-    #test to be updated pending OPS-11880
+    Then I am on the there is a problem page
+    When I click the link contact us
+    Then I am on the income tax enquiries page
 
   Scenario Outline: Case Management API fails
     When I enter <NINO> in the national insurance number input and click continue
