@@ -12,7 +12,7 @@ object Dependencies {
     "junit"                % "junit"              % "4.13.2"   % Test,
     "com.novocode"         % "junit-interface"    % "0.11"     % Test,
     "org.mongodb.scala"   %% "mongo-scala-driver" % "5.1.2"    % Test,
-    "uk.gov.hmrc"         %% "ui-test-runner"     % "0.31.0"   % Test
+    "uk.gov.hmrc"         %% "ui-test-runner"     % "0.32.0"   % Test
   )
 
 }

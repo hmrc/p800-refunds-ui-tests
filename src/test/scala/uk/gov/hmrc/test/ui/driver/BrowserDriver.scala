@@ -23,4 +23,6 @@ trait BrowserDriver {
 
   implicit lazy val driver: WebDriver = Driver.instance
 
+  implicit lazy val secondDriver: WebDriver = Driver.instance
+
 }
