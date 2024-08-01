@@ -46,6 +46,18 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     When I select Failed and click continue
     Then I am on the refund request not submitted page
 
+  Scenario: User returns to service from Ecospend in a new browser with failed status and tries to change payment type
+    When I enter Monzo Business in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Monzo Business
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I return to the service in a new window with status Failed
+    Then I am on the refund request not submitted page
+    And I am flagged in Mongo as a returning user
+    When I click to choose another way to get my refund via button
+    Then I am on the do you want to sign in page
+
   Scenario Outline: User returns to service from Ecospend with cancelled status
     When I enter Chase in the bank input and click continue
     Then I am on the give your consent page
@@ -60,6 +72,18 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
       | link               | page                                                         |
       | try again          | what is the name of your bank                                |
       | choose another way | choose another way to receive your refund from bank transfer |
+
+  Scenario: User returns to service from Ecospend in a new browser with cancelled status and tries to change bank
+    When I enter Monzo Business in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Monzo Business
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I return to the service in a new window with status Canceled
+    Then I am on the refund cancelled page
+    And I am flagged in Mongo as a returning user
+    When I click to try again
+    Then I am on the do you want to sign in page
 
   Scenario Outline: Bank Account Summary doesn't return account information
     When I enter Test | Account Summary | <Bank> in the bank input and click continue
@@ -150,5 +174,3 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     When I receive a not received response
     And I click the link refresh this page
     Then I am on the verifying account page
-
-      #TODO: click failed on bank stub

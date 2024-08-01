@@ -192,4 +192,14 @@ class AssertionSteps extends BaseSteps {
       s"""(fraudCheckStatusRequest,{"record_type": "$record_type", "record_id": "$record_id", "event_value": "$event_value"})"""
   }
 
+  Then("^I am flagged in Mongo as a returning user$") { () =>
+    MongoClient()
+      .getDatabase("p800-refunds-frontend")
+      .getCollection("journey")
+      .find()
+      .results()
+      .toString() should include
+    s"""(isReturningUser,BsonBoolean{value=true})"""
+  }
+
 }

@@ -20,6 +20,7 @@ import org.mongodb.scala.MongoClient
 import org.openqa.selenium.Keys
 import uk.gov.hmrc.test.ui.mongo.MongoHelper.GenericObservable
 import uk.gov.hmrc.test.ui.pages._
+
 import scala.sys.process._
 
 class ActionSteps extends BaseSteps {
@@ -198,6 +199,23 @@ class ActionSteps extends BaseSteps {
         s"""curl -v POST -H \"Content-Type: application/json\" -d '{\"event_value\":\"NotReceived\",\"record_type\":\"AccountAssessment\",\"record_id\":\"$consent_id\"}' http://localhost:10152/status""".!!
       case _              => throw new Exception(status + " not found")
     }
+  }
+
+  When("^I return to the service in a new window with status (.*)$") { (status: String) =>
+    val accountConsentResponse = MongoClient()
+      .getDatabase("p800-refunds-frontend")
+      .getCollection("journey")
+      .find()
+      .results()
+      .toString()
+    val consent_index          = accountConsentResponse.indexOf("bankConsentResponse,{\"id\"")
+    val consent_id             = accountConsentResponse.substring(consent_index + 28, consent_index + 64)
+    driver.navigate().to("http://localhost:10150/get-an-income-tax-refund/timeout/true")
+    secondDriver
+      .navigate()
+      .to(
+        s"http://localhost:10150/get-an-income-tax-refund/bank-transfer/verifying-your-bank-account?status=$status&consent_id=$consent_id&bank_reference_id=MyBank-129781876126"
+      )
   }
 
 }
