@@ -30,6 +30,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    When I receive a valid response
     Then I am on the refund request not submitted page
 
   Scenario: Individual Trace doesn't return surname & other optional fields so name-matching fails
@@ -48,6 +49,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    When I receive a valid response
     Then I am on the refund request not submitted page
 
   Scenario: User fails EDH risk check
@@ -66,8 +68,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
     Then I am on the verifying account page
     When I receive a valid response
     Then I am on the bank transfer request received page
@@ -89,8 +89,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a valid response
     Then I am on the bank transfer request received page
 
@@ -110,6 +108,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    When I receive a valid response
     Then I am on the technical difficulties page
     Examples:
       | NINO      | Response |
@@ -133,6 +132,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    When I receive a valid response
     Then I am on the refund request not submitted try again page
     Examples:
       | NINO      | Response |
@@ -155,6 +155,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    When I receive a valid response
     Then I am on the refund request not submitted try again page
     When I click to <link>
     Then I am on the <page> page

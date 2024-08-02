@@ -44,6 +44,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Failed and click continue
+    When I receive a valid response
     Then I am on the refund request not submitted page
 
   Scenario: User returns to service from Ecospend in a new browser with failed status and tries to change payment type
@@ -65,6 +66,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Canceled and click continue
+    When I receive a valid response
     Then I am on the refund cancelled page
     When I click to <link>
     Then I am on the <page> page
@@ -108,8 +110,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click to choose another way to get my refund via button
@@ -130,8 +130,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click to choose another way to get my refund via button
@@ -150,8 +148,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click browser back
@@ -169,8 +165,5 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a not received response
-    And I click the link refresh this page
-    Then I am on the verifying account page
+    Then I am on the refund request not submitted try again page
