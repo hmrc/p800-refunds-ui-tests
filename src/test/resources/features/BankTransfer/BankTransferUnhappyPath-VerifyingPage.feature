@@ -1,5 +1,5 @@
 @test
-Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
+Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
 
   Background:
     Given I start a journey
@@ -30,6 +30,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    Then I am on the verifying account page
     When I receive a valid response
     Then I am on the refund request not submitted page
 
@@ -49,6 +50,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    Then I am on the verifying account page
     When I receive a valid response
     Then I am on the refund request not submitted page
 
@@ -108,6 +110,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    Then I am on the verifying account page
     When I receive a valid response
     Then I am on the technical difficulties page
     Examples:
@@ -132,6 +135,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    Then I am on the verifying account page
     When I receive a valid response
     Then I am on the refund request not submitted try again page
     Examples:
@@ -155,6 +159,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
+    Then I am on the verifying account page
     When I receive a valid response
     Then I am on the refund request not submitted try again page
     When I click to <link>
@@ -165,6 +170,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Risk Checks)
       | choose another way | choose another way to receive your refund from bank transfer |
       | return to guidance | guidance                                                     |
 
+    @solo
   Scenario Outline: Claim overpayment API fails
     When I enter <NINO> in the national insurance number input and click continue
     Then I am on the what is your date of birth page

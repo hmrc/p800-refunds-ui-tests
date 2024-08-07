@@ -44,7 +44,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Failed and click continue
-    When I receive a valid response
     Then I am on the refund request not submitted page
 
   Scenario: User returns to service from Ecospend in a new browser with failed status and tries to change payment type
@@ -66,7 +65,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Canceled and click continue
-    When I receive a valid response
     Then I am on the refund cancelled page
     When I click to <link>
     Then I am on the <page> page
@@ -154,16 +152,3 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     Then I am on the bank stub page
     When I click browser back
     Then I am on the refund request not submitted page
-
-  Scenario: User stays on verifying page after ecospend sends no response
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I receive a not received response
-    Then I am on the refund request not submitted try again page
