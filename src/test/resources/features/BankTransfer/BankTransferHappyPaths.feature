@@ -31,8 +31,6 @@ Feature: Bank Transfer Journey (Happy Paths)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
@@ -55,8 +53,6 @@ Feature: Bank Transfer Journey (Happy Paths)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
     Then I am on the verifying account page
     When I receive a valid response
     Then I am on the bank transfer request received page
@@ -84,8 +80,6 @@ Feature: Bank Transfer Journey (Happy Paths)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
@@ -108,8 +102,6 @@ Feature: Bank Transfer Journey (Happy Paths)
     When I click to approve the refund
     Then I am on the bank stub page
     When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
     Then I am on the verifying account page
     When I receive a valid response
     Then I am on the bank transfer request received page

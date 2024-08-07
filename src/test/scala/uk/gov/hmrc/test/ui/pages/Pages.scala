@@ -221,7 +221,7 @@ object RefundRequestNotSubmittedPage extends BasePage {
 
 object RefundRequestNotSubmittedTryAgainPage extends BasePage {
   val h1    = "Your refund request has not been submitted"
-  val url   = TestConfiguration.url("p800-refunds-frontend") + "/your-refund-request-has-not-been-submitted"
+  val url   = TestConfiguration.url("p800-refunds-frontend") + "/bank-transfer/your-refund-request-has-not-been-submitted"
   val title = "Your refund request has not been submitted"
   override def assertPage(): Unit = {
     currentUrl           should include(url)

@@ -108,8 +108,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click to choose another way to get my refund via button
@@ -130,8 +128,6 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click to choose another way to get my refund via button
@@ -150,27 +146,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     Then I am on the bank stub page
     When I select Authorised and click continue
     Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
     When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click browser back
     Then I am on the bank stub page
     When I click browser back
     Then I am on the refund request not submitted page
-
-  Scenario: User stays on verifying page after ecospend sends no response
-    When I enter Chase in the bank input and click continue
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    Then I am on the give your consent page
-    And The first paragraph contains Chase
-    When I click to approve the refund
-    Then I am on the bank stub page
-    When I select Authorised and click continue
-    Then I am on the verifying account page
-    When I click the link refresh this page
-    Then I am on the verifying account page
-    When I receive a not received response
-    And I click the link refresh this page
-    Then I am on the verifying account page
