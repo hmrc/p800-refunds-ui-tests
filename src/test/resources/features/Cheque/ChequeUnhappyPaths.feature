@@ -43,9 +43,9 @@ Feature: Cheque Journey (Unhappy Paths)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
 
