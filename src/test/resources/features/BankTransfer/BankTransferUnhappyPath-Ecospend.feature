@@ -98,6 +98,26 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
       | Account Identification set to None |
       | All optional fields set to None    |
 
+  Scenario Outline: Account summary returns Iban/Bban/Pan account format
+    When I enter Test | Account Summary | <Format> in the bank input and click continue
+    Then I am on the give your consent page
+    And The first paragraph contains Test | Account Summary | <Format>
+    When I click to approve the refund
+    Then I am on the bank stub page
+    When I select Authorised and click continue
+    Then I am on the refund request not submitted select different account page
+    When I click the link choose another way to get my refund
+    Then I am on the choose another way to receive your refund from bank transfer page
+    When I click browser back
+    Then I am on the refund request not submitted select different account page
+    When I click to try again
+    Then I am on the what is the name of your bank page
+      Examples:
+      | Format                   |
+      | IBAN bank account format |
+      | BBAN bank account format |
+      | PAN bank account format  |
+
   Scenario: User fails ecospend check so applies for cheque instead
     When I enter Chase in the bank input and click continue
     Then I am on the give your consent page
