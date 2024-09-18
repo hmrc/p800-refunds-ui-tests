@@ -230,6 +230,14 @@ object RefundRequestNotSubmittedTryAgainPage extends BasePage {
   }
 }
 
+object RefundRequestNotSubmittedSelectDifferentAccountPage extends BasePage {
+  val h1    = "Your refund request has not been submitted"
+  val url   = TestConfiguration.url(
+    "p800-refunds-frontend"
+  ) + "/bank-transfer/refund-request-not-submitted-select-different-bank-account"
+  val title = "Your refund request has not been submitted"
+}
+
 object WeNeedToConfirmYourIdentityChequePage extends BasePage {
   val h1    = "We need you to confirm your identity"
   val url   = TestConfiguration.url("p800-refunds-frontend") + "/cheque/confirm-your-identity"
