@@ -29,9 +29,9 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The first paragraph contains Monzo Business
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
     When I click the link what did you think of this service
@@ -52,9 +52,9 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The first paragraph contains Santander Personal
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
     When I click browser back
@@ -78,9 +78,9 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
     When I click the link write to us or call the Income Tax helpline
@@ -101,9 +101,9 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The first paragraph contains Test | Account Summary | <Bank>
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890
     Examples:
@@ -224,9 +224,10 @@ Feature: Bank Transfer Journey (Happy Paths)
     And The first paragraph contains Monzo Business
     When I click to approve the refund
     Then I am on the bank stub page
+    When I select Authorised and Valid and click continue
     When I return to the service in a new window with status Authorised
     Then I am on the verifying account page
     And I am flagged in Mongo as a returning user
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the bank transfer request received page
     And The page contains 1234567890

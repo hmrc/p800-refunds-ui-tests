@@ -29,9 +29,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the refund request not submitted page
 
   Scenario: Individual Trace doesn't return surname & other optional fields so name-matching fails
@@ -49,9 +49,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the refund request not submitted page
 
   Scenario: User fails EDH risk check
@@ -69,9 +69,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the bank transfer request received page
 
   Scenario: User fails EDH risk check without Reference Check optional fields
@@ -89,9 +89,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the bank transfer request received page
 
   Scenario Outline: EDH risk check API fails with 4xx
@@ -109,9 +109,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the technical difficulties page
     Examples:
       | NINO      | Response |
@@ -134,9 +134,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the refund request not submitted try again page
     Examples:
       | NINO      | Response |
@@ -158,9 +158,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the refund request not submitted try again page
     When I click to <link>
     Then I am on the <page> page
@@ -185,9 +185,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the refund request not submitted try again page
     Examples:
       | NINO      | Response                 |
@@ -211,9 +211,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the there is a problem page
     When I click the link contact us
     Then I am on the income tax enquiries page
@@ -233,9 +233,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the technical difficulties page
     Examples:
       | NINO      | Response |
@@ -258,7 +258,7 @@ Feature: Bank Transfer Journey (Unhappy Paths - Verifying Page)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and Valid and click continue
     Then I am on the verifying account page
-    When I receive a valid response
+#    When I receive a valid response
     Then I am on the technical difficulties page

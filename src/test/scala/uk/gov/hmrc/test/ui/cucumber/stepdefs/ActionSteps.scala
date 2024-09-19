@@ -214,6 +214,7 @@ class ActionSteps extends BaseSteps {
     val consent_index          = accountConsentResponse.indexOf("bankConsentResponse,{\"id\"")
     val consent_id             = accountConsentResponse.substring(consent_index + 28, consent_index + 64)
     driver.navigate().to("http://localhost:10150/get-an-income-tax-refund/timeout/true")
+    eventually(findTextByTagName("h1") shouldBe "You deleted your answers")
     secondDriver
       .navigate()
       .to(

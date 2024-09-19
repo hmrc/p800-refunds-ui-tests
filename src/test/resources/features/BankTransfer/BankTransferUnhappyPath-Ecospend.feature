@@ -126,9 +126,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and NotValid and click continue
     Then I am on the verifying account page
-    When I receive a not valid response
+#    When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click to choose another way to get my refund via button
     Then I am on the choose another way to receive your refund from bank transfer page
@@ -146,9 +146,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and NotValid and click continue
     Then I am on the verifying account page
-    When I receive a not valid response
+#    When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click to choose another way to get my refund via button
     Then I am on the choose another way to receive your refund from bank transfer page
@@ -164,9 +164,9 @@ Feature: Bank Transfer Journey (Unhappy Paths - Ecospend)
     And The first paragraph contains Chase
     When I click to approve the refund
     Then I am on the bank stub page
-    When I select Authorised and click continue
+    When I select Authorised and NotValid and click continue
     Then I am on the verifying account page
-    When I receive a not valid response
+#    When I receive a not valid response
     Then I am on the refund request not submitted page
     When I click browser back
     Then I am on the bank stub page
